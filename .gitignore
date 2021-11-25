@@ -1,0 +1,14 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+
+# local env files
+*.local
+
+# Log files
+npm-debug.log*
+
+# Editor directories and files
+.vscode
+.sass-cache
