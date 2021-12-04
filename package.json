@@ -15,6 +15,7 @@
     "style-loader": "^3.3.1",
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
+<<<<<<< HEAD
     "webpack-dev-server": "^4.5.0",
     "webpack-merge": "^5.8.0"
   },
@@ -22,6 +23,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack serve",
     "build": "webpack"
+=======
+    "webpack-dev-server": "^4.5.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve"
+>>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
   },
   "repository": {
     "type": "git",

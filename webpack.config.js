@@ -3,7 +3,11 @@ const path = require('path');
 
 module.exports = {
     mode: 'development',
+<<<<<<< HEAD
     entry: path.resolve(__dirname, './src/js/main.js'),
+=======
+    entry: path.resolve(__dirname, './src/index.js'),
+>>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
@@ -14,6 +18,7 @@ module.exports = {
             directory: path.resolve(__dirname, 'src'),
         },
         compress: true,
+<<<<<<< HEAD
         port: 8080,
         headers: {
             'Access-Control-Allow-Origin': '*',
@@ -23,6 +28,9 @@ module.exports = {
     },
     experiments: {
         topLevelAwait: true,
+=======
+        port: 9000,
+>>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
     },
     plugins: [
         new HtmlWebpackPlugin({
