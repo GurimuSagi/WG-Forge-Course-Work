@@ -14,7 +14,15 @@ module.exports = {
             directory: path.resolve(__dirname, 'src'),
         },
         compress: true,
-        port: 9000,
+        port: 8080,
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
+        },
+    },
+    experiments: {
+        topLevelAwait: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
