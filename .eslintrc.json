@@ -11,14 +11,10 @@
         "sourceType": "module"
     },
     "rules": {
-<<<<<<< HEAD
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true, "optionalDependencies": false, "peerDependencies": false}],
         "indent": ["error", 4],
         "import/extensions": ["error", {
             "js": "always", "json": "never" }
         ]
-=======
-        "indent": ["error", 4]
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
     }
 }

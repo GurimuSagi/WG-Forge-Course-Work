@@ -2,7 +2,6 @@ body {
 	margin: 0;
 	background-color: #282727;
 	padding-top: 200px;
-<<<<<<< HEAD
     .popup_dialog{
         display: none;
         flex-direction: column;
@@ -35,10 +34,6 @@ body {
 .hidden {
     display: none;
 }
-=======
-}
-
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
 header {
     z-index: 1;
 	display: inline-flex;
@@ -85,10 +80,6 @@ a {
     }
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
 main {
     display: flex;
     flex-direction: column;
@@ -123,15 +114,9 @@ main {
         }
 	}
     section {
-<<<<<<< HEAD
         display: flex;
         width: 100%;
         flex-direction: column;
-=======
-    display: flex;
-    width: 100%;
-    flex-direction: column;
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
         .premium-face-wrap{
             display: flex;
             justify-content: space-between;
@@ -154,10 +139,6 @@ main {
             padding-left: 10px;
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
     .grid{
         display: grid;
         width: 100%;
@@ -188,10 +169,6 @@ main {
     }
 }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
 @media only screen and (max-width: 1024px) {
     header {
         width: 90%;
