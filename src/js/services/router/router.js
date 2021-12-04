@@ -1,5 +1,5 @@
-import data from '../helper/data.js';
-import routes from './routes.js';
+import data from '../helper/data';
+import routes from './routes';
 
 const grid = document.querySelector('.grid');
 
