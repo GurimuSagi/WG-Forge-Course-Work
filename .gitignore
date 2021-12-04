@@ -2,6 +2,7 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+Premium_Shop_psd
 
 # local env files
 *.local

@@ -2,8 +2,38 @@ body {
 	margin: 0;
 	background-color: #282727;
 	padding-top: 200px;
-}
+    .popup_dialog{
+        display: none;
+        flex-direction: column;
+        background-color: aliceblue;
+        padding: 30px;
+        position: fixed;
+        margin-right: 5%;
+        top: 0;
+        z-index: 120;
+        margin-top: 50px;
+        right: 0;
+    }
 
+    form {
+        display: flex;
+        flex-direction: column;
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .hidden {
+        display: none;
+    }
+
+    .show {
+        display: block;
+    }
+}
+.hidden {
+    display: none;
+}
 header {
     z-index: 1;
 	display: inline-flex;
@@ -50,7 +80,6 @@ a {
     }
 }
 
-
 main {
     display: flex;
     flex-direction: column;
@@ -85,9 +114,9 @@ main {
         }
 	}
     section {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
+        display: flex;
+        width: 100%;
+        flex-direction: column;
         .premium-face-wrap{
             display: flex;
             justify-content: space-between;
@@ -110,6 +139,7 @@ main {
             padding-left: 10px;
         }
     }
+
     .grid{
         display: grid;
         width: 100%;
@@ -139,6 +169,7 @@ main {
         }
     }
 }
+
 
 @media only screen and (max-width: 1024px) {
     header {
