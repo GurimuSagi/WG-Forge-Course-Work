@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,11 @@
     <title>Wargaming</title>
     <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header>
         <h1><a href=""><i class="fas fa-radiation-alt fa-2x"></i><span class="headImg">premium shop</span></a></h1>
+        
         <nav class="nav-menu">
             <a href="#wishlist">
                 <span class="fas fa-heart"></span>
@@ -24,14 +27,98 @@
                 <span>Login or Create account</span>
             </a>
         </nav>
+        
+        <a href="" id="shopping_cart">
+            <div id="shopping_cart_window">
+                Shopping cart
+                <hr>
+                <div class="grid_shopping_cart">
+                    <article>
+                        <img src="assets/images/tank.png" alt="img" width="50%" height="50%">
+                    </article>
+                    <article>
+                        <span class="country1"></span>
+                        <h2>10 personal reserves: +15% xp limited edition</h2>
+                    </article>
+                    <article>
+                        <input type="checkbox">
+                        <p>$ 47.99</p>
+                        <button>Купить</button>
+                    </article>
+                </div>
+                <div class="grid_shopping_cart">
+                    <article>
+                        <img src="assets/images/tank.png" alt="img" width="50%" height="50%">
+                    </article>
+                    <article>
+                        <span class="country1"></span>
+                        <h2>10 personal reserves: +15% xp limited edition</h2>
+                    </article>
+                    <article>
+                        <input type="checkbox">
+                        <p>$ 47.99</p>
+                        <button>Купить</button>
+                    </article>
+                </div>
+                <div class="grid_shopping_cart">
+                    <article>
+                        <img src="assets/images/tank.png" alt="img" width="50%" height="50%">
+                    </article>
+                    <article>
+                        <span class="country1"></span>
+                        <h2>10 personal reserves: +15% xp limited edition</h2>
+                    </article>
+                    <article>
+                        <input type="checkbox">
+                        <p>$ 47.99</p>
+                        <button>Купить</button>
+                    </article>
+                </div>
+                <div class="grid_shopping_cart">
+                    <article>
+                        <img src="assets/images/tank.png" alt="img" width="50%" height="50%">
+                    </article>
+                    <article>
+                        <span class="country1"></span>
+                        <h2>10 personal reserves: +15% xp limited edition</h2>
+                    </article>
+                    <article>
+                        <input type="checkbox">
+                        <p>$ 47.99</p>
+                        <button>Купить</button>
+                    </article>
+                </div>
+                <div class="grid_shopping_cart">
+                    <article>
+                        <img src="assets/images/tank.png" alt="img" width="50%" height="50%">
+                    </article>
+                    <article>
+                        <span class="country1"></span>
+                        <h2>10 personal reserves: +15% xp limited edition</h2>
+                    </article>
+                    <article>
+                        <input type="checkbox">
+                        <p>$ 47.99</p>
+                        <button>Купить</button>
+                    </article>
+                </div>
+            </div>
+            </article>
+            </div>
+        </a>
     </header>
-    <div id="app"></div>
+
     <main>
+        <!-- 
+        <a class="button-to button-to__top" data-bind="scrollToTop" href="#" style="display: block;">Наверх</a>
+        -->
         <nav>
-            <!-- <h2></h2> -->
-            <img src="assets/images/wot.png" alt="">
-            <span class="logo fas fa-bomb fa-2x"></span>
+            <img class="logo" src="assets/images/wot.png" alt="">
             <div class="item-nav">
+                <!-- <h2></h2> -->
+                
+                <!--<span class="logo fas fa-bomb fa-2x"></span>-->
+
                 <a href="#">all</a>
                 <a href="#">vehicles</a>
                 <a href="#">gold</a>
@@ -45,16 +132,41 @@
                     <hr>
                     <div class="premium-purchase-panel">
                         <p>$12.59</p>
-                        <a href="purchase"><p>purchase</p></a>
+                        <a href="#purchase">
+                            <p>purchase</p>
+                        </a>
                     </div>
                 </div>
-                <img src="assets/images/30days.jpg" alt="img">
+                <img class="imgMain" src="assets/images/premimage.png" alt="img">
             </div>
             <div class="premium-details">
                 <h3>DETAILS</h3>
                 <hr>
-                <p>Premium account allows to research desirable vehicles quicker and to save time on its purcase. It gives more Credits and Experience per battle.<br>
-                It is a great deal as the profit after paying for repairs and ammo increases two- or threefold, depending on your performance in battle (amount of damage, destroued enemies, base captured/defended, enemies detected, etc).</p>
+                <p>Premium account allows to research desirable vehicles quicker and to save time on its purcase. It
+                    gives more Credits and Experience per battle.<br>
+                    It is a great deal as the profit after paying for repairs and ammo increases two- or threefold,
+                    depending on your performance in battle (amount of damage, destroued enemies, base
+                    captured/defended, enemies detected, etc).</p>
+            </div>
+            <div class="premium-images">
+                <h3>IMAGES</h3>
+                <hr>
+                <div class="imgWithSlider">
+                    <img class="leftButton" src="assets/images/sliderL.png">
+                    <img class="imgBig" src="assets/images/premimage.png" alt="img">
+                    <img class="rightButton" src="assets/images/sliderR.png">
+                </div>
+                <br>
+                <div class="slider">
+                    <img class="imgsmall" id="img5" src="assets/images/premimage.png" alt="img">
+                    <img class="imgsmall" id="img1" src="assets/images/premimage.png" alt="img">
+                    <img class="imgsmall" id="img2" src="assets/images/premimage.png" alt="img">
+                    <img class="imgsmall" id="img3" src="assets/images/premimage.png" alt="img">
+                    <img class="imgsmall" id="img4" src="assets/images/premimage.png" alt="img">
+                    <script>
+                        if (getElementById("img5").active) {}
+                    </script>
+                </div>
             </div>
         </section>
 
@@ -148,4 +260,6 @@
         </div>
     </main>
 </body>
+
+
 </html>
