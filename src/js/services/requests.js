@@ -1,4 +1,4 @@
-import userInterface from '../modules/userInterface.js';
+import userInterface from '../modules/userInterface';
 
 const auth = async () => {
     const res = localStorage.getItem('token');

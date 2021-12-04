@@ -1,4 +1,4 @@
-import { login } from '../services/requests.js';
+import { login } from '../services/requests';
 
 const forms = () => {
     const allForms = document.querySelectorAll('form');
