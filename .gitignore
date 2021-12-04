@@ -2,7 +2,10 @@ node_modules
 .DS_Store
 dist
 dist-ssr
+<<<<<<< HEAD
 Premium_Shop_psd
+=======
+>>>>>>> 6408b8c9950e394600e52082bab166a0bda6e9e4
 
 # local env files
 *.local

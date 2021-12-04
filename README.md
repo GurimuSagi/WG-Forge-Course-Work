@@ -1,6 +1,14 @@
-# WG-Forge-Course-Work
-Course work of group No. 4.  
+# WG Premium shop
 
+### Установка зависимостей:
+``
 npm install
-
-npm start (dev-server)
+``
+### Запуск приложения:
+``
+npm run start
+``
+### Сборка проекта:
+``
+npm run build
+``
