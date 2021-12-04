@@ -1,5 +1,5 @@
-import url from '../helper/api.helper';
-import data from '../helper/data';
+import url from '../helper/api.helper.js';
+import data from '../helper/data.js';
 
 const getAllItems = fetch(url);
 
