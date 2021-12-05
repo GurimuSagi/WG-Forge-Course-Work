@@ -7,14 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wargaming</title>
     <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
+    <!-- <link rel="stylesheet" href="./assets/form-login.css"> -->
 </head>
 
 <body>
+    <div>
+    </div>
     <header>
-        <h1><a href=""><i class="fas fa-radiation-alt fa-2x"></i><span class="headImg">premium shop</span></a></h1>
-        
+        <h1 class="premium"><i class="fas fa-radiation-alt fa-2x"></i><span class="headImg">premium shop</span></a></h1>
         <nav class="nav-menu">
-            <a href="#wishlist">
+            <a href="#/wishlist">
                 <span class="fas fa-heart"></span>
                 <span>Wishlist</span>(2)
             </a>
@@ -22,10 +24,10 @@
                 <span class="fas fa-cart-plus"></span>
                 <span>Shopping cart</span>(5)
             </a>
-            <a href="#loginorcreateaccount">
-                <span class="fas fa-sign-in-alt"></span>
+            <div data-modal>
                 <span>Login or Create account</span>
-            </a>
+                <span class="fas fa-sign-in-alt"></span>
+            </div>
         </nav>
         
         <a href="" id="shopping_cart">
@@ -125,7 +127,7 @@
                 <a href="#">premium account</a>
             </div>
         </nav>
-        <section class="premium-subscription">
+        <!-- <section class="premium-subscription">
             <div class="premium-face-wrap">
                 <div>
                     <h2>premium: 30 days</h2>
@@ -168,98 +170,99 @@
                     </script>
                 </div>
             </div>
-        </section>
+        </section> -->
 
         <div class="grid">
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country1"></span>
-                    <h2>is-6</h2>
-                    <p>$ 47.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country2"></span>
-                    <h2>viii lowe</h2>
-                    <p>$ 42.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <h2>extension pack</h2>
-                    <p>$ 28.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <h2>wot premium account: 3 days</h2>
-                    <p>$ 2.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country3"></span>
-                    <h2>vii m56 scorpion</h2>
-                    <p>$ 24.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country4"></span>
-                    <h2>viii fv4202</h2>
-                    <p>$ 40.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country5"></span>
-                    <h2>viii m4a1 revalorise</h2>
-                    <p>$ 35.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <h2>10 personal reserves: +15% xp limited edition</h2>
-                    <p>$ 29.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <h2>gold: 25.000</h2>
-                    <p>$ 47.99</p>
-                </div>
-            </article>
-            <article>
-                <input type="checkbox">
-                <img src="assets/images/tank.png" alt="img">
-                <div>
-                    <span class="country6"></span>
-                    <h2><span>viii t92</span></h2>
-                    <p><span>$ 36.99</span></p>
-                </div>
-            </article>
+
         </div>
     </main>
 </body>
-
-
 </html>
+
+<!-- 
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country1"></span>
+        <h2>is-6</h2>
+        <p>$ 47.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country2"></span>
+        <h2>viii lowe</h2>
+        <p>$ 42.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <h2>extension pack</h2>
+        <p>$ 28.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <h2>wot premium account: 3 days</h2>
+        <p>$ 2.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country3"></span>
+        <h2>vii m56 scorpion</h2>
+        <p>$ 24.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country4"></span>
+        <h2>viii fv4202</h2>
+        <p>$ 40.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country5"></span>
+        <h2>viii m4a1 revalorise</h2>
+        <p>$ 35.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <h2>10 personal reserves: +15% xp limited edition</h2>
+        <p>$ 29.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <h2>gold: 25.000</h2>
+        <p>$ 47.99</p>
+    </div>
+</article>
+<article>
+    <input type="checkbox">
+    <img src="assets/images/tank.png" alt="img">
+    <div>
+        <span class="country6"></span>
+        <h2><span>viii t92</span></h2>
+        <p><span>$ 36.99</span></p>
+    </div>
+</article> -->
