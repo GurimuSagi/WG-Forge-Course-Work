@@ -2,8 +2,43 @@ body {
 	margin: 0;
     position: relative;
 	background-color: #282727;
-}
+// <<<<<<< Darya
+// }
+// =======
+// 	padding-top: 200px;
+//     .popup_dialog{
+//         display: none;
+//         flex-direction: column;
+//         background-color: aliceblue;
+//         padding: 30px;
+//         position: fixed;
+//         margin-right: 5%;
+//         top: 0;
+//         z-index: 120;
+//         margin-top: 50px;
+//         right: 0;
+//     }
 
+//     form {
+//         display: flex;
+//         flex-direction: column;
+//         div {
+//             display: flex;
+//             flex-direction: column;
+//         }
+//     }
+//     .hidden {
+//         display: none;
+//     }
+// >>>>>>> develop
+
+//     .show {
+//         display: block;
+//     }
+// }
+.hidden {
+    display: none;
+}
 header {
     position: sticky;
 	display: inline-flex;
@@ -34,6 +69,22 @@ header {
             display:none;
         }
     }
+}
+
+.checkbox {
+   z-index: 100;
+}
+
+.premium {
+    cursor: pointer;
+}
+.premium:hover {
+    opacity: 0.6;
+}
+
+article:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 a {
@@ -78,6 +129,8 @@ main {
     section {
         padding-top: 3%;
         display: flex;
+//         display: flex;
+//         width: 100%;
         flex-direction: column;
         .premium-face-wrap{
             display: flex;
