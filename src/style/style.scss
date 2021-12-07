@@ -1,35 +1,9 @@
+@import 'popup.scss';
+
 body {
 	margin: 0;
 	background-color: #282727;
 	padding-top: 200px;
-    .popup_dialog{
-        display: none;
-        flex-direction: column;
-        background-color: aliceblue;
-        padding: 30px;
-        position: fixed;
-        margin-right: 5%;
-        top: 0;
-        z-index: 120;
-        margin-top: 50px;
-        right: 0;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        div {
-            display: flex;
-            flex-direction: column;
-        }
-    }
-    .hidden {
-        display: none;
-    }
-
-    .show {
-        display: block;
-    }
 }
 .hidden {
     display: none;
@@ -191,6 +165,11 @@ main {
         padding-left: 5%;
         padding-right: 5%;
     }
+    body {
+        .popup_dialog {
+            margin-right: 5%;
+        }
+    }
     main {
         width: 90%;
         padding-left: 5%;
@@ -242,6 +221,11 @@ main {
         width: 95%;
         padding-right: 2.5%;
         padding-left: 2.5%;
+    }
+    body {
+        .popup_dialog {
+            margin-right: 2.5%;
+        }
     }
     .nav-menu{
         a{

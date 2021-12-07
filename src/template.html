@@ -24,6 +24,7 @@
             </a>
             <div data-modal>
                 <span>Login or Create account</span>
+                <span></span>
                 <span class="fas fa-sign-in-alt"></span>
             </div>
         </nav>
@@ -41,6 +42,29 @@
                 <a href="#">premium account</a>
             </div>
         </nav>
+        <div class="popup_dialog hidden">
+            <form id="login-form">
+                <h3>Login</h3>
+                <input type="text" name="username" placeholder="username">
+                <input type="text" name="password" placeholder="password">
+                <button class="sign-in-btn" type="submit">Login</button>
+                <span>or</span>
+                <button class="sign-in-menu-btn">Sign Up Here</button>
+            </form>
+            <form id="sign-in-form" class="hidden">
+                <h3>Sign Up</h3>
+                <input type="text" name="username" placeholder="username">
+                <input type="text" name="email" placeholder="email">
+                <input type="text" name="password" placeholder="password">
+                <button class="sign-in-btn" type="submit">Sign Up</button>
+                <span>or</span>
+                <button class="sign-in-menu-btn hidden">Log in here</button>
+            </form>
+            <form id="logout-form" class="hidden">
+                <h3 class="username"></h3>
+                <button class="sign-in-btn" type="submit">Logout</button>
+            </form>
+        </div>
         <!-- <section class="premium-subscription">
             <div class="premium-face-wrap">
                 <div>

@@ -1,16 +1,18 @@
-import { login } from '../services/requests';
+import { login, logout } from '../services/requests';
 
 const forms = () => {
     const allForms = document.querySelectorAll('form');
-    // console.log(formElem);
-    allForms.forEach(form => {
-        form.onsubmit = async (e) => {
+    allForms.forEach((form) => {
+        const f = form;
+        f.onsubmit = async (e) => {
             e.preventDefault();
             const formData = new FormData(form);
             if (form.getAttribute('id') === 'login-form') {
                 login(formData, 'login');
-            } else {
+            } else if (form.getAttribute('id') === 'sign-in-form') {
                 login(formData, 'register');
+            } else {
+                logout();
             }
         };
     });

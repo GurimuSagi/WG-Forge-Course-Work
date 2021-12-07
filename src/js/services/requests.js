@@ -1,13 +1,14 @@
-import userInterface from '../modules/userInterface';
+import { userInterface } from '../modules/modal';
+// import modalWindow from '../modules/modal';
+let res = localStorage.getItem('token');
+let authType = 'loggedIn';
 
 const auth = async () => {
-    const res = localStorage.getItem('token');
     let userData = {
         id: '',
         username: '',
         email: '',
     };
-    console.log(res);
 
     if (res) {
         const response = await fetch('https://stark-temple-62869.herokuapp.com/api/user/', {
@@ -17,26 +18,29 @@ const auth = async () => {
             },
         });
         userData = await response.json();
+        console.log(userData, authType);
         if (userData.id) {
-            console.log('qweqwe');
+            await userInterface(authType, userData);
         }
-        console.log(userData);
-        await userInterface(userData);
     }
 };
 
 const login = async (data, path) => {
-    let res = localStorage.getItem('token');
-
     try {
         const response = await fetch(`https://stark-temple-62869.herokuapp.com/api/${path}/`, {
             method: 'POST',
             body: data,
         });
         res = await response.json();
+        console.log(res);
         res = res.token;
         if (res !== undefined) {
             localStorage.setItem('token', res);
+        }
+        if (path === 'login') {
+            authType = 'loggedIn';
+        } else {
+            authType = 'registered';
         }
         auth();
     } catch (error) {
@@ -44,4 +48,16 @@ const login = async (data, path) => {
     }
 };
 
-export { login, auth };
+const logout = async () => {
+    await fetch('https://stark-temple-62869.herokuapp.com/api/logout/', {
+        method: 'POST',
+        headers: {
+            authorization: `Token ${res}`,
+        },
+    });
+    authType = 'logout';
+    localStorage.setItem('token', '');
+    userInterface(authType);
+};
+
+export { login, auth, logout };
