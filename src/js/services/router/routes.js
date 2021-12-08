@@ -4,7 +4,6 @@ const {
     HomeComponent,
     WishComponent,
     DetailComponent,
-    // ErrorComponent,
 } = components;
 
 const routes = [

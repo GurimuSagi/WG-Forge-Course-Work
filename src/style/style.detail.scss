@@ -1,0 +1,73 @@
+.checkbox {
+    z-index: 100;
+ }
+
+ .detail_name {
+    color: white;
+ }
+
+ .line_top {
+     margin: 0;
+     width: 50%;
+     display: block;
+     background-color: white;
+     height: 1px;
+     opacity: 0.2;
+ }
+
+ .premium-purchase-panel {
+
+ }
+
+ .detail_cost {
+    color: wheat;
+ }
+
+ .detail_purchase_btn {
+   width: 137px;
+   height: 52px;
+   background: #ff9800;
+   font-size: 20px;
+   color: white;
+   outline: none;
+   border: none;
+   cursor: pointer;
+ }
+
+ .detail_img {
+
+ }
+
+ .premium-details {
+
+ }
+
+ .detail_title {
+    color: white;
+ }
+
+ .description {
+    color: antiquewhite;
+ }
+ 
+ .line_bottom {
+   margin: 0;
+   width: 100%;
+   display: block;
+   background-color: white;
+   height: 1px;
+   opacity: 0.2;
+ }
+
+ .detail_top {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+ }
+
+ .top_block {
+   display: flex;
+   width: 100%;
+   height: 310px;
+   justify-content: space-between;
+ }
