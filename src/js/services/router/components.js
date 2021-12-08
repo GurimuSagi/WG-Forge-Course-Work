@@ -51,22 +51,23 @@ const components = {
     },
     DetailComponent: {
         render: (tank) => `
-        <div data-id="tank.tank_id">
-        <h2>${tank.name}</h2>
-        <hr>
-        <div class="premium-purchase-panel">
-            <p>$12.59</p>
-            <a href="purchase"><p>purchase</p></a>
+        <h2 class="detail_name">${tank.name}</h2>
+        <div class="line_top"></div>
+        <div class="top_block" data-id="tank.tank_id">
+        <div class="detail_top">
+            <span class="detail_cost">$12.59</span>
+            <button class="detail_purchase_btn">purchase</button>
         </div>
+        <img class="detail_img" src="${tank.images.big_icon}" alt="img">
     </div>
-    <img src="${tank.images.big_icon}" alt="img">
     <div class="premium-details">
-        <h3>DETAILS</h3>
-        <hr>
-        <p>${tank.description}</p>
+        <h3 class="detail_title">DETAILS</h3>
+        <div class="line_bottom"></div>
+        <p class="description">${tank.description}</p>
     </div>
-                `,
+    `,
     },
 };
 
 export default components;
+// <a href="purchase"><p>purchase</p></a>

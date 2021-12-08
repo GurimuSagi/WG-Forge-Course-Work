@@ -15,10 +15,8 @@ const router = () => {
     const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
     const { component } = componentByPath(path, routes);
     if (path === '/') {
-        setTimeout(() => {
-            grid.style.display = 'grid';
-            grid.innerHTML = component.render(data);
-        }, 2000);
+        grid.style.display = 'grid';
+        grid.innerHTML = component.render(data);
     } else if (path === '/detail') {
         grid.innerHTML = component.render(detailTank);
         grid.style.display = 'block';
@@ -29,9 +27,11 @@ const router = () => {
 };
 
 grid.addEventListener('click', (event) => {
-    if (!event.target.classList.contains('checkbox')) {
-        window.location.hash = '/detail';
-        id = (event.target.closest('article')).dataset.id;
+    if (window.location.hash === '#/') {
+        if (!event.target.classList.contains('checkbox')) {
+            window.location.hash = '/detail';
+            id = (event.target.closest('article')).dataset.id;
+        }
     }
 });
 
