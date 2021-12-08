@@ -69,6 +69,66 @@ a {
     }
 }
 
+
+
+#shopping_cart {
+    display: none;
+    position: fixed;
+    width:200%;
+    height:200%;
+    z-index: 0;
+    background-color: #171717;
+    
+    background-size: 100%;
+    background-color:rgba(0, 0, 0, 0.5);
+  }
+  #shopping_cart_window {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;  
+    width: 60%;
+    max-height: 70%;
+    overflow-y: auto;
+    list-style-position:inside;
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+    border: 3px solid #fab92c;
+    border-radius: 10px;
+    color: rgb(155, 155, 155);
+    background-color: #171717;
+  }
+  #shopping_cart:target {display: block;}
+
+  .grid_shopping_cart{
+    display: grid;
+    width: 100%;
+    
+    grid-template-columns: 1fr 2fr 0.5fr;
+    
+    margin-bottom: 5%;
+    article {
+        background-color: #474747;
+        img {
+            position: relative;
+            height: 100%;
+            width: 100%;
+        }
+        h2 {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.87);
+        }
+    }
+    article:nth-child(5) {
+        grid-column: span 2;
+    }
+    article:nth-child(10) {
+        grid-column: span 2;
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     header {
         width: 90%;
