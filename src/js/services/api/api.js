@@ -1,5 +1,6 @@
 import url from '../helper/api.helper';
 import data from '../helper/data';
+import router from '../router/router';
 
 const getAllItems = fetch(url);
 
@@ -11,4 +12,7 @@ getAllItems
         // eslint-disable-next-line no-param-reassign
         item.check = false;
         data.push(item);
+        router();
     }));
+
+export default getAllItems;
