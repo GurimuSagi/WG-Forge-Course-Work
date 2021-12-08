@@ -8,8 +8,6 @@ import './services/router/router';
 import './services/api/api';
 import './services/app/app';
 import gridComponent from './services/app/grid';
-import { modalWindow } from './modules/modal';
-import forms from './modules/forms';
 
 window.addEventListener('DOMContentLoaded', () => {
     modalWindow();
