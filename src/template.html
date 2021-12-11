@@ -18,20 +18,23 @@
         <nav class="nav-menu">
             <a href="#/wishlist">
                 <span class="fas fa-heart"></span>
-                <span>Wishlist</span>(2)
+                <span>Wishlist</span>
+                (<span id="countOfWish"></span>)
             </a>
             <a href="#shopping_cart">
                 <span class="fas fa-cart-plus"></span>
-                <span>Shopping cart</span>(5)
+                <span>Shopping cart</span>
+                (<span id="countOfShoppingCart"></span>)
             </a>
             <div data-modal>
-                <span>Login or Create account</span>
+                <span id="logInSignIn">Login or Create account</span>
                 <span></span>
                 <span class="fas fa-sign-in-alt"></span>
             </div>
         </nav>
-        
+
         <a href="" id="shopping_cart">
+            <button id="close_cart_button">X</button>
             <div id="shopping_cart_window">
                 Shopping cart
                 <hr>
@@ -118,14 +121,6 @@
         <nav>
             <img class="logo" src="assets/images/wot.png" alt="">
             <div class="item-nav">
-                <!-- <h2></h2> -->
-                
-                <!--<span class="logo fas fa-bomb fa-2x"></span>-->
-
-                <!--<a href="#">all</a>-->
-                <!--<a href="#">vehicles</a>-->
-                <!--<a href="#">gold</a>-->
-                <!--<a href="#">premium account</a>-->
                 <input type="checkbox" class="checkBox" id="checkAll">
                 <label for="checkAll">all</label>
                 <input type="checkbox" class="checkBox" id="checkVehicles">
@@ -209,6 +204,7 @@
         </div>
     </main>
 </body>
+
 </html>
 
 <!-- 
