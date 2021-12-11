@@ -24,17 +24,11 @@ const modalWindow = () => {
 
 const userInterface = (authType, data) => {
     modal.classList.add('hidden');
-    if (authType === 'loggedIn' || authType === 'registered') {
+    if (authType === 'loggedIn') {
         username.textContent = `${data.username}`;
         modalTrigger.children[1].textContent = `${data.username}`;
         modalTrigger.children[0].classList.toggle('hidden');
-        if (authType === 'loggedIn') {
-            modal.children[0].classList.toggle('hidden');
-        } else {
-            modal.children[1].classList.toggle('hidden');
-            signInMenuBtn[0].classList.toggle('hidden');
-            signInMenuBtn[1].classList.toggle('hidden');
-        }
+        modal.children[0].classList.toggle('hidden');
     } else if (authType === 'logout') {
         modalTrigger.children[0].classList.toggle('hidden');
         modal.children[0].classList.toggle('hidden');
