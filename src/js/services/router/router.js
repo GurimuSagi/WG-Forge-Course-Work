@@ -1,5 +1,8 @@
-import data from '../helper/data';
+import data from '../helper/database/data';
 import routes from './routes';
+// eslint-disable-next-line import/no-cycle
+import stateOfChecked from '../app/filter';
+import { getItems, getKeyByValue } from '../helper/core';
 
 const grid = document.querySelector('.grid');
 
@@ -10,18 +13,19 @@ let id;
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
 const router = () => {
-    const detailTank = data.find((tank) => tank.tank_id === Number(id));
+    const detailTank = data.all.find((tank) => tank.id === Number(id));
     const path = parseLocation();
     const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
     const { component } = componentByPath(path, routes);
     if (path === '/') {
         grid.style.display = 'grid';
-        grid.innerHTML = component.render(data);
+        const renderData = data[getKeyByValue(stateOfChecked, true)];
+        grid.innerHTML = component.render(renderData);
     } else if (path === '/detail') {
         grid.innerHTML = component.render(detailTank);
         grid.style.display = 'block';
     } else if (path === '/wishlist') {
-        grid.innerHTML = component.render(data);
+        grid.innerHTML = component.render(getItems());
         grid.style.display = 'grid';
     }
 };
