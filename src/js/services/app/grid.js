@@ -10,12 +10,12 @@ const gridComponent = () => {
         const { id } = (event.target.closest('article')).dataset;
         if (event.target.classList.contains('checkbox')) {
             if (event.target.checked) {
-                const target = data.all.find((tank) => tank.id === Number(id));
+                const target = data.all.find((tank) => tank.uuid === id);
                 target.check = true;
                 addToLocalStorage(id, target);
                 countOfWish.textContent = `(${localStorage.length})`;
             } else if (!event.target.checked) {
-                const target = data.all.find((tank) => tank.id === Number(id));
+                const target = data.all.find((tank) => tank.uuid === id);
                 target.check = false;
                 deleteFromLocalStorage(id);
                 countOfWish.textContent = `(${localStorage.length})`;
