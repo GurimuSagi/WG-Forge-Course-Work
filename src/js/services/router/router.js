@@ -13,7 +13,7 @@ let id;
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
 const router = () => {
-    const detailTank = data.all.find((tank) => tank.id === Number(id));
+    const detailTank = data.all.find((tank) => tank.uuid === id);
     const path = parseLocation();
     const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
     const { component } = componentByPath(path, routes);

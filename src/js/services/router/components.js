@@ -10,7 +10,7 @@ const components = {
                     state = '';
                 }
                 return `
-            <article data-id=${i.id} class="art">
+            <article data-id=${i.uuid} class="art">
                 <input type="checkbox" class="checkbox" ${state}>
                 <img src='${i.images[0].image}' alt="img">
                 <div>
@@ -27,7 +27,7 @@ const components = {
     WishComponent: {
         render: (wishlist) => {
             const wishComponent = wishlist.map((i) => `
-                    <article data-id="${i.id}">
+                    <article data-id="${i.uuid}">
                         <input type="checkbox" class="checkbox" checked>
                         <img src="${i.images[0].image}" alt="img">
                         <div>
@@ -47,7 +47,6 @@ const components = {
 
         <div class="top_block" data-id="tank.tank_id">
         <div class="detail_top">
-        <h2 class="detail_name">${tank.name}</h2>
         <div class="line_top"></div>
             <span class="detail_cost">$12.59</span>
             <button class="detail_purchase_btn">purchase</button>
