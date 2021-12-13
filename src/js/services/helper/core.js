@@ -4,19 +4,25 @@ const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
     // eslint-disable-next-line no-param-reassign
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
 };
-
 const addToLocalStorage = (id, item) => {
-    localStorage.setItem(id, JSON.stringify(item));
+    const user = JSON.parse(localStorage.getItem('user'));
+    localStorage.setItem(`${user.username}-cart-${id}`, JSON.stringify(item));
 };
 
-const deleteFromLocalStorage = (id) => {
-    localStorage.removeItem(id);
+const parseLSItem = (item) => JSON.parse(localStorage.getItem(item));
+
+const deleteFromLocalStorage = (item) => {
+    localStorage.removeItem(item);
 };
 
 const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
-    keys.forEach((key) => wishlist.push(JSON.parse(localStorage.getItem(key))));
+    keys.forEach((key) => {
+        if (key.startsWith(`${parseLSItem('user').username}-cart-`)) {
+            wishlist.push(JSON.parse(localStorage.getItem(key)));
+        }
+    });
     return wishlist;
 };
 
@@ -37,4 +43,5 @@ export {
     deleteFromLocalStorage,
     getItems,
     PushToStore,
+    parseLSItem,
 };
