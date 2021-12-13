@@ -1,3 +1,5 @@
+import { calcExchangeRate } from '../exchangeRate';
+
 const components = {
     HomeComponent: {
         render: (arr) => {
@@ -16,7 +18,7 @@ const components = {
                 <div>
                     <span class="country1"></span>
                     <h2>${i.title}</h2>
-                    <p>$ 47.99</p>
+                    <p>${calcExchangeRate(i.price)}</p>
                 </div>
             </article>
             `;
