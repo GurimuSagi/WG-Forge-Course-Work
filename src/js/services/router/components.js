@@ -29,6 +29,9 @@ const components = {
     },
     WishComponent: {
         render: (wishlist) => {
+            if (wishlist.length === 0) {
+                return '<p class="emptyWL">Your wishlist is empty</p>';
+            }
             const wishComponent = wishlist.map((i) => `
                     <article data-id="${i.uuid}">
                         <input type="checkbox" class="checkbox" checked>
@@ -36,7 +39,7 @@ const components = {
                         <div>
                             <span class="country1"></span>
                             <h2>${i.title}</h2>
-                            <p>$ 47.99</p>
+                            <p>${i.price} curr</p>
                         </div>
                     </article>
                     `);
