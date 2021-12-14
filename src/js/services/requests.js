@@ -1,10 +1,12 @@
 import { userInterface } from '../modules/modal';
-// import modalWindow from '../modules/modal';
-let res = localStorage.getItem('token');
-let authType = 'loggedIn';
+import { countOfWish } from './helper/constants';
+import { getItems } from './helper/core';
+
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
 let userData = {};
+let res = localStorage.getItem('token');
+let authType = 'loggedIn';
 
 const handlingResponse = (form, response) => {
     const loginBtn = form.querySelector('.sign-in-btn');
@@ -34,6 +36,7 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
+            countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         }
     }
@@ -65,6 +68,7 @@ const logout = async () => {
     authType = 'logout';
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    countOfWish.textContent = '';
     signInBtns.forEach((btn) => {
         const a = btn;
         a.disabled = false;

@@ -2,7 +2,7 @@ import data from '../helper/database/data';
 import routes from './routes';
 // eslint-disable-next-line import/no-cycle
 import stateOfChecked from '../app/filter';
-import { getItems, getKeyByValue } from '../helper/core';
+import { getItems, getKeyByValue, parseLSItem } from '../helper/core';
 
 const grid = document.querySelector('.grid');
 
@@ -24,7 +24,7 @@ const router = () => {
     } else if (path === '/detail') {
         grid.innerHTML = component.render(detailTank);
         grid.style.display = 'block';
-    } else if (path === '/wishlist') {
+    } else if (path === '/wishlist' && parseLSItem('user')) {
         grid.innerHTML = component.render(getItems());
         grid.style.display = 'grid';
     }
