@@ -13,16 +13,20 @@ const components = {
                     state = '';
                 }
                 return `
-            <article data-id=${i.uuid} class="art">
-                <input type="checkbox" class="checkbox" ${state}>
-                <img src='${i.main_image}' alt="img">
-                <div>
-                    <span class="country1"></span>
-                    <h2>${i.title}</h2>
-                    <p>${calcExchangeRate(i.price)}</p>
-                </div>
-            </article>
-            `;
+                    <article data-id=${i.uuid} class="art">
+                        <img src='${i.images[0].image}' alt="img">
+                        <label class="checkbox-cont">
+                            <input type="checkbox" class="checkbox" ${state}>
+                            <span class="checkmark far fa-heart"></span>
+                        </label>
+                        <div>
+                            <span class="country1"></span>
+                            <h2>${i.title}</h2>
+                            <p>${calcExchangeRate(i.price)}</p>
+                        </div>
+                        <div class="add-to-cart"><span>Купить</span></div>
+                    </article>
+                `;
             });
             return homeComponent.join('');
         },
@@ -33,38 +37,39 @@ const components = {
                 return '<p class="emptyWL">Your wishlist is empty</p>';
             }
             const wishComponent = wishlist.map((i) => `
-                    <article data-id="${i.uuid}">
-                        <input type="checkbox" class="checkbox" checked>
-                        <img src="${i.main_image}" alt="img">
-                        <div>
-                            <span class="country1"></span>
-                            <h2>${i.title}</h2>
-                            <p>${i.price} curr</p>
-                        </div>
-                    </article>
-                    `);
+                <article data-id="${i.uuid}">
+                    <input type="checkbox" class="checkbox" checked>
+                    <img src="${i.images[0].image}" alt="img">
+                    <div>
+                        <span class="country1"></span>
+                        <h2>${i.title}</h2>
+                        <p>${i.price} curr</p>
+                    </div>
+                </article>
+            `);
             return wishComponent.join('');
         },
     },
     DetailComponent: {
         render: (tank) => `
-        <h2 class="detail_name">${tank.title}</h2>
-        <div class="line_top"></div>
+            <h2 class="detail_name">${tank.title}</h2>
+            <div class="line_top"></div>
 
-        <div class="top_block" data-id="tank.tank_id">
-        <div class="detail_top">
-        <div class="line_top"></div>
-            <span class="detail_cost">$12.59</span>
-            <button class="detail_purchase_btn">purchase</button>
-        </div>
-        <img class="detail_img" src="${tank.main_image}" alt="img">
-    </div>
-    <div class="premium-details">
-        <h3 class="detail_title">DETAILS</h3>
-        <div class="line_bottom"></div>
-        <p class="description">${tank.description}</p>
-    </div>
-    `,
+
+            <div class="top_block" data-id="tank.tank_id">
+            <div class="detail_top">
+            <div class="line_top"></div>
+                <span class="detail_cost">$12.59</span>
+                <button class="detail_purchase_btn">purchase</button>
+            </div>
+            <img class="detail_img" src="${tank.images[0].image}" alt="img">
+            </div>
+            <div class="premium-details">
+                <h3 class="detail_title">DETAILS</h3>
+                <div class="line_bottom"></div>
+                <p class="description">${tank.description}</p>
+            </div>
+        `,
     },
 };
 
