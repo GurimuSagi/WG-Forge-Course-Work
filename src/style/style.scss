@@ -54,9 +54,11 @@ main {
         position: fixed;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         overflow: hidden;
         height: 50px;
         top: 0;
+        left: 0;
         width: 100%;
         color: rgb(155, 155, 155);
         background-color: black;
