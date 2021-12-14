@@ -1,3 +1,6 @@
+// eslint-disable-next-line import/no-cycle
+import getData from './http/api';
+
 let exchangeRates = { USD: 1 };
 let currentRate = 'USD';
 let coefficient;
@@ -18,6 +21,7 @@ const exchangeRate = async () => {
             } else {
                 coefficient = exchangeRates[currentRate];
             }
+            getData();
         });
 };
 

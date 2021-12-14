@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { calcExchangeRate } from '../exchangeRate';
 
 const components = {
@@ -14,7 +15,7 @@ const components = {
                 return `
             <article data-id=${i.uuid} class="art">
                 <input type="checkbox" class="checkbox" ${state}>
-                <img src='${i.images[0].image}' alt="img">
+                <img src='${i.main_image}' alt="img">
                 <div>
                     <span class="country1"></span>
                     <h2>${i.title}</h2>
@@ -31,7 +32,7 @@ const components = {
             const wishComponent = wishlist.map((i) => `
                     <article data-id="${i.uuid}">
                         <input type="checkbox" class="checkbox" checked>
-                        <img src="${i.images[0].image}" alt="img">
+                        <img src="${i.main_image}" alt="img">
                         <div>
                             <span class="country1"></span>
                             <h2>${i.title}</h2>
@@ -53,7 +54,7 @@ const components = {
             <span class="detail_cost">$12.59</span>
             <button class="detail_purchase_btn">purchase</button>
         </div>
-        <img class="detail_img" src="${tank.images[0].image}" alt="img">
+        <img class="detail_img" src="${tank.main_image}" alt="img">
     </div>
     <div class="premium-details">
         <h3 class="detail_title">DETAILS</h3>
