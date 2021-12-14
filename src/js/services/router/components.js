@@ -29,13 +29,7 @@ const components = {
     WishComponent: {
         render: (wishlist) => {
             if (wishlist.length === 0) {
-                return `<p class="emptyWL">Your wishlist is empty</p>
-                        <style>
-                            .emptyWL {
-                                font-size: 100px;
-                                color: white;
-                            }
-                        </style>`;
+                return '<p class="emptyWL">Your wishlist is empty</p>';
             }
             const wishComponent = wishlist.map((i) => `
                     <article data-id="${i.uuid}">

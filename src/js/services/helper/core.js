@@ -15,6 +15,26 @@ const deleteFromLocalStorage = (item) => {
     localStorage.removeItem(item);
 };
 
+const addNotifyBlock = (target) => {
+    const errMessage = document.createElement('div');
+    errMessage.className = 'auth-notify';
+    const notificationBlock = document.querySelector('main nav');
+    errMessage.innerText = 'Вы не залогинены';
+    notificationBlock.insertAdjacentElement('afterend', errMessage);
+    let et;
+    if (target) {
+        et = target;
+        et.checked = false;
+        et.disabled = true;
+    }
+    setTimeout(() => {
+        errMessage.remove();
+        if (target) {
+            et.disabled = false;
+        }
+    }, 1000);
+};
+
 const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
@@ -44,4 +64,5 @@ export {
     getItems,
     PushToStore,
     parseLSItem,
+    addNotifyBlock,
 };

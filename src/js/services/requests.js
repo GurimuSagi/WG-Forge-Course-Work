@@ -73,6 +73,7 @@ const logout = async () => {
         const a = btn;
         a.disabled = false;
     });
+    window.location.hash = '#/';
     userInterface(authType);
 };
 
