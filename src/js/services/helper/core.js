@@ -1,3 +1,8 @@
+import {
+    coverPlace,
+    shoppingCart,
+} from './constants';
+
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
@@ -56,6 +61,19 @@ const PushToStore = (item, base) => {
     } else base.push(item);
 };
 
+// Open/close Shopping cart
+
+const openShoppingCart = () => {
+    coverPlace.classList.remove('hidden');
+    document.body.classList.add('notScroll');
+    shoppingCart.classList.remove('hidden');
+};
+const closeShoppingCart = () => {
+    coverPlace.classList.add('hidden');
+    document.body.classList.remove('notScroll');
+    shoppingCart.classList.add('hidden');
+};
+
 export {
     getKeyByValue,
     changeCountOfWishItems,
@@ -65,4 +83,6 @@ export {
     PushToStore,
     parseLSItem,
     addNotifyBlock,
+    openShoppingCart,
+    closeShoppingCart,
 };

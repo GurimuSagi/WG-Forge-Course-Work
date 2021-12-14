@@ -1,4 +1,5 @@
 import data from '../helper/database/data';
+// eslint-disable-next-line import/no-cycle
 import routes from './routes';
 // eslint-disable-next-line import/no-cycle
 import stateOfChecked from '../app/filter';

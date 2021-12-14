@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { calcExchangeRate } from '../exchangeRate';
 
 const components = {
@@ -53,6 +54,7 @@ const components = {
         render: (tank) => `
             <h2 class="detail_name">${tank.title}</h2>
             <div class="line_top"></div>
+
 
             <div class="top_block" data-id="tank.tank_id">
             <div class="detail_top">

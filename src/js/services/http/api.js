@@ -12,32 +12,36 @@ const getAllTanks = fetch(tankUrl);
 const getAllGolds = fetch(goldUrl);
 const getAllPremium = fetch(premiumdUrl);
 
-getAllTanks
-    .then((i) => i.json())
-    .then((d) => {
-        d.forEach((el) => {
-            PushToStore(el, data.vehicles);
+const getData = () => {
+    getAllTanks
+        .then((i) => i.json())
+        .then((d) => {
+            d.forEach((el) => {
+                PushToStore(el, data.vehicles);
+            });
+            data.collect();
+            router();
         });
-        data.collect();
-        router();
-    });
 
-getAllGolds
-    .then((i) => i.json())
-    .then((d) => {
-        d.forEach((el) => {
-            PushToStore(el, data.gold);
+    getAllGolds
+        .then((i) => i.json())
+        .then((d) => {
+            d.forEach((el) => {
+                PushToStore(el, data.gold);
+            });
+            data.collect();
+            router();
         });
-        data.collect();
-        router();
-    });
 
-getAllPremium
-    .then((i) => i.json())
-    .then((d) => {
-        d.forEach((el) => {
-            PushToStore(el, data.premium);
+    getAllPremium
+        .then((i) => i.json())
+        .then((d) => {
+            d.forEach((el) => {
+                PushToStore(el, data.premium);
+            });
+            data.collect();
+            router();
         });
-        data.collect();
-        router();
-    });
+};
+
+export default getData;
