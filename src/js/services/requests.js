@@ -1,9 +1,12 @@
 import { userInterface } from '../modules/modal';
-// import modalWindow from '../modules/modal';
-let res = localStorage.getItem('token');
-let authType = 'loggedIn';
+import { countOfWish } from './helper/constants';
+import { getItems } from './helper/core';
+
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
+let userData = {};
+let res = localStorage.getItem('token');
+let authType = 'loggedIn';
 
 const handlingResponse = (form, response) => {
     const loginBtn = form.querySelector('.sign-in-btn');
@@ -30,9 +33,10 @@ const auth = async () => {
                 authorization: `Token ${res}`,
             },
         });
-        const userData = await response.json();
-        console.log(userData, authType);
+        userData = await response.json();
         if (userData.id) {
+            localStorage.setItem('user', JSON.stringify(userData));
+            countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         }
     }
@@ -44,7 +48,6 @@ const login = async (data, path, form) => {
         body: data,
     });
     res = await response.json();
-    console.log('res', res);
     if (res.token && path === 'login') {
         localStorage.setItem('token', res.token);
         res = res.token;
@@ -63,11 +66,14 @@ const logout = async () => {
         },
     });
     authType = 'logout';
-    localStorage.setItem('token', '');
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    countOfWish.textContent = '';
     signInBtns.forEach((btn) => {
         const a = btn;
         a.disabled = false;
     });
+    window.location.hash = '#/';
     userInterface(authType);
 };
 

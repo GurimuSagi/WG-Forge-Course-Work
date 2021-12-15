@@ -1,8 +1,11 @@
 import data from '../helper/database/data';
+// eslint-disable-next-line import/no-cycle
 import routes from './routes';
 // eslint-disable-next-line import/no-cycle
 import stateOfChecked from '../app/filter';
-import { getItems, getKeyByValue } from '../helper/core';
+import {
+    getItems, getKeyByValue, parseLSItem, addNotifyBlock,
+} from '../helper/core';
 
 const grid = document.querySelector('.grid');
 
@@ -13,7 +16,7 @@ let id;
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
 const router = () => {
-    const detailTank = data.all.find((tank) => tank.id === Number(id));
+    const detailTank = data.all.find((tank) => tank.uuid === id);
     const path = parseLocation();
     const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
     const { component } = componentByPath(path, routes);
@@ -24,9 +27,12 @@ const router = () => {
     } else if (path === '/detail') {
         grid.innerHTML = component.render(detailTank);
         grid.style.display = 'block';
-    } else if (path === '/wishlist') {
+    } else if (path === '/wishlist' && parseLSItem('user')) {
         grid.innerHTML = component.render(getItems());
         grid.style.display = 'grid';
+    } else if (path === '/wishlist' && !parseLSItem('user')) {
+        addNotifyBlock();
+        window.location.hash = '#/';
     }
 };
 
