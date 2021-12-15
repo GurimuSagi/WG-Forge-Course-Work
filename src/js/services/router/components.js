@@ -14,7 +14,7 @@ const components = {
                 }
                 return `
                     <article data-id=${i.uuid} class="art">
-                        <img src='${i.images[0].image}' alt="img">
+                        <img src='${i.main_image}' alt="img">
                         <label class="checkbox-cont">
                             <input type="checkbox" class="checkbox" ${state}>
                             <span class="checkmark far fa-heart"></span>
@@ -39,7 +39,7 @@ const components = {
             const wishComponent = wishlist.map((i) => `
                 <article data-id="${i.uuid}">
                     <input type="checkbox" class="checkbox" checked>
-                    <img src="${i.images[0].image}" alt="img">
+                    <img src="${i.main_image}" alt="img">
                     <div>
                         <span class="country1"></span>
                         <h2>${i.title}</h2>
@@ -62,7 +62,7 @@ const components = {
                 <span class="detail_cost">$12.59</span>
                 <button class="detail_purchase_btn">purchase</button>
             </div>
-            <img class="detail_img" src="${tank.images[0].image}" alt="img">
+            <img class="detail_img" src="${tank.main_image}" alt="img">
             </div>
             <div class="premium-details">
                 <h3 class="detail_title">DETAILS</h3>
@@ -70,6 +70,35 @@ const components = {
                 <p class="description">${tank.description}</p>
             </div>
         `,
+    },
+    ShoppingCart: {
+        render: (cartItems) => {
+            const ShoppingCart = cartItems.map((i) => `
+            <div class="shopinngCart_item">
+            <div class="shopinngCart_item-image">
+                <img src="${i.main_image}" alt="">
+            </div>
+            <div class="shopinngCart_item-title">
+                <h3>${i.title}</h3>
+            </div>
+            <div class="shopinngCart_item-cost">
+                <span>${calcExchangeRate(i.price)}</span>
+            </div>
+            <div class="shopinngCart_item-count">
+                <button class="minus btn_plus_minus">+</button>
+                <span>2</span>
+                <button class="plus btn_plus_minus">–</button>
+            </div>
+            <div class="shopinngCart_item-summ">
+                <span>100 $</span>
+            </div>
+            <div class="shopinngCart_item-delete">
+                <button data-item="${i.id}">X</button>
+            </div>
+        </div>
+            `);
+            return ShoppingCart;
+        },
     },
 };
 

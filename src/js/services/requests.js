@@ -36,6 +36,7 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
+            localStorage.setItem('userCart', JSON.stringify([]));
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         }
@@ -68,6 +69,7 @@ const logout = async () => {
     authType = 'logout';
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('userCart');
     countOfWish.textContent = '';
     signInBtns.forEach((btn) => {
         const a = btn;

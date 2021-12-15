@@ -1,6 +1,17 @@
-import { coverPlace, shoppingButton } from '../helper/constants';
-import { closeShoppingCart, openShoppingCart } from '../helper/core';
+import {
+    coverPlace,
+    shoppingButton,
+    closeShoppingCartBtn,
+    closePayBtn,
+    PayShoppingCartBtn,
+} from '../helper/constants';
 
+import {
+    closeShoppingCart,
+    openPay,
+    openShoppingCart,
+    closeShoppingCartAndPay,
+} from '../helper/core';
 import router from '../router/router';
 
 const premium = document.querySelector('.premium');
@@ -14,3 +25,6 @@ premium.addEventListener('click', () => {
 
 shoppingButton.addEventListener('click', openShoppingCart);
 coverPlace.addEventListener('click', closeShoppingCart);
+closeShoppingCartBtn.addEventListener('click', closeShoppingCart);
+closePayBtn.addEventListener('click', closeShoppingCartAndPay);
+PayShoppingCartBtn.addEventListener('click', openPay);

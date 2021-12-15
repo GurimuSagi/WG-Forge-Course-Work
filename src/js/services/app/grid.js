@@ -26,6 +26,13 @@ const gridComponent = () => {
                     router();
                 }
             }
+        } else if (event.target.closest('div').classList.contains('add-to-cart')) {
+            const target = data.all.find((tank) => tank.uuid === id);
+            if (localStorage.getItem('userCart')) {
+                const cart = JSON.parse(localStorage.getItem('userCart'));
+                cart.push(target);
+                localStorage.setItem('userCart', JSON.stringify(cart));
+            }
         }
     });
 };

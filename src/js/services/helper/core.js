@@ -1,6 +1,11 @@
+// eslint-disable-next-line import/no-cycle
+import components from '../router/components';
 import {
     coverPlace,
     shoppingCart,
+    shoppingCartItems,
+    payBlock,
+    test,
 } from './constants';
 
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
@@ -67,11 +72,29 @@ const openShoppingCart = () => {
     coverPlace.classList.remove('hidden');
     document.body.classList.add('notScroll');
     shoppingCart.classList.remove('hidden');
+    if (localStorage.getItem('userCart')) {
+        test.innerHTML = components.ShoppingCart.render(JSON.parse(localStorage.getItem('userCart')));
+    }
 };
+
 const closeShoppingCart = () => {
     coverPlace.classList.add('hidden');
     document.body.classList.remove('notScroll');
     shoppingCart.classList.add('hidden');
+};
+const closeShoppingCartAndPay = () => {
+    coverPlace.classList.add('hidden');
+    document.body.classList.remove('notScroll');
+    shoppingCart.classList.add('hidden');
+    shoppingCartItems.classList.remove('hidden');
+    payBlock.classList.add('hidden');
+};
+
+// close cart and open pay
+
+const openPay = () => {
+    shoppingCartItems.classList.add('hidden');
+    payBlock.classList.remove('hidden');
 };
 
 export {
@@ -85,4 +108,6 @@ export {
     addNotifyBlock,
     openShoppingCart,
     closeShoppingCart,
+    openPay,
+    closeShoppingCartAndPay,
 };
