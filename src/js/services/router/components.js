@@ -1,5 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import { calcExchangeRate } from '../exchangeRate';
+import { calcExchangeRate, calcDiscount } from '../exchangeRate';
+import { loadTankIcons } from '../helper/core';
 
 const components = {
     HomeComponent: {
@@ -14,15 +15,18 @@ const components = {
                 }
                 return `
                     <article data-id=${i.uuid} class="art">
-                        <img src='${i.images[0].image}' alt="img">
+                        <img class="bg" src='${i.main_image}' loading="lazy" alt="img">
+                        ${calcDiscount(i)}
                         <label class="checkbox-cont">
                             <input type="checkbox" class="checkbox" ${state}>
                             <span class="checkmark far fa-heart"></span>
                         </label>
-                        <div>
-                            <span class="country1"></span>
+                        <div class="item-info">
+                            <div class="tank-details">${loadTankIcons(i)}</div>
                             <h2>${i.title}</h2>
-                            <p>${calcExchangeRate(i.price)}</p>
+                            <div class="price-discount">
+                                ${calcExchangeRate(i.price, i.discount)}
+                            </div>
                         </div>
                         <div class="add-to-cart"><span>Купить</span></div>
                     </article>
@@ -38,13 +42,18 @@ const components = {
             }
             const wishComponent = wishlist.map((i) => `
                 <article data-id="${i.uuid}">
-                    <input type="checkbox" class="checkbox" checked>
                     <img src="${i.images[0].image}" alt="img">
+                    ${calcDiscount(i)}
+                    <label class="checkbox-cont">
+                        <input type="checkbox" class="checkbox" checked>
+                        <span class="checkmark far fa-heart"></span>
+                    </label>
                     <div>
                         <span class="country1"></span>
                         <h2>${i.title}</h2>
-                        <p>${i.price} curr</p>
+                        <p>${calcExchangeRate(i.price)}</p>
                     </div>
+                    <div class="add-to-cart"><span>Купить</span></div>
                 </article>
             `);
             return wishComponent.join('');

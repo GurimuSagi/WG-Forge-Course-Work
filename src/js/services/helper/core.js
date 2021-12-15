@@ -3,6 +3,8 @@ import {
     shoppingCart,
 } from './constants';
 
+const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
@@ -38,6 +40,17 @@ const addNotifyBlock = (target) => {
             et.disabled = false;
         }
     }, 1000);
+};
+
+const loadTankIcons = (item) => {
+    if (item.nation) {
+        return `
+            <img src="${item.nation.icon}"></img>
+            <img src="${item.type[0].icon}"></img>
+            <span>${romanDigits[item.tier]}</span>
+        `;
+    }
+    return '';
 };
 
 const getItems = () => {
@@ -85,4 +98,5 @@ export {
     addNotifyBlock,
     openShoppingCart,
     closeShoppingCart,
+    loadTankIcons,
 };

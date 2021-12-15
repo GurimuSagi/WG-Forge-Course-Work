@@ -13,13 +13,31 @@
         background-color: #181818;
         position: relative;
         //width: 100%;
-        &:hover .add-to-cart{
-            display: flex;
+        &:hover {
+            .add-to-cart{
+                display: flex;
+            }
+            .item-info {
+                img {
+                    display: block;
+                }
+                span {
+                    display: block;
+                }
+            }
         }
-        img {
+        .bg {
             width: 100%;
             position: absolute;
-            top: 20px;
+            top:50%;
+            left:50%;
+            transform:translate(-50%, -50%);
+        }
+        .discount-percent {
+            position: absolute;
+            top: 10px;
+            color: rgba(255, 255, 255, 0.801);
+            background-color: rgba(210, 42, 30, 0.692);
         }
         label {
             position: absolute;
@@ -37,22 +55,40 @@
                 width: 15px;
                 height: 15px;
             }
-
+            .checkmark {
+                color: rgb(116, 116, 116);
+            }
             &:hover input ~ .checkmark{
-                color: blanchedalmond;
+                color: rgb(255, 255, 255);
             }
             input:checked ~ .checkmark {
-                color: blanchedalmond;
+                color: rgba(210, 42, 30, 0.692);
             }
             // &:hover .ite
         }
         
-        div {
+        .item-info {
+            display: block;
             position: relative;
             margin-left: 5%;
             h2 {
                 font-size: 15px;
                 color: rgba(255, 255, 255, 0.87);
+            }
+            img {
+                display: none;
+                &:first-child{
+                    width: 25px;
+                }
+                &:nth-child(2n) {
+                    margin-left: 5px;
+                    height: 100%;
+                }
+            }
+            span {
+                display: none;
+                margin-left: 5px;
+                color: rgb(202, 202, 202);;
             }
         }
         p{
@@ -66,16 +102,41 @@
             height: 30px;
             background-color: chocolate;
             margin-bottom: 10px;
+            &:hover{
+                background-color: rgb(255, 154, 4);
+            }
+        }
+        .tank-details {
+            display: flex;
+            flex-direction: row;
+        }
+        .price-discount{
+            margin-left: 0;
+            display: flex;
+        }
+        .old-price {
+            text-decoration: line-through;
+            font-size: 15px;
+        }
+        .new-price {
+            color: orange;
         }
     }
-    article:nth-child(5) {
+    article:nth-child(5n) {
         grid-column: span 2;
         aspect-ratio: 0;
+        img {
+            height: 100%;
+            width: auto;
+        }
     }
-    article:nth-child(10) {
-        grid-column: span 2;
-        aspect-ratio: 0;
-    }
+    // article:nth-child(10) {
+    //     grid-column: span 2;
+    //     aspect-ratio: 0;
+    //     img {
+    //         top: 0;
+    //     }
+    // }
     .emptyWL {
         font-size: 100px;
         color: white;
