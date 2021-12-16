@@ -12,36 +12,34 @@ const getAllTanks = fetch(tankUrl);
 const getAllGolds = fetch(goldUrl);
 const getAllPremium = fetch(premiumdUrl);
 
-const getData = () => {
-    getAllTanks
+const getData = async () => {
+    await getAllTanks
         .then((i) => i.json())
         .then((d) => {
             d.forEach((el) => {
                 PushToStore(el, data.vehicles);
             });
             data.collect();
-            router();
         });
 
-    getAllGolds
+    await getAllGolds
         .then((i) => i.json())
         .then((d) => {
             d.forEach((el) => {
                 PushToStore(el, data.gold);
             });
             data.collect();
-            router();
         });
 
-    getAllPremium
+    await getAllPremium
         .then((i) => i.json())
         .then((d) => {
             d.forEach((el) => {
                 PushToStore(el, data.premium);
             });
             data.collect();
-            router();
         });
+    router();
 };
 
 export default getData;

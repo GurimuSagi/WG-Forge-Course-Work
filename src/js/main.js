@@ -9,11 +9,9 @@ import './services/router/router';
 import './services/app/app';
 import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
-import { countOfWish } from './services/helper/constants';
 
 window.addEventListener('DOMContentLoaded', () => {
     exchangeRate();
-    countOfWish.textContent = `(${localStorage.length})`;
     modalWindow();
     forms();
     gridComponent();
