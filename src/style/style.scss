@@ -7,7 +7,12 @@
 body {
 	margin: 0;
     position: relative;
-	background-color: #282727;
+	background-color: #1c1b15; 
+    background-image: url("/src/assets/images/bgimage.png"); 
+    background-position-y: 0;
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+    background-size: 100%
 }
 
 main {
@@ -17,13 +22,14 @@ main {
     padding-right: 20%;
 	nav {
         width: 100%;
-        position:sticky;
+        //position:sticky;
+        //position: ;
 		display: grid;
         grid-template-columns: 1fr 5fr;
         grid-gap: 1px;
 		top: 50px;
         color: rgb(155, 155, 155);
-        background-color: #282727f0;
+        //background-color: #282727f0;
         z-index: 100;
         margin-bottom: 5%;
         div {
@@ -47,6 +53,7 @@ main {
             input:checked + label {
                 //color: orange;    
                 color: white;
+                text-decoration: underline;
             }
         }
 	}
