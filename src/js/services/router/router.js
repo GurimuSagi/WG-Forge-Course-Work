@@ -23,12 +23,12 @@ const router = () => {
     if (path === '/') {
         grid.style.display = 'grid';
         const renderData = data[getKeyByValue(stateOfChecked, true)];
-        grid.innerHTML = component.render(renderData);
+        grid.innerHTML = component(renderData);
     } else if (path === '/detail') {
-        grid.innerHTML = component.render(detailTank);
+        grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
     } else if (path === '/wishlist' && parseLSItem('user')) {
-        grid.innerHTML = component.render(getItems());
+        grid.innerHTML = component(getItems());
         grid.style.display = 'grid';
     } else if (path === '/wishlist' && !parseLSItem('user')) {
         addNotifyBlock();

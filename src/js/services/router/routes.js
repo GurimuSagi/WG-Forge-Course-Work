@@ -1,11 +1,5 @@
 // eslint-disable-next-line import/no-cycle
-import components from './components';
-
-const {
-    HomeComponent,
-    WishComponent,
-    DetailComponent,
-} = components;
+import { HomeComponent, WishComponent, DetailComponent } from './components';
 
 const routes = [
     {
