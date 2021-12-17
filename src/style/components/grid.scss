@@ -59,13 +59,24 @@
                 height: 15px;
             }
             .checkmark {
+                top: -4px;
+                position: relative;
                 color: rgb(116, 116, 116);
+                .checkmark-checked{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                }
             }
             &:hover input ~ .checkmark{
                 color: rgb(255, 255, 255);
             }
             input:checked ~ .checkmark {
-                color: rgba(210, 42, 30, 0.692);
+                color: rgb(116, 116, 116);
+                .checkmark-checked{
+                    opacity: 1;
+                }
             }
             // &:hover .ite
         }
