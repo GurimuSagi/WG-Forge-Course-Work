@@ -1,6 +1,13 @@
 // eslint-disable-next-line import/no-cycle
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
+//import Slider from '../../modules/slider';
+import MiniSlider from '../../modules/slider-mini'
+export const ShowUpSlider = new MiniSlider({
+    container: '.grid',
+    prev: '.leftSlider',
+    next: '.rightSlider'
+});
 
 const components = {
     HomeComponent: {
@@ -64,14 +71,15 @@ const components = {
             <h2 class="detail_name">${tank.title}</h2>
             <div class="line_top"></div>
 
-
             <div class="top_block" data-id="tank.tank_id">
             <div class="detail_top">
             <div class="line_top"></div>
                 <span class="detail_cost">$12.59</span>
                 <button class="detail_purchase_btn">purchase</button>
             </div>
+            <img class="leftSlider" src="assets/images/sliderL.png"> 
             <img class="detail_img" src="${tank.images[0].image}" alt="img">
+            <img class="leftSlider" src="assets/images/sliderR.png"> 
             </div>
             <div class="premium-details">
                 <h3 class="detail_title">DETAILS</h3>

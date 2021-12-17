@@ -11,6 +11,8 @@ import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
 import { countOfWish } from './services/helper/constants';
 
+import { ShowUpSlider } from './services/router/components';
+
 window.addEventListener('DOMContentLoaded', () => {
     exchangeRate();
     countOfWish.textContent = `(${localStorage.length})`;
@@ -18,5 +20,7 @@ window.addEventListener('DOMContentLoaded', () => {
     forms();
     gridComponent();
     auth();
-    stateOfChecked.update();
+    stateOfChecked.update();  
+    
+    ShowUpSlider.init();
 });
