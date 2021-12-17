@@ -11,7 +11,7 @@ import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
 import { countOfWish } from './services/helper/constants';
 
-import { ShowUpSlider } from './services/router/components';
+// import { ShowUpSlider } from './services/router/components';
 
 window.addEventListener('DOMContentLoaded', () => {
     exchangeRate();
@@ -22,5 +22,5 @@ window.addEventListener('DOMContentLoaded', () => {
     auth();
     stateOfChecked.update();  
     
-    ShowUpSlider.init();
+    // ShowUpSlider.init();
 });
