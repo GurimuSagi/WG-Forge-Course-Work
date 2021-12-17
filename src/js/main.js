@@ -10,11 +10,15 @@ import './services/app/app';
 import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
 
+// import { ShowUpSlider } from './services/router/components';
+
 window.addEventListener('DOMContentLoaded', () => {
     exchangeRate();
     modalWindow();
     forms();
     gridComponent();
     auth();
-    stateOfChecked.update();
+    stateOfChecked.update();  
+    
+    // ShowUpSlider.init();
 });
