@@ -11,10 +11,10 @@ import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
 
 window.addEventListener('DOMContentLoaded', () => {
+    auth();
     exchangeRate();
+    gridComponent();
     modalWindow();
     forms();
-    gridComponent();
-    auth();
     stateOfChecked.update();
 });

@@ -15,6 +15,16 @@ let id;
 // eslint-disable-next-line no-restricted-globals
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
+const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('load-img');
+            entry.target.src = entry.target.dataset.src;
+            obs.unobserve(entry.target);
+        }
+    });
+});
+
 const router = () => {
     const detailTank = data.all.find((tank) => tank.uuid === id);
     const path = parseLocation();
@@ -24,6 +34,10 @@ const router = () => {
         grid.style.display = 'grid';
         const renderData = data[getKeyByValue(stateOfChecked, true)];
         grid.innerHTML = component(renderData);
+        const el = document.querySelectorAll('.bg');
+        el.forEach((a) => {
+            observer.observe(a);
+        });
     } else if (path === '/detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';

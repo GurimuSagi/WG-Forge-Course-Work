@@ -12,7 +12,7 @@ const HomeComponent = (arr) => {
         }
         return `
             <article data-id=${i.uuid} class="art">
-                <img class="bg" src='${i.main_image}' loading="lazy" alt="img">
+                <img class="bg lazy" data-src='${i.main_image}' alt="img">
                 ${calcDiscount(i)}
                 <label class="checkbox-cont">
                     <input type="checkbox" class="checkbox" ${state}>
@@ -76,4 +76,3 @@ const DetailComponent = (tank) => `
 `;
 
 export { HomeComponent, WishComponent, DetailComponent };
-// <a href="purchase"><p>purchase</p></a>
