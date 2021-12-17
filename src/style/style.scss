@@ -12,7 +12,8 @@ body {
     background-position-y: 0;
     background-repeat: no-repeat;
     background-clip: padding-box;
-    background-size: 100%
+    background-size: 100%;
+    font-family: "Tahoma";
 }
 
 main {
@@ -23,7 +24,6 @@ main {
 	nav {
         width: 100%;
         //position:sticky;
-        //position: ;
 		display: grid;
         grid-template-columns: 1fr 5fr;
         grid-gap: 1px;
@@ -37,7 +37,9 @@ main {
             flex-wrap: wrap;
             justify-content: flex-end;
             text-transform: uppercase;
+            font-weight: bold;
             align-items: flex-end;
+            
             padding-bottom: 10px;
             input {
                 margin-left:10px;
@@ -45,15 +47,16 @@ main {
                 opacity: 0;
             }
             input+label {
+                border-bottom: 3px solid rgba(255,255,255,0);
                 display:block;
             }
             label {
                 cursor: pointer;
             }
             input:checked + label {
-                //color: orange;    
                 color: white;
-                text-decoration: underline;
+                border-bottom: 3px solid rgba(255,255,255,1);
+                //text-decoration: underline;
             }
         }
 	}
