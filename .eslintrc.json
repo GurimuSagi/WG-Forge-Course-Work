@@ -15,6 +15,8 @@
         "indent": ["error", 4],
         "import/extensions": ["error", {
             "js": "never", "json": "never" }
-        ]
+        ],
+        "no-param-reassign": [2, {"props": false}],
+        "linebreak-style":0
     }
 }

@@ -3,7 +3,7 @@ import {
     goldUrl,
     premiumdUrl,
 } from '../helper/api.helper';
-import { PushToStore } from '../helper/core';
+import { updateLikes } from '../helper/core';
 import data from '../helper/database/data';
 // eslint-disable-next-line no-unused-vars
 import router from '../router/router';
@@ -16,29 +16,24 @@ const getData = async () => {
     await getAllTanks
         .then((i) => i.json())
         .then((d) => {
-            d.forEach((el) => {
-                PushToStore(el, data.vehicles);
-            });
+            data.vehicles = d;
             data.collect();
         });
 
     await getAllGolds
         .then((i) => i.json())
         .then((d) => {
-            d.forEach((el) => {
-                PushToStore(el, data.gold);
-            });
+            data.gold = d;
             data.collect();
         });
 
     await getAllPremium
         .then((i) => i.json())
         .then((d) => {
-            d.forEach((el) => {
-                PushToStore(el, data.premium);
-            });
+            data.premium = d;
             data.collect();
         });
+    updateLikes(data.all);
     router();
 };
 

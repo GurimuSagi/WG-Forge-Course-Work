@@ -1,6 +1,8 @@
 import { userInterface } from '../modules/modal';
 import { countOfWish } from './helper/constants';
-import { getItems } from './helper/core';
+import { getItems, updateLikes } from './helper/core';
+import router from './router/router';
+import data from './helper/database/data';
 
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
@@ -38,14 +40,19 @@ const auth = async () => {
             localStorage.setItem('user', JSON.stringify(userData));
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
+        } else if (userData.detail === 'Invalid token.') {
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
         }
+        updateLikes(data.all);
+        router();
     }
 };
 
-const login = async (data, path, form) => {
+const login = async (input, path, form) => {
     const response = await fetch(` http://165.22.21.103/api/${path}/`, {
         method: 'POST',
-        body: data,
+        body: input,
     });
     res = await response.json();
     if (res.token && path === 'login') {
@@ -75,6 +82,8 @@ const logout = async () => {
     });
     window.location.hash = '#/';
     userInterface(authType);
+    updateLikes(data.all);
+    router();
 };
 
 export { login, auth, logout };

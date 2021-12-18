@@ -64,14 +64,13 @@ const getItems = () => {
     return wishlist;
 };
 
-const PushToStore = (item, base) => {
-    // eslint-disable-next-line no-param-reassign
-    item.check = false;
-    if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-cart-${item.uuid}`)) {
-        // eslint-disable-next-line no-param-reassign
-        item.check = true;
-        base.push(item);
-    } else base.push(item);
+const updateLikes = (items) => {
+    items.forEach((item) => {
+        item.check = false;
+        if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-cart-${item.uuid}`)) {
+            item.check = true;
+        }
+    });
 };
 
 // Open/close Shopping cart
@@ -93,7 +92,7 @@ export {
     addToLocalStorage,
     deleteFromLocalStorage,
     getItems,
-    PushToStore,
+    updateLikes,
     parseLSItem,
     addNotifyBlock,
     openShoppingCart,

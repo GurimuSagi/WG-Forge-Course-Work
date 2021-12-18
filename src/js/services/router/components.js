@@ -44,19 +44,19 @@ const WishComponent = (wishlist) => {
     }
     const wishComponent = wishlist.map((i) => `
         <article data-id="${i.uuid}">
-            <img class="bg" src="${i.images[0].image}" alt="img">
+            <img class="bg load-img" src="${i.main_image}" alt="img">
             ${calcDiscount(i)}
             <label class="checkbox-cont">
                 <input type="checkbox" class="checkbox" checked>
                 <span class="checkmark far fa-heart"><span class="checkmark-checked fas fa-heart"></span></span>
             </label>
             <div class="item-info">
-                    <div class="tank-details">${loadTankIcons(i)}</div>
-                    <h2>${i.title}</h2>
-                    <div class="price-discount">
-                        ${calcExchangeRate(i.price, i.discount)}
-                    </div>
+                <div class="tank-details">${loadTankIcons(i)}</div>
+                <h2>${i.title}</h2>
+                <div class="price-discount">
+                    ${calcExchangeRate(i.price, i.discount)}
                 </div>
+            </div>
             <div class="add-to-cart"><span>Купить</span></div>
         </article>
     `);
