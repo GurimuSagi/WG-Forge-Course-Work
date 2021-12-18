@@ -6,14 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wargaming</title>
-    <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="./assets/form-login.css"> -->
+    <link rel="preload" as="image" href="./style/WGLogo.png">
+    <link rel="stylesheet" href="./style/preloader.css">
     <link rel="stylesheet" href="./style/components/shopping-cart.scss">
+    <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div>
+    <div class="preloader">
+        <img src="./style/WGLogo.png" class="preloader__image"></object>
     </div>
+    <script>
+        window.addEventListener("load", function () {
+            document.body.classList.add('loaded_hiding');
+            window.setTimeout(function () {
+                document.body.classList.add('loaded');
+                document.body.classList.remove('loaded_hiding');
+            }, 1000);
+        })
+    </script>
     <header>
         <h1 class="premium"><i class="fas fa-radiation-alt fa-2x"></i><span class="headImg">premium shop</span></a></h1>
         <nav class="nav-menu">
@@ -72,9 +83,8 @@
                 <button class="sign-in-btn" type="submit">Logout</button>
             </form>
         </div>
-        <div class="grid">
-
-        </div>
+        <div class="grid"></div>
+        <div class="show-more-items"></div>
     </main>
     <div id="shoppingCart" class="shopinngCart hidden">
         <div class="shopping-cart_wrapper" id="shopping_cart_items">
@@ -124,9 +134,10 @@
         </div>
     </div>
     </div>
-    
+    <div id="shoppingCart" class="shopinngCart hidden"></div>
     <div id="cover" class="cover hidden"></div>
     <!-- <div id="pay" class="pay"></div> -->
 </body>
 
 </html>
+

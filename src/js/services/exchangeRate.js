@@ -25,10 +25,22 @@ const exchangeRate = async () => {
         });
 };
 
-const calcExchangeRate = (item) => {
-    const prod = item;
-    const newPrice = (prod * coefficient).toFixed(2);
-    return `${newPrice} ${currentRate}`;
+const calcDiscount = (item) => {
+    if (item.discount > 0) {
+        const percents = ((item.discount * 100) / item.price).toFixed(0);
+        return `<span class="discount-percent">Скидка ${percents}%</span>`;
+    }
+    return '';
 };
 
-export { exchangeRate, calcExchangeRate };
+const calcExchangeRate = (val, discount) => {
+    const basePrice = val;
+    const modifiedPrice = (basePrice * coefficient).toFixed(2);
+    if (discount > 0) {
+        const newPrice = (modifiedPrice - (discount * coefficient)).toFixed(2);
+        return `<p class="old-price">${modifiedPrice}</p>&nbsp;<p class="new-price">${newPrice} ${currentRate}</p>`;
+    }
+    return `<p>${modifiedPrice} ${currentRate}</p>`;
+};
+
+export { exchangeRate, calcExchangeRate, calcDiscount };

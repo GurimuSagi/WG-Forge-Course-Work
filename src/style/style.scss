@@ -3,11 +3,18 @@
 @import './components/grid.scss';
 @import './components/section.scss';
 @import './components/shopping-cart.scss';
+@import './components/slider.scss';
 
 body {
 	margin: 0;
     position: relative;
-	background-color: #282727;
+	background-color: #1c1b15; 
+    background-image: url("/src/assets/images/bgimage.png"); 
+    background-position-y: 0;
+    background-repeat: no-repeat;
+    background-clip: padding-box;
+    background-size: 100%;
+    font-family: "Tahoma";
 }
 
 main {
@@ -15,15 +22,16 @@ main {
     flex-direction: column;
     padding-left: 20%;
     padding-right: 20%;
+    padding-bottom: 200px;
 	nav {
         width: 100%;
-        position:sticky;
+        //position:sticky;
 		display: grid;
         grid-template-columns: 1fr 5fr;
         grid-gap: 1px;
 		top: 50px;
         color: rgb(155, 155, 155);
-        background-color: #282727f0;
+        //background-color: #282727f0;
         z-index: 100;
         margin-bottom: 5%;
         div {
@@ -31,7 +39,9 @@ main {
             flex-wrap: wrap;
             justify-content: flex-end;
             text-transform: uppercase;
+            font-weight: bold;
             align-items: flex-end;
+            
             padding-bottom: 10px;
             input {
                 margin-left:10px;
@@ -39,14 +49,16 @@ main {
                 opacity: 0;
             }
             input+label {
+                border-bottom: 3px solid rgba(255,255,255,0);
                 display:block;
             }
             label {
                 cursor: pointer;
             }
             input:checked + label {
-                //color: orange;    
                 color: white;
+                border-bottom: 3px solid rgba(255,255,255,1);
+                //text-decoration: underline;
             }
         }
 	}

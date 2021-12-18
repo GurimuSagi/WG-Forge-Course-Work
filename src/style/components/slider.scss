@@ -1,0 +1,50 @@
+.slider {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .detail-slider {
+        position: absolute;
+        overflow:hidden;
+    }
+    .main-slider-btn {
+        z-index: 1;
+    }
+    .slideInLeft{
+        animation-duration: 2s;
+        animation-name: toleft;
+    }
+    .slideInRight{
+        animation-duration: 2s;
+        animation-name: toright;
+    }
+    .hide-slide {
+        opacity: 0;
+    }
+    @keyframes toleft {
+        0%   { 
+            opacity: 1;
+            transform: translateX(0);
+        }
+        50%{
+            opacity: 0;
+        }
+        100%  { 
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+    }
+    @keyframes toright {
+        0%   { 
+            opacity: 1;
+            transform: translateX(-100%);
+        }
+        50%{
+            opacity: 0;
+        }
+        100%  { 
+            opacity: 0;
+            transform: translateX(0);
+        }
+    }
+}

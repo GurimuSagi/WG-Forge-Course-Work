@@ -9,16 +9,14 @@ import './services/app/app';
 import './services/helper/validation';
 import gridComponent from './services/app/grid';
 import stateOfChecked from './services/app/filter';
-import { countOfWish } from './services/helper/constants';
 import { checkShippingCartCount } from './services/helper/core';
 
 window.addEventListener('DOMContentLoaded', () => {
+    auth();
     exchangeRate();
-    countOfWish.textContent = `(${localStorage.length})`;
+    gridComponent();
     modalWindow();
     forms();
-    gridComponent();
-    auth();
     stateOfChecked.update();
     checkShippingCartCount();
 });

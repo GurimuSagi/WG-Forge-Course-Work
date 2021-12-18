@@ -14,10 +14,11 @@ import {
 } from './constants';
 import data from './database/data';
 
+const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
-    // eslint-disable-next-line no-param-reassign
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
 };
 const addToLocalStorage = (id, item) => {
@@ -51,6 +52,17 @@ const addNotifyBlock = (target) => {
     }, 1000);
 };
 
+const loadTankIcons = (item) => {
+    if (item.nation) {
+        return `
+            <img src="${item.nation.icon}"></img>
+            <img src="${item.type[0].icon}"></img>
+            <span>${romanDigits[item.tier]}</span>
+        `;
+    }
+    return '';
+};
+
 const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
@@ -62,14 +74,13 @@ const getItems = () => {
     return wishlist;
 };
 
-const PushToStore = (item, base) => {
-    // eslint-disable-next-line no-param-reassign
-    item.check = false;
-    if (localStorage.getItem(item.id)) {
-        // eslint-disable-next-line no-param-reassign
-        item.check = true;
-        base.push(item);
-    } else base.push(item);
+const updateLikes = (items) => {
+    items.forEach((item) => {
+        item.check = false;
+        if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-cart-${item.uuid}`)) {
+            item.check = true;
+        }
+    });
 };
 
 // get item from all atmems by id
@@ -247,7 +258,7 @@ export {
     addToLocalStorage,
     deleteFromLocalStorage,
     getItems,
-    PushToStore,
+    updateLikes,
     parseLSItem,
     addNotifyBlock,
     openShoppingCart,
@@ -258,4 +269,5 @@ export {
     getItemById,
     checkItemContainsShoppingList,
     backToShoppingCart,
+    loadTankIcons,
 };
