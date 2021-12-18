@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import { calcExchangeRate } from '../exchangeRate';
 // eslint-disable-next-line import/no-cycle
-import components from '../router/components';
+import { ShoppingCart } from '../router/components';
 import {
     coverPlace,
     shoppingCart,
@@ -152,7 +152,9 @@ const getCostShoppingCartOneItem = (uuid) => {
 const convertSummToCorrectCurrency = () => {
     const summ = getCostShoppingCartItems();
     const summWithCurrency = calcExchangeRate(summ);
-    return summWithCurrency;
+    const div = document.createElement('div');
+    div.innerHTML = summWithCurrency;
+    return div.textContent || div.innerText || '';
 };
 
 // convert Currency for Shopping Item
@@ -160,7 +162,9 @@ const convertSummToCorrectCurrency = () => {
 const convertCostToCorrectCurrency = (uuid) => {
     const cost = getCostShoppingCartOneItem(uuid);
     const CostWithCurrency = calcExchangeRate(cost);
-    return CostWithCurrency;
+    const div = document.createElement('div');
+    div.innerHTML = CostWithCurrency;
+    return div.textContent || div.innerText || '';
 };
 
 // Open/close Shopping cart
@@ -171,7 +175,7 @@ const openShoppingCart = () => {
     shoppingCart.classList.remove('hidden');
     summShoppingList.textContent = convertSummToCorrectCurrency();
     if (localStorage.getItem('userCart')) {
-        test.innerHTML = components.ShoppingCart.render(JSON.parse(localStorage.getItem('userCart')));
+        test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
     }
 };
 
@@ -230,7 +234,7 @@ function shippingCartHandler(e) {
     if (e.target.classList.contains('deleteItemCart')) {
         const { item } = e.target.dataset;
         const newShoppingList = deleteItemFromShoppingList(item);
-        test.innerHTML = components.ShoppingCart.render(newShoppingList);
+        test.innerHTML = ShoppingCart(newShoppingList);
         checkShippingCartCount();
     } else if (e.target.classList.contains('plus')) {
         const oldValue = Number(e.target.previousElementSibling.innerText);
@@ -245,6 +249,7 @@ function shippingCartHandler(e) {
         if (oldValue > 1) {
             changeDataShoppingList(uuid, 'count', oldValue - 1);
             document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
+            console.log(convertSummToCorrectCurrency());
             summShoppingList.textContent = convertSummToCorrectCurrency();
             document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
         }
