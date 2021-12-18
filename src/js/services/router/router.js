@@ -3,6 +3,7 @@ import data from '../helper/database/data';
 import routes from './routes';
 // eslint-disable-next-line import/no-cycle
 import stateOfChecked from '../app/filter';
+// eslint-disable-next-line import/no-cycle
 import {
     getItems, getKeyByValue, parseLSItem, addNotifyBlock,
 } from '../helper/core';
@@ -53,11 +54,11 @@ const router = () => {
 
 grid.addEventListener('click', (event) => {
     if (window.location.hash === '#/') {
-        if (!event.target.classList.contains('checkbox')) {
+        if (!event.target.classList.contains('checkbox')
+        && !event.target.closest('div').classList.contains('add-to-cart')) {
             window.location.hash = '/detail';
             id = (event.target.closest('article')).dataset.id;
         }
     }
 });
-
 export default router;

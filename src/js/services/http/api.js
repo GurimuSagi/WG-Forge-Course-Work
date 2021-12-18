@@ -5,7 +5,6 @@ import {
 } from '../helper/api.helper';
 import { updateLikes } from '../helper/core';
 import data from '../helper/database/data';
-// eslint-disable-next-line no-unused-vars
 import router from '../router/router';
 
 const getAllTanks = fetch(tankUrl);

@@ -1,6 +1,21 @@
-import { coverPlace, shoppingButton } from '../helper/constants';
-import { closeShoppingCart, openShoppingCart } from '../helper/core';
+import {
+    coverPlace,
+    shoppingButton,
+    closeShoppingCartBtn,
+    closePayBtn,
+    PayShoppingCartBtn,
+    shoppingCart,
+    BackToShoppingListBnt,
+} from '../helper/constants';
 
+import {
+    closeShoppingCart,
+    openPay,
+    openShoppingCart,
+    closeShoppingCartAndPay,
+    shippingCartHandler,
+    backToShoppingCart,
+} from '../helper/core';
 import router from '../router/router';
 
 const premium = document.querySelector('.premium');
@@ -13,4 +28,9 @@ premium.addEventListener('click', () => {
 });
 
 shoppingButton.addEventListener('click', openShoppingCart);
-coverPlace.addEventListener('click', closeShoppingCart);
+coverPlace.addEventListener('click', closeShoppingCartAndPay);
+closeShoppingCartBtn.addEventListener('click', closeShoppingCart);
+closePayBtn.addEventListener('click', closeShoppingCartAndPay);
+PayShoppingCartBtn.addEventListener('click', openPay);
+shoppingCart.addEventListener('click', shippingCartHandler);
+BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
