@@ -15,7 +15,6 @@ const getData = () => {
     getAllTanks
         .then((i) => i.json())
         .then((d) => {
-            console.log(d)
             d.forEach((el) => {
                 PushToStore(el, data.vehicles);
             });
@@ -26,7 +25,6 @@ const getData = () => {
     getAllGolds
         .then((i) => i.json())
         .then((d) => {
-            console.log(d)
             d.forEach((el) => {
                 PushToStore(el, data.gold);
             });
@@ -37,7 +35,6 @@ const getData = () => {
     getAllPremium
         .then((i) => i.json())
         .then((d) => {
-            console.log(d)
             d.forEach((el) => {
                 PushToStore(el, data.premium);
             });

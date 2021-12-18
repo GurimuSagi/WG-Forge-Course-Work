@@ -25,7 +25,7 @@
             <a id="shopping">
                 <span class="fas fa-cart-plus"></span>
                 <span>Shopping cart</span>
-                (<span id="countOfShoppingCart"></span>)
+                <span id="countOfShoppingCart"></span>
             </a>
             <div data-modal>
                 <span id="logInSignIn">Login or Create account</span>
@@ -84,44 +84,43 @@
             <div class="controleBlock">
             <button class="close_btn" id="closeShoppingCartBnt">Закрыть</button>
             <div class="money_block">
-                <span><span>Сумма:</span> 10000 $</span>
+                <span>Сумма: <span id="summCostShoppingList"></span></span>
                 <button class="pay_btn" id="PayShoppingCartBnt">Оплатить</button>
             </div>
         </div>
     </div>
     <div class="pay_wrapper hidden" id="pay_block">
         <div class="pay-top_wrapper">
+            <button class="close_btn" id="BackToShoppingListBnt">Вернуться</button>
             <button id="closePayBtn">Закрыть</button>
         </div>
         <div class="cards_block">
+
+
             <div class="card_1">
-                <form action="#!">
-                 <input class="card-number" type="number" placeholder="Card Number" id="card_number" required>
+                <form action="#!" id="payForm">
+                 <input class="card-number" type="number" placeholder="Card Number" id="card_number"  required>
+                 <!-- <input id="card_number" type="tel" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"> -->
                  <br>
                  <div class="date_block">
-                    <input class="card-mounth" type="number" placeholder="MM" id="card_mounth" required>
-                    <input class="card-year" type="number" placeholder="YY" id="card_year" required>   
+                    <input class="card-mounth" type="number" min="1" max="12" placeholder="MM" id="card_mounth" required>
+                    <input class="card-year" type="number"  min="21"  placeholder="YY" id="card_year" required>   
                 </div>
                  <input class="card-name" type="text" placeholder="Сardholder Name" id="card_name" required> 
              </div>
+
+
+
              <div class="card_2">
-                 <input class="cvc" type="number" placeholder="CVC" id="cvc_field" required>
+                 <input class="cvc" type="number" minlength="3" placeholder="CVC" id="cvc_field" required>
              </div>
-             <div class="btn_donate">
-                 <button class="button-donate" type="submit" id="btn-donate_card2">Оплатить</button>
+             <div class="button-pay">
+                 <button class="button-donate" type="submit" id="btn_pay">Оплатить</button>
              </div>
                 </form>
         </div>
         <div class="info-pay_block">
-            <p>
-                Сумма заказа:
-                <span>
-                    1000
-                </span>
-                <span>
-                    USD
-                </span>
-            </p>
+            <p>Сумма заказа: <span id="summPayPage"></span></p>
         </div>
     </div>
     </div>

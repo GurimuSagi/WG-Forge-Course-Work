@@ -4,6 +4,8 @@ import {
     closeShoppingCartBtn,
     closePayBtn,
     PayShoppingCartBtn,
+    shoppingCart,
+    BackToShoppingListBnt,
 } from '../helper/constants';
 
 import {
@@ -11,6 +13,8 @@ import {
     openPay,
     openShoppingCart,
     closeShoppingCartAndPay,
+    shippingCartHandler,
+    backToShoppingCart,
 } from '../helper/core';
 import router from '../router/router';
 
@@ -24,7 +28,9 @@ premium.addEventListener('click', () => {
 });
 
 shoppingButton.addEventListener('click', openShoppingCart);
-coverPlace.addEventListener('click', closeShoppingCart);
+coverPlace.addEventListener('click', closeShoppingCartAndPay);
 closeShoppingCartBtn.addEventListener('click', closeShoppingCart);
 closePayBtn.addEventListener('click', closeShoppingCartAndPay);
 PayShoppingCartBtn.addEventListener('click', openPay);
+shoppingCart.addEventListener('click', shippingCartHandler);
+BackToShoppingListBnt.addEventListener('click', backToShoppingCart);

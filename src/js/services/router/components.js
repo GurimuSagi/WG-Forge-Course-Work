@@ -73,6 +73,9 @@ const components = {
     },
     ShoppingCart: {
         render: (cartItems) => {
+            if (cartItems.length === 0) {
+                return '<h1 style="text-align: center;">В корзине нет товаров</h1>';
+            }
             const ShoppingCart = cartItems.map((i) => `
             <div class="shopinngCart_item">
             <div class="shopinngCart_item-image">
@@ -85,15 +88,15 @@ const components = {
                 <span>${calcExchangeRate(i.price)}</span>
             </div>
             <div class="shopinngCart_item-count">
-                <button class="minus btn_plus_minus">+</button>
-                <span>2</span>
-                <button class="plus btn_plus_minus">–</button>
+                <button class="minus btn_plus_minus" data-uuid="${i.uuid}">-</button>
+                <span id="count-${i.uuid}">${i.count}</span>
+                <button class="plus btn_plus_minus" data-uuid="${i.uuid}">+</button>
             </div>
             <div class="shopinngCart_item-summ">
-                <span>100 $</span>
+                <span id="sum-${i.uuid}">${calcExchangeRate((i.price) * i.count)}</span>
             </div>
             <div class="shopinngCart_item-delete">
-                <button data-item="${i.id}">X</button>
+                <button data-item="${i.uuid}" class="deleteItemCart">X</button>
             </div>
         </div>
             `);
