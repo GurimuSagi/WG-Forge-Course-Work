@@ -71,10 +71,10 @@ const DetailComponent = (tank) => `
         <div class="top_block" data-id="tank.tank_id">
         <div class="detail_top">
         <div class="line_top"></div>
-            <span class="detail_cost">$12.59</span>
+            ${calcExchangeRate(tank.price, tank.discount)}
             <button class="detail_purchase_btn">purchase</button>
         </div>
-        <img class="detail_img" src="${tank.images[0].image}" alt="img">
+        <div class="slider"></div>
         </div>
         <div class="premium-details">
             <h3 class="detail_title">DETAILS</h3>

@@ -1,39 +1,76 @@
-export default class Slider {
-    constructor({container = null, btns = null, next = null, prev = null} = {}){
-        this.container = document.querySelector(container);
-        this.slides = this.container.children;
-        this.btns = document.querySelectorAll(btns);
-        this.prev = document.querySelector(prev);
-        this.next = document.querySelector(next);
-        this.slideIndex = 1;
+const sliders = (slides, prev, next) => {
+    let slideIndex = 1;
+    let paused = false;
+    const items = document.querySelectorAll(slides);
+
+    function showSlides(n) {
+        if (n > items.length) {
+            slideIndex = 1;
+        }
+        if (n < 1) {
+            slideIndex = items.length;
+        }
+        items.forEach((item) => {
+            item.classList.add('hide-slide');
+        });
+        items[slideIndex - 1].classList.remove('hide-slide');
     }
 
-    // showSlides(n){
-    //     if (n > this.slides.length) {
-    //         this.slideIndex = 1;
-    //     }
-    //     if (n < 1) {
-    //         this.slideIndex = this.slides.length;
-    //     }
+    showSlides(slideIndex);
 
-    //     this.slides.forEach(slide => {
-    //         slide.style.display = 'none';
-    //     });
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-    //     this.slides[this.slideIndex-1].style.display = 'block';
-    // }
+    const prevBtn = document.querySelector(prev);
+    const nextBtn = document.querySelector(next);
 
-    // plusSlides(n){
-    //     this.showSlides(this.slideIndex+=n);
-    // }
+    prevBtn.addEventListener('click', () => {
+        plusSlides(-1);
+        items[slideIndex - 1].classList.remove('slideInLeft');
+        items[slideIndex - 1].classList.add('slideInRight');
+    });
 
-    // render(){
-    //     this.btns.forEach(item => {
-    //         item.addEventListener('click',() => {
-    //             this.plusSlides(1);
-    //         })
-    //     })
-    //     this.showSlides(this.slideIndex);
-    //     //console.log(this.container, this.slides);
-    // }
-}
+    nextBtn.addEventListener('click', () => {
+        plusSlides(1);
+        items[slideIndex - 1].classList.remove('slideInRight');
+        items[slideIndex - 1].classList.add('slideInLeft');
+    });
+
+    function activateAnimation() {
+        paused = setInterval(() => {
+            plusSlides(1);
+        }, 2000);
+    }
+
+    activateAnimation();
+
+    items[0].parentNode.addEventListener('mouseenter', () => {
+        clearInterval(paused);
+    });
+    items[0].parentNode.addEventListener('mouseleave', () => {
+        activateAnimation();
+    });
+};
+
+const createSlider = (details) => {
+    const slider = document.querySelector('.slider');
+    function slides() {
+        details.images.forEach((img) => {
+            const slide = document.createElement('img');
+            const prevBtn = document.querySelector('.main-prev-btn');
+            slide.className = 'detail-slider';
+            slide.src = `${img.image}`;
+            prevBtn.insertAdjacentElement('afterend', slide);
+        });
+    }
+    const div = `
+        <img class="main-slider-btn main-prev-btn" src="../../../assets/images/sliderL.png" alt="left">
+        <img class="main-slider-btn main-next-btn" src="../../../assets/images/sliderR.png" alt="right">
+    `;
+    slider.innerHTML = div;
+    slides();
+    sliders('.detail-slider', '.main-prev-btn', '.main-next-btn');
+};
+
+export default createSlider;

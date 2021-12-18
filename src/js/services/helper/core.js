@@ -8,7 +8,6 @@ const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 
 const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
-    // eslint-disable-next-line no-param-reassign
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
 };
 const addToLocalStorage = (id, item) => {

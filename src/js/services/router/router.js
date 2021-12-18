@@ -6,13 +6,13 @@ import stateOfChecked from '../app/filter';
 import {
     getItems, getKeyByValue, parseLSItem, addNotifyBlock,
 } from '../helper/core';
+import createSlider from '../../modules/slider';
 
 const grid = document.querySelector('.grid');
 
 window.location.hash = '#/';
 let id;
 
-// eslint-disable-next-line no-restricted-globals
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
 
 const observer = new IntersectionObserver((entries, obs) => {
@@ -41,6 +41,7 @@ const router = () => {
     } else if (path === '/detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
+        createSlider(detailTank);
     } else if (path === '/wishlist' && parseLSItem('user')) {
         grid.innerHTML = component(getItems());
         grid.style.display = 'grid';
