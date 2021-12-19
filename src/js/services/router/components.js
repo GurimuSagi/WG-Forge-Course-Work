@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
-import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
+// eslint-disable-next-line import/no-cycle
+import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 
 const HomeComponent = (arr) => {
     const homeComponent = arr.map((i) => {

@@ -21,11 +21,12 @@ const getKeyByValue = (object, value) => Object.keys(object).find((key) => objec
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
 };
-const addToLocalStorage = (id, item) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    localStorage.setItem(`${user.username}-wl-${id}`, JSON.stringify(item));
-};
 
+const getUserName = () => (JSON.parse(localStorage.getItem('user')).username);
+
+const addToLocalStorage = (id, item) => {
+    localStorage.setItem(`${getUserName()}-wl-${id}`, JSON.stringify(item));
+};
 const parseLSItem = (item) => JSON.parse(localStorage.getItem(item));
 
 const deleteFromLocalStorage = (item) => {
@@ -67,7 +68,7 @@ const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
     keys.forEach((key) => {
-        if (key.startsWith(`${parseLSItem('user').username}-wl-`)) {
+        if (key.startsWith(`${getUserName()}-wl-`)) {
             wishlist.push(JSON.parse(localStorage.getItem(key)));
         }
     });
@@ -77,7 +78,7 @@ const getItems = () => {
 const updateLikes = (items) => {
     items.forEach((item) => {
         item.check = false;
-        if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-wl-${item.uuid}`)) {
+        if (parseLSItem('user') && localStorage.getItem(`${getUserName()}-wl-${item.uuid}`)) {
             item.check = true;
         }
     });
@@ -92,11 +93,11 @@ const getItemById = (id) => {
 
 // get all items from local storage
 
-const getAllShoppingListItems = () => JSON.parse(localStorage.getItem('userCart'));
+const getAllShoppingListItems = () => JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
 
 // add shopping list items to local storage
 
-const addShoppingListItems = (items) => localStorage.setItem('userCart', JSON.stringify(items));
+const addShoppingListItems = (items) => localStorage.setItem(`${getUserName()}-cart`, JSON.stringify(items));
 
 // change data in shopping list item
 
@@ -112,8 +113,8 @@ const changeDataShoppingList = (id, targetValue, value) => {
 // Check and update start state of shipping cart count
 
 const checkShippingCartCount = () => {
-    if (localStorage.getItem('userCart')) {
-        countOfShoppingCart.textContent = `(${(JSON.parse(localStorage.getItem('userCart'))).length})`;
+    if (localStorage.getItem('user') && localStorage.getItem(`${getUserName()}-cart`)) {
+        countOfShoppingCart.textContent = `(${(JSON.parse(localStorage.getItem(`${getUserName()}-cart`))).length})`;
     } else {
         countOfShoppingCart.textContent = '';
     }
@@ -122,7 +123,7 @@ const checkShippingCartCount = () => {
 // calc cost shopping cart items
 
 const getCostShoppingCartItems = () => {
-    const items = JSON.parse(localStorage.getItem('userCart'));
+    const items = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
     let result = 0;
     if (items) {
         // eslint-disable-next-line no-return-assign
@@ -134,7 +135,7 @@ const getCostShoppingCartItems = () => {
 // calc cost shopping cart item by id
 
 const getCostShoppingCartOneItem = (uuid) => {
-    const items = JSON.parse(localStorage.getItem('userCart'));
+    const items = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
     let result = 0;
     let cost;
     let count;
@@ -177,8 +178,8 @@ const openShoppingCart = () => {
         document.body.classList.add('notScroll');
         shoppingCart.classList.remove('hidden');
         summShoppingList.textContent = convertSummToCorrectCurrency();
-        if (localStorage.getItem('userCart')) {
-            test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
+        if (localStorage.getItem(`${getUserName()}-cart`)) {
+            test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem(`${getUserName()}-cart`)));
         }
     }
 };
@@ -191,10 +192,10 @@ const backToShoppingCart = () => {
 // delete item from shopping list
 
 const deleteItemFromShoppingList = (id) => {
-    const listOfShoppingListItems = JSON.parse(localStorage.getItem('userCart'));
+    const listOfShoppingListItems = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
     // eslint-disable-next-line max-len
     const updatelistOfShoppingListItems = listOfShoppingListItems.filter((item) => item.uuid !== id);
-    localStorage.setItem('userCart', JSON.stringify(updatelistOfShoppingListItems));
+    localStorage.setItem(`${getUserName()}-cart`, JSON.stringify(updatelistOfShoppingListItems));
     summShoppingList.textContent = convertSummToCorrectCurrency();
     return updatelistOfShoppingListItems;
 };
@@ -279,4 +280,5 @@ export {
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
+    getUserName,
 };

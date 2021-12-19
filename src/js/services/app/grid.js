@@ -7,6 +7,7 @@ import {
     addNotifyBlock,
     checkShippingCartCount,
     checkItemContainsShoppingList,
+    getUserName,
 } from '../helper/core';
 import data from '../helper/database/data';
 import router from '../router/router';
@@ -18,15 +19,15 @@ const gridComponent = () => {
         if (event.target.classList.contains('checkbox')) {
             if (!parseLSItem('user')) {
                 addNotifyBlock(event.target);
-            } else if (event.target.checked && parseLSItem('user')) {
+            } else if (event.target.checked) {
                 const target = data.all.find((tank) => tank.uuid === id);
                 target.check = true;
                 addToLocalStorage(id, target);
                 countOfWish.textContent = `(${getItems().length})`;
-            } else if (!event.target.checked && parseLSItem('user')) {
+            } else if (!event.target.checked) {
                 const target = data.all.find((tank) => tank.uuid === id);
                 target.check = false;
-                deleteFromLocalStorage(`${parseLSItem('user').username}-wl-${id}`);
+                deleteFromLocalStorage(`${getUserName()}-wl-${id}`);
                 countOfWish.textContent = `(${getItems().length})`;
                 if (event.target.classList.contains('checkbox') && window.location.hash === '#/wishlist') {
                     router();
@@ -34,15 +35,15 @@ const gridComponent = () => {
             }
         } else if (event.target.closest('div').classList.contains('add-to-cart')) {
             if (!parseLSItem('user')) {
-                addNotifyBlock(event.target);
+                addNotifyBlock();
             } else {
                 const target = data.all.find((tank) => tank.uuid === id);
                 target.count = 1;
-                if (localStorage.getItem('userCart')) {
+                if (localStorage.getItem(`${getUserName()}-cart`)) {
                     if (!checkItemContainsShoppingList(id)) {
-                        const cart = JSON.parse(localStorage.getItem('userCart'));
+                        const cart = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
                         cart.push(target);
-                        localStorage.setItem('userCart', JSON.stringify(cart));
+                        localStorage.setItem(`${getUserName()}-cart`, JSON.stringify(cart));
                     }
                 }
                 checkShippingCartCount();

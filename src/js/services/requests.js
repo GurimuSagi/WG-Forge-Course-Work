@@ -38,7 +38,9 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
-            localStorage.setItem('userCart', JSON.stringify([]));
+            if (!localStorage.getItem(`${userData.username}-cart`)) {
+                localStorage.setItem(`${userData.username}-cart`, JSON.stringify([]));
+            }
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         } else if (userData.detail === 'Invalid token.') {
@@ -77,7 +79,6 @@ const logout = async () => {
     authType = 'logout';
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    localStorage.removeItem('userCart');
     countOfWish.textContent = '';
     signInBtns.forEach((btn) => {
         const a = btn;

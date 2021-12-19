@@ -6,7 +6,7 @@ import {
     cvcField,
     payForm,
 } from './constants';
-import { closeShoppingCartAndPay, deleteFromLocalStorage } from './core';
+import { getUserName, closeShoppingCartAndPay, deleteFromLocalStorage } from './core';
 
 cardNumber.addEventListener('keydown', (event) => {
     if (cardNumber.value.length > 15 && event.key !== 'Backspace') {
@@ -46,6 +46,6 @@ payForm.addEventListener('submit', (e) => {
         nameField.value = '';
         cvcField.value = '';
         closeShoppingCartAndPay();
-        deleteFromLocalStorage('userCart');
+        deleteFromLocalStorage(`${getUserName()}-cart`);
     }
 });
