@@ -38,7 +38,7 @@ const calcExchangeRate = (val, discount) => {
     const modifiedPrice = (basePrice * coefficient).toFixed(2);
     if (discount > 0) {
         const newPrice = (modifiedPrice - (discount * coefficient)).toFixed(2);
-        return `<p class="old-price">${modifiedPrice}</p>&nbsp;<p class="new-price">${newPrice} ${currentRate}</p>`;
+        return `<p class="new-price">${newPrice} ${currentRate}</p>&nbsp;<p class="old-price">${modifiedPrice}</p>`;
     }
     return `<p>${modifiedPrice} ${currentRate}</p>`;
 };
