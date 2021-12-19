@@ -26,23 +26,27 @@ const gridComponent = () => {
             } else if (!event.target.checked && parseLSItem('user')) {
                 const target = data.all.find((tank) => tank.uuid === id);
                 target.check = false;
-                deleteFromLocalStorage(`${parseLSItem('user').username}-cart-${id}`);
+                deleteFromLocalStorage(`${parseLSItem('user').username}-wl-${id}`);
                 countOfWish.textContent = `(${getItems().length})`;
                 if (event.target.classList.contains('checkbox') && window.location.hash === '#/wishlist') {
                     router();
                 }
             }
         } else if (event.target.closest('div').classList.contains('add-to-cart')) {
-            const target = data.all.find((tank) => tank.uuid === id);
-            target.count = 1;
-            if (localStorage.getItem('userCart')) {
-                if (!checkItemContainsShoppingList(id)) {
-                    const cart = JSON.parse(localStorage.getItem('userCart'));
-                    cart.push(target);
-                    localStorage.setItem('userCart', JSON.stringify(cart));
+            if (!parseLSItem('user')) {
+                addNotifyBlock(event.target);
+            } else {
+                const target = data.all.find((tank) => tank.uuid === id);
+                target.count = 1;
+                if (localStorage.getItem('userCart')) {
+                    if (!checkItemContainsShoppingList(id)) {
+                        const cart = JSON.parse(localStorage.getItem('userCart'));
+                        cart.push(target);
+                        localStorage.setItem('userCart', JSON.stringify(cart));
+                    }
                 }
+                checkShippingCartCount();
             }
-            checkShippingCartCount();
         }
     });
 };

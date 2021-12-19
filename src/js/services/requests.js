@@ -1,6 +1,6 @@
 import { userInterface } from '../modules/modal';
 import { countOfWish } from './helper/constants';
-import { getItems, updateLikes } from './helper/core';
+import { checkShippingCartCount, getItems, updateLikes } from './helper/core';
 import router from './router/router';
 import data from './helper/database/data';
 
@@ -46,6 +46,7 @@ const auth = async () => {
             localStorage.removeItem('token');
         }
         updateLikes(data.all);
+        checkShippingCartCount();
         router();
     }
 };
@@ -85,6 +86,7 @@ const logout = async () => {
     window.location.hash = '#/';
     userInterface(authType);
     updateLikes(data.all);
+    checkShippingCartCount();
     router();
 };
 

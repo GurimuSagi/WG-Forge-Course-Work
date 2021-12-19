@@ -23,7 +23,7 @@ const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
 };
 const addToLocalStorage = (id, item) => {
     const user = JSON.parse(localStorage.getItem('user'));
-    localStorage.setItem(`${user.username}-cart-${id}`, JSON.stringify(item));
+    localStorage.setItem(`${user.username}-wl-${id}`, JSON.stringify(item));
 };
 
 const parseLSItem = (item) => JSON.parse(localStorage.getItem(item));
@@ -67,7 +67,7 @@ const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
     keys.forEach((key) => {
-        if (key.startsWith(`${parseLSItem('user').username}-cart-`)) {
+        if (key.startsWith(`${parseLSItem('user').username}-wl-`)) {
             wishlist.push(JSON.parse(localStorage.getItem(key)));
         }
     });
@@ -77,7 +77,7 @@ const getItems = () => {
 const updateLikes = (items) => {
     items.forEach((item) => {
         item.check = false;
-        if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-cart-${item.uuid}`)) {
+        if (parseLSItem('user') && localStorage.getItem(`${parseLSItem('user').username}-wl-${item.uuid}`)) {
             item.check = true;
         }
     });
@@ -115,7 +115,7 @@ const checkShippingCartCount = () => {
     if (localStorage.getItem('userCart')) {
         countOfShoppingCart.textContent = `(${(JSON.parse(localStorage.getItem('userCart'))).length})`;
     } else {
-        countOfShoppingCart.textContent = '(0)';
+        countOfShoppingCart.textContent = '';
     }
 };
 
@@ -170,12 +170,16 @@ const convertCostToCorrectCurrency = (uuid) => {
 // Open/close Shopping cart
 
 const openShoppingCart = () => {
-    coverPlace.classList.remove('hidden');
-    document.body.classList.add('notScroll');
-    shoppingCart.classList.remove('hidden');
-    summShoppingList.textContent = convertSummToCorrectCurrency();
-    if (localStorage.getItem('userCart')) {
-        test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
+    if (!parseLSItem('user')) {
+        addNotifyBlock();
+    } else {
+        coverPlace.classList.remove('hidden');
+        document.body.classList.add('notScroll');
+        shoppingCart.classList.remove('hidden');
+        summShoppingList.textContent = convertSummToCorrectCurrency();
+        if (localStorage.getItem('userCart')) {
+            test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
+        }
     }
 };
 

@@ -2,12 +2,6 @@
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
 
-// import MiniSlider from '../../modules/slider-mini'
-// export const ShowUpSlider = new MiniSlider({
-//     container: '.grid',
-//     prev: '.leftSlider',
-//     next: '.rightSlider'
-// });
 const HomeComponent = (arr) => {
     const homeComponent = arr.map((i) => {
         let state;
