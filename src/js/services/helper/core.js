@@ -1,6 +1,6 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
+import stateOfChecked from '../app/filter';
 import { calcExchangeRate } from '../exchangeRate';
-// eslint-disable-next-line import/no-cycle
 import { ShoppingCart } from '../router/components';
 import {
     coverPlace,
@@ -16,7 +16,8 @@ import data from './database/data';
 
 const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
-const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
+const getKeyByValue = (value) => Object.keys(stateOfChecked)
+    .find((key) => stateOfChecked[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
@@ -62,6 +63,9 @@ const loadTankIcons = (item) => {
     }
     return '';
 };
+
+const parseLocation = () => location.hash.slice(1).split('/')[1].toLowerCase() || '/';
+const getId = () => location.hash.slice(1).split('/')[2];
 
 const getItems = () => {
     const keys = Object.keys(localStorage);
@@ -228,6 +232,18 @@ const checkItemContainsShoppingList = (uuid) => {
     return false;
 };
 
+// change url to dateil/id
+
+const gridHandler = (event) => {
+    if (window.location.hash === '#/') {
+        if (!event.target.classList.contains('checkbox')
+        && !event.target.closest('div').classList.contains('add-to-cart')) {
+            const { id } = (event.target.closest('article')).dataset;
+            window.location.hash = `/detail/${id}`;
+        }
+    }
+};
+
 // shipping cart Handler
 
 function shippingCartHandler(e) {
@@ -249,7 +265,6 @@ function shippingCartHandler(e) {
         if (oldValue > 1) {
             changeDataShoppingList(uuid, 'count', oldValue - 1);
             document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
-            console.log(convertSummToCorrectCurrency());
             summShoppingList.textContent = convertSummToCorrectCurrency();
             document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
         }
@@ -257,6 +272,8 @@ function shippingCartHandler(e) {
 }
 
 export {
+    parseLocation,
+    getId,
     checkShippingCartCount,
     getKeyByValue,
     changeCountOfWishItems,
@@ -275,4 +292,5 @@ export {
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
+    gridHandler,
 };

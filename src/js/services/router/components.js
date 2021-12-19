@@ -1,4 +1,4 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
 

@@ -6,6 +6,7 @@ import {
     PayShoppingCartBtn,
     shoppingCart,
     BackToShoppingListBnt,
+    grid,
 } from '../helper/constants';
 
 import {
@@ -15,6 +16,7 @@ import {
     closeShoppingCartAndPay,
     shippingCartHandler,
     backToShoppingCart,
+    gridHandler,
 } from '../helper/core';
 import router from '../router/router';
 
@@ -34,3 +36,4 @@ closePayBtn.addEventListener('click', closeShoppingCartAndPay);
 PayShoppingCartBtn.addEventListener('click', openPay);
 shoppingCart.addEventListener('click', shippingCartHandler);
 BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
+grid.addEventListener('click', gridHandler);

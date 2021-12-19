@@ -21,6 +21,11 @@ const cvcField = document.getElementById('cvc_field');
 const btnPay = document.getElementById('btn_pay');
 const payForm = document.getElementById('payForm');
 const payFormAll = document.querySelectorAll('#payForm');
+const grid = document.querySelector('.grid');
+const buttonAll = document.getElementById('checkAll');
+const buttonVehicles = document.getElementById('checkVehicles');
+const buttonGold = document.getElementById('checkGold');
+const buttonPremium = document.getElementById('checkPremium');
 
 export {
     countOfWish,
@@ -46,4 +51,9 @@ export {
     btnPay,
     payForm,
     payFormAll,
+    grid,
+    buttonAll,
+    buttonVehicles,
+    buttonGold,
+    buttonPremium,
 };

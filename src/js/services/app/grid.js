@@ -1,4 +1,4 @@
-import { countOfWish } from '../helper/constants';
+import { countOfWish, grid } from '../helper/constants';
 import {
     addToLocalStorage,
     deleteFromLocalStorage,
@@ -12,7 +12,6 @@ import data from '../helper/database/data';
 import router from '../router/router';
 
 const gridComponent = () => {
-    const grid = document.querySelector('.grid');
     grid.addEventListener('click', (event) => {
         const { id } = (event.target.closest('article')).dataset;
         if (event.target.classList.contains('checkbox')) {
