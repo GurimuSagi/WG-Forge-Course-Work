@@ -114,7 +114,7 @@
                 margin-right: 5px;
                 font-size: 100%;
                 //margin-left: 5px;
-                color: rgb(202, 202, 202);;
+                color: rgb(202, 202, 202);
             }
         }
         p{
@@ -145,9 +145,11 @@
         .old-price {
             text-decoration: line-through;
             font-size: 15px;
+            color: rgb(116, 116, 116);
+            margin-left:2%;
         }
         .new-price {
-            color: orange;
+            color:#c9ad7d;
             margin-top: 14px;
         }
     }

@@ -1,11 +1,27 @@
+
+.main-slider-btn{
+    position:relative;
+    height: 90%;
+}
+.main-prev-btn {
+    justify-self: flex-start;
+}
+.main-next-btn {
+    justify-self: flex-end;
+}
 .slider {
     position: relative;
     display: flex;
-    width: 100%;
+    width: 70%;
     justify-content: space-between;
+    align-items: center;
+    margin-top: 15%;
+    margin-bottom: 10%;
     .detail-slider {
         position: absolute;
-        overflow:hidden;
+        overflow: hidden;
+        width:87%;
+        margin-left: 6%;
     }
     .main-slider-btn {
         z-index: 1;
@@ -23,27 +39,21 @@
     }
     @keyframes toleft {
         0%   { 
-            opacity: 1;
-            transform: translateX(0);
-        }
-        50%{
             opacity: 0;
+            transform: translateX(50%);
         }
         100%  { 
-            opacity: 0;
-            transform: translateX(-100%);
+            opacity: 1;
+            transform: translateX(0%);
         }
     }
     @keyframes toright {
         0%   { 
-            opacity: 1;
-            transform: translateX(-100%);
-        }
-        50%{
             opacity: 0;
+            transform: translateX(-50%);
         }
         100%  { 
-            opacity: 0;
+            opacity: 1;
             transform: translateX(0);
         }
     }
