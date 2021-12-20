@@ -1,3 +1,4 @@
+import createCategoryBtns from '../../modules/categoryNavBtns';
 import {
     allProductsUrl,
     prodTypes,
@@ -5,6 +6,7 @@ import {
 import { updateLikes } from '../helper/core';
 import data from '../helper/database/data';
 import router from '../router/router';
+import { addRoutes } from '../router/routes';
 
 const getProdTypes = fetch(prodTypes);
 const getAllProducts = fetch(allProductsUrl);
@@ -13,18 +15,25 @@ const getData = async () => {
     await getProdTypes
         .then((response) => response.json())
         .then((types) => {
+            let name = '';
             types.forEach((type) => {
-                data[type.name] = [];
+                name = type.name.replace(/\s+/g, '');
+                data[name] = [];
+                data.categories.push(type.name);
+                addRoutes(name);
             });
+            createCategoryBtns();
         });
 
     await getAllProducts
         .then((response) => response.json())
         .then((products) => {
             data.all = products;
+            let name = '';
             products.forEach((prod) => {
                 prod.prod_type.forEach((item) => {
-                    data[item.name].push(prod);
+                    name = item.name.replace(/\s+/g, '');
+                    data[name].push(prod);
                 });
             });
         });

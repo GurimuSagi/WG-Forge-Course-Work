@@ -70,4 +70,4 @@ buttonPremium.addEventListener('change', () => {
     }
 });
 
-export default stateOfChecked;
+// export default stateOfChecked;

@@ -1,9 +1,8 @@
 /* eslint-disable import/no-cycle */
 import data from '../helper/database/data';
-import routes from './routes';
+import { routes } from './routes';
 import {
     getItems,
-    getKeyByValue,
     parseLSItem,
     addNotifyBlock,
     parseLocation,
@@ -22,9 +21,9 @@ const router = () => {
     const detailTank = data.all.find((tank) => tank.uuid === id);
     const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
     const { component } = componentByPath(path, routes);
-    if (path === '/') {
+    if (data[path] || path === '/') {
         grid.style.display = 'grid';
-        const renderData = data[getKeyByValue(true)];
+        const renderData = path === '/' ? data.all : data[path];
         grid.innerHTML = component(renderData);
         const el = document.querySelectorAll('.bg');
         el.forEach((a) => {

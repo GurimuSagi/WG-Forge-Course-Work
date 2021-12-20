@@ -8,7 +8,7 @@ import './services/router/router';
 import './services/app/app';
 import './services/helper/validation';
 import './services/helper/handlers';
-import stateOfChecked from './services/helper/filter';
+// import stateOfChecked from './services/helper/filter';
 import { checkShippingCartCount } from './services/helper/core';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -16,6 +16,6 @@ window.addEventListener('DOMContentLoaded', () => {
     exchangeRate();
     modalWindow();
     forms();
-    stateOfChecked.update();
+    // stateOfChecked.update();
     checkShippingCartCount();
 });
