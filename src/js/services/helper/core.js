@@ -254,7 +254,6 @@ function shippingCartHandler(e) {
         if (oldValue > 1) {
             changeDataShoppingList(uuid, 'count', oldValue - 1);
             document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
-            console.log(convertSummToCorrectCurrency());
             summShoppingList.textContent = convertSummToCorrectCurrency();
             document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
         }
