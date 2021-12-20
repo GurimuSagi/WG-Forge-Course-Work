@@ -5,16 +5,17 @@ import { modalWindow } from './modules/modal';
 import forms from './modules/forms';
 import { auth } from './services/requests';
 import './services/router/router';
-// import getData from './services/http/api';
 import './services/app/app';
-import gridComponent from './services/app/grid';
-import stateOfChecked from './services/app/filter';
+import './services/helper/validation';
+import './services/helper/handlers';
+import stateOfChecked from './services/helper/filter';
+import { checkShippingCartCount } from './services/helper/core';
 
 window.addEventListener('DOMContentLoaded', () => {
     auth();
     exchangeRate();
-    gridComponent();
     modalWindow();
     forms();
     stateOfChecked.update();
+    checkShippingCartCount();
 });

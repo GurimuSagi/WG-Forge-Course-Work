@@ -1,5 +1,22 @@
-import { coverPlace, shoppingButton } from '../helper/constants';
-import { closeShoppingCart, openShoppingCart } from '../helper/core';
+import {
+    coverPlace,
+    shoppingButton,
+    closeShoppingCartBtn,
+    closePayBtn,
+    PayShoppingCartBtn,
+    shoppingCart,
+    BackToShoppingListBnt,
+    grid,
+} from '../helper/constants';
+
+import {
+    closeShoppingCart,
+    openPay,
+    openShoppingCart,
+    closeShoppingCartAndPay,
+    backToShoppingCart,
+} from '../helper/core';
+import { gridHandler, shoppingCartHandler } from '../helper/handlers';
 
 import router from '../router/router';
 
@@ -13,4 +30,10 @@ premium.addEventListener('click', () => {
 });
 
 shoppingButton.addEventListener('click', openShoppingCart);
-coverPlace.addEventListener('click', closeShoppingCart);
+coverPlace.addEventListener('click', closeShoppingCartAndPay);
+closeShoppingCartBtn.addEventListener('click', closeShoppingCart);
+closePayBtn.addEventListener('click', closeShoppingCartAndPay);
+PayShoppingCartBtn.addEventListener('click', openPay);
+shoppingCart.addEventListener('click', shoppingCartHandler);
+BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
+grid.addEventListener('click', gridHandler);

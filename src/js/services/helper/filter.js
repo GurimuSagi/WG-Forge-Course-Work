@@ -1,10 +1,8 @@
-// import data from '../helper/database/data';
+import {
+    buttonAll, buttonGold, buttonPremium, buttonVehicles,
+} from './constants';
+// eslint-disable-next-line import/no-cycle
 import router from '../router/router';
-
-const buttonAll = document.getElementById('checkAll');
-const buttonVehicles = document.getElementById('checkVehicles');
-const buttonGold = document.getElementById('checkGold');
-const buttonPremium = document.getElementById('checkPremium');
 
 const stateOfChecked = {
     update: function checkedFilterParams() {

@@ -1,38 +1,34 @@
 import {
-    tankUrl,
-    goldUrl,
-    premiumdUrl,
+    allProductsUrl,
+    prodTypes,
 } from '../helper/api.helper';
 import { updateLikes } from '../helper/core';
 import data from '../helper/database/data';
-// eslint-disable-next-line no-unused-vars
 import router from '../router/router';
 
-const getAllTanks = fetch(tankUrl);
-const getAllGolds = fetch(goldUrl);
-const getAllPremium = fetch(premiumdUrl);
+const getProdTypes = fetch(prodTypes);
+const getAllProducts = fetch(allProductsUrl);
 
 const getData = async () => {
-    await getAllTanks
-        .then((i) => i.json())
-        .then((d) => {
-            data.vehicles = d;
-            data.collect();
+    await getProdTypes
+        .then((response) => response.json())
+        .then((types) => {
+            types.forEach((type) => {
+                data[type.name] = [];
+            });
         });
 
-    await getAllGolds
-        .then((i) => i.json())
-        .then((d) => {
-            data.gold = d;
-            data.collect();
+    await getAllProducts
+        .then((response) => response.json())
+        .then((products) => {
+            data.all = products;
+            products.forEach((prod) => {
+                prod.prod_type.forEach((item) => {
+                    data[item.name].push(prod);
+                });
+            });
         });
 
-    await getAllPremium
-        .then((i) => i.json())
-        .then((d) => {
-            data.premium = d;
-            data.collect();
-        });
     updateLikes(data.all);
     router();
 };

@@ -1,8 +1,11 @@
 import { userInterface } from '../modules/modal';
-import { countOfWish } from './helper/constants';
-import { getItems, updateLikes } from './helper/core';
+import { countOfWish, ShoppingCartBlock } from './helper/constants';
+import {
+    checkShippingCartCount, getAllShoppingListItems, getItems, updateLikes,
+} from './helper/core';
 import router from './router/router';
 import data from './helper/database/data';
+import { ShoppingCart } from './router/components';
 
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
@@ -12,11 +15,14 @@ let authType = 'loggedIn';
 
 const handlingResponse = (form, response) => {
     const loginBtn = form.querySelector('.sign-in-btn');
-
     if (response.non_field_errors && response.non_field_errors[0] === 'Unable to log in with provided credentials.') {
         span.innerText = 'Не верные имя пользователя или пароль';
     } else if (response.username && response.username[0] === 'A user with that username already exists.') {
         span.innerText = 'Данное имя пользователя уже занято';
+    } else if (response.username && response.username[0] === 'Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.') {
+        span.innerText = 'Имя пользователя может содержать только буквы, цифры, и символы @/./+/-/_ ';
+    } else if (response.email && response.email[0] === 'Enter a valid email address.') {
+        span.innerText = 'Email не валидный';
     } else {
         span.innerText = 'Вы успешно зарегистрировались, войдите пожалуйста в свою учетную запись';
     }
@@ -38,6 +44,9 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
+            if (!localStorage.getItem(`${userData.username}-cart`)) {
+                localStorage.setItem(`${userData.username}-cart`, JSON.stringify([]));
+            }
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         } else if (userData.detail === 'Invalid token.') {
@@ -45,6 +54,7 @@ const auth = async () => {
             localStorage.removeItem('token');
         }
         updateLikes(data.all);
+        checkShippingCartCount();
         router();
     }
 };
@@ -62,6 +72,12 @@ const login = async (input, path, form) => {
         auth();
     } else {
         handlingResponse(form, res);
+    }
+    const userList = getAllShoppingListItems();
+    if (userList === null) {
+        localStorage.setItem('userCart', JSON.stringify([]));
+    } else {
+        localStorage.setItem('userCart', JSON.stringify(userList));
     }
 };
 
@@ -83,6 +99,8 @@ const logout = async () => {
     window.location.hash = '#/';
     userInterface(authType);
     updateLikes(data.all);
+    ShoppingCartBlock.innerHTML = ShoppingCart([]);
+    checkShippingCartCount();
     router();
 };
 
