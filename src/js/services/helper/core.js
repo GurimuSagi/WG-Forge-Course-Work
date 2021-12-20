@@ -1,22 +1,24 @@
-// eslint-disable-next-line import/no-cycle
+/* eslint-disable import/no-cycle */
+import stateOfChecked from './filter';
 import { calcExchangeRate } from '../exchangeRate';
-// eslint-disable-next-line import/no-cycle
 import { ShoppingCart } from '../router/components';
 import {
     coverPlace,
     shoppingCart,
     shoppingCartItems,
     payBlock,
-    test,
     countOfShoppingCart,
     summShoppingList,
     summPayPage,
+    ShoppingCartBlock,
+
 } from './constants';
 import data from './database/data';
 
 const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
-const getKeyByValue = (object, value) => Object.keys(object).find((key) => object[key] === value);
+const getKeyByValue = (value) => Object.keys(stateOfChecked)
+    .find((key) => stateOfChecked[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
@@ -64,6 +66,9 @@ const loadTankIcons = (item) => {
     return '';
 };
 
+const parseLocation = () => location.hash.slice(1).split('/')[1].toLowerCase() || '/';
+const getId = () => location.hash.slice(1).split('/')[2];
+
 const getItems = () => {
     const keys = Object.keys(localStorage);
     const wishlist = [];
@@ -82,6 +87,14 @@ const updateLikes = (items) => {
             item.check = true;
         }
     });
+};
+
+// get item from all list and return. Change trigger of wishlist
+
+const getTarget = (uuid, state) => {
+    const target = data.all.find((tank) => tank.uuid === uuid);
+    target.check = state;
+    return target;
 };
 
 // get item from all atmems by id
@@ -171,6 +184,7 @@ const convertCostToCorrectCurrency = (uuid) => {
 // Open/close Shopping cart
 
 const openShoppingCart = () => {
+<<<<<<< HEAD
     if (!parseLSItem('user')) {
         addNotifyBlock();
     } else {
@@ -181,6 +195,14 @@ const openShoppingCart = () => {
         if (localStorage.getItem(`${getUserName()}-cart`)) {
             test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem(`${getUserName()}-cart`)));
         }
+=======
+    coverPlace.classList.remove('hidden');
+    document.body.classList.add('notScroll');
+    shoppingCart.classList.remove('hidden');
+    summShoppingList.textContent = convertSummToCorrectCurrency();
+    if (localStorage.getItem('userCart')) {
+        ShoppingCartBlock.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
+>>>>>>> Nikolay
     }
 };
 
@@ -217,9 +239,12 @@ const closeShoppingCartAndPay = () => {
 // close cart and open pay
 
 const openPay = () => {
-    shoppingCartItems.classList.add('hidden');
-    payBlock.classList.remove('hidden');
-    summPayPage.textContent = convertSummToCorrectCurrency();
+    const shoppingList = getAllShoppingListItems();
+    if (shoppingList.length > 0) {
+        shoppingCartItems.classList.add('hidden');
+        payBlock.classList.remove('hidden');
+        summPayPage.textContent = convertSummToCorrectCurrency();
+    }
 };
 
 // check contains item on shopping list
@@ -233,8 +258,9 @@ const checkItemContainsShoppingList = (uuid) => {
     return false;
 };
 
-// shipping cart Handler
+// change url to dateil/id
 
+<<<<<<< HEAD
 function shippingCartHandler(e) {
     if (e.target.classList.contains('deleteItemCart')) {
         const { item } = e.target.dataset;
@@ -256,11 +282,23 @@ function shippingCartHandler(e) {
             document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
             summShoppingList.textContent = convertSummToCorrectCurrency();
             document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
+=======
+const gridHandler = (event) => {
+    if (window.location.hash === '#/') {
+        if (!event.target.classList.contains('checkbox')
+        && !event.target.closest('div').classList.contains('add-to-cart')) {
+            const { id } = (event.target.closest('article')).dataset;
+            window.location.hash = `/detail/${id}`;
+>>>>>>> Nikolay
         }
     }
-}
+};
+
+// shipping cart Handler
 
 export {
+    parseLocation,
+    getId,
     checkShippingCartCount,
     getKeyByValue,
     changeCountOfWishItems,
@@ -274,10 +312,19 @@ export {
     closeShoppingCart,
     openPay,
     closeShoppingCartAndPay,
-    shippingCartHandler,
     getItemById,
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
+<<<<<<< HEAD
     getUserName,
+=======
+    gridHandler,
+    getTarget,
+    deleteItemFromShoppingList,
+    changeDataShoppingList,
+    convertSummToCorrectCurrency,
+    convertCostToCorrectCurrency,
+    getAllShoppingListItems,
+>>>>>>> Nikolay
 };

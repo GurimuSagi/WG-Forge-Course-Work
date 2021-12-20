@@ -1,8 +1,16 @@
 import { userInterface } from '../modules/modal';
+<<<<<<< HEAD
 import { countOfWish } from './helper/constants';
 import { checkShippingCartCount, getItems, updateLikes } from './helper/core';
+=======
+import { countOfWish, ShoppingCartBlock } from './helper/constants';
+import {
+    checkShippingCartCount, getAllShoppingListItems, getItems, updateLikes,
+} from './helper/core';
+>>>>>>> Nikolay
 import router from './router/router';
 import data from './helper/database/data';
+import { ShoppingCart } from './router/components';
 
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
@@ -38,9 +46,12 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
+<<<<<<< HEAD
             if (!localStorage.getItem(`${userData.username}-cart`)) {
                 localStorage.setItem(`${userData.username}-cart`, JSON.stringify([]));
             }
+=======
+>>>>>>> Nikolay
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         } else if (userData.detail === 'Invalid token.') {
@@ -54,6 +65,7 @@ const auth = async () => {
 };
 
 const login = async (input, path, form) => {
+    const userList = getAllShoppingListItems();
     const response = await fetch(` http://165.22.21.103/api/${path}/`, {
         method: 'POST',
         body: input,
@@ -66,6 +78,11 @@ const login = async (input, path, form) => {
         auth();
     } else {
         handlingResponse(form, res);
+    }
+    if (userList === null) {
+        localStorage.setItem('userCart', JSON.stringify([]));
+    } else {
+        localStorage.setItem('userCart', JSON.stringify(userList));
     }
 };
 
@@ -87,6 +104,10 @@ const logout = async () => {
     window.location.hash = '#/';
     userInterface(authType);
     updateLikes(data.all);
+<<<<<<< HEAD
+=======
+    ShoppingCartBlock.innerHTML = ShoppingCart([]);
+>>>>>>> Nikolay
     checkShippingCartCount();
     router();
 };

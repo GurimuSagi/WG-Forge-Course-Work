@@ -6,9 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wargaming</title>
+    <!-- <link rel="icon" type="image/x-icon" href="/src/assets/favicon.ico"> -->
     <link rel="preload" as="image" href="./style/WGLogo.png">
     <link rel="stylesheet" href="./style/preloader.css">
     <link rel="stylesheet" href="./style/components/shopping-cart.scss">
+    <link rel="shortcut icon" href="/src/assets/favicon.ico" type="image/x-icon"/>
     <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
 </head>
 
@@ -88,7 +90,7 @@
     </main>
     <div id="shoppingCart" class="shopinngCart hidden">
         <div class="shopping-cart_wrapper" id="shopping_cart_items">
-            <div class="card_block" id="test">
+            <div class="card_block" id="shopList">
                 
             </div>
             <div class="controleBlock">
@@ -109,7 +111,7 @@
 
             <div class="card_1">
                 <form action="#!" id="payForm">
-                 <input class="card-number" type="number" placeholder="Card Number" id="card_number"  required>
+                 <input class="card-number" type="number" placeholder="Card Number" id="card_number" required>
                  <!-- <input id="card_number" type="tel" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"> -->
                  <br>
                  <div class="date_block">
@@ -118,14 +120,11 @@
                 </div>
                  <input class="card-name" type="text" placeholder="Сardholder Name" id="card_name" required> 
              </div>
-
-
-
              <div class="card_2">
                  <input class="cvc" type="number" minlength="3" placeholder="CVC" id="cvc_field" required>
              </div>
              <div class="button-pay">
-                 <button class="button-donate" type="submit" id="btn_pay">Оплатить</button>
+                 <button class="button-donate" type="button" id="btn_pay">Оплатить</button>
              </div>
                 </form>
         </div>
@@ -136,7 +135,6 @@
     </div>
     <div id="shoppingCart" class="shopinngCart hidden"></div>
     <div id="cover" class="cover hidden"></div>
-    <!-- <div id="pay" class="pay"></div> -->
 </body>
 
 </html>

@@ -1,7 +1,10 @@
 // eslint-disable-next-line import/no-cycle
-import { loadTankIcons } from '../helper/core';
+
 // eslint-disable-next-line import/no-cycle
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
+// eslint-disable-next-line import/named
+import { loadTankIcons } from '../helper/core';
+// import { loadTankIcons } from '../helper/core';
 
 const HomeComponent = (arr) => {
     const homeComponent = arr.map((i) => {
@@ -96,8 +99,7 @@ const DetailComponent = (tank) => `
         <div class="line_top"></div>
             <div class="price-discount">
             ${calcExchangeRate(tank.price, tank.discount)}
-            </div>
-            <button class="detail_purchase_btn">purchase</button>
+            <button class="detail_purchase_btn" data-id="${tank.uuid}">purchase</button>
         </div>
         <div class="slider"></div>
         </div>

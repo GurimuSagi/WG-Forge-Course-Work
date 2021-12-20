@@ -6,6 +6,7 @@ import {
     PayShoppingCartBtn,
     shoppingCart,
     BackToShoppingListBnt,
+    grid,
 } from '../helper/constants';
 
 import {
@@ -13,9 +14,10 @@ import {
     openPay,
     openShoppingCart,
     closeShoppingCartAndPay,
-    shippingCartHandler,
     backToShoppingCart,
 } from '../helper/core';
+import { gridHandler, shoppingCartHandler } from '../helper/handlers';
+
 import router from '../router/router';
 
 const premium = document.querySelector('.premium');
@@ -32,5 +34,6 @@ coverPlace.addEventListener('click', closeShoppingCartAndPay);
 closeShoppingCartBtn.addEventListener('click', closeShoppingCart);
 closePayBtn.addEventListener('click', closeShoppingCartAndPay);
 PayShoppingCartBtn.addEventListener('click', openPay);
-shoppingCart.addEventListener('click', shippingCartHandler);
+shoppingCart.addEventListener('click', shoppingCartHandler);
 BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
+grid.addEventListener('click', gridHandler);
