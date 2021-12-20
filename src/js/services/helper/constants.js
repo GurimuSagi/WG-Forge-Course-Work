@@ -10,7 +10,7 @@ const shoppingCartItems = document.getElementById('shopping_cart_items');
 const payBlock = document.getElementById('pay_block');
 const summShoppingList = document.getElementById('summCostShoppingList');
 const summPayPage = document.getElementById('summPayPage');
-const test = document.getElementById('test');
+const ShoppingCartBlock = document.getElementById('shopList');
 const BackToShoppingListBnt = document.getElementById('BackToShoppingListBnt');
 const shoppingCattAll = document.querySelector('.shopinngCart_item');
 const cardNumber = document.getElementById('card_number');
@@ -38,7 +38,7 @@ export {
     closePayBtn,
     shoppingCartItems,
     payBlock,
-    test,
+    ShoppingCartBlock,
     shoppingCattAll,
     summShoppingList,
     summPayPage,

@@ -97,13 +97,11 @@ const WishComponent = (wishlist) => {
 const DetailComponent = (tank) => `
         <h2 class="detail_name">${tank.title}</h2>
         <div class="line_top"></div>
-
-
         <div class="top_block" data-id="tank.tank_id">
         <div class="detail_top">
         <div class="line_top"></div>
             ${calcExchangeRate(tank.price, tank.discount)}
-            <button class="detail_purchase_btn">purchase</button>
+            <button class="detail_purchase_btn" data-id="${tank.uuid}">purchase</button>
         </div>
         <div class="slider"></div>
         </div>

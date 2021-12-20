@@ -1,6 +1,6 @@
 import {
     buttonAll, buttonGold, buttonPremium, buttonVehicles,
-} from '../helper/constants';
+} from './constants';
 // eslint-disable-next-line import/no-cycle
 import router from '../router/router';
 

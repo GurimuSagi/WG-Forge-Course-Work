@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import stateOfChecked from '../app/filter';
+import stateOfChecked from './filter';
 import { calcExchangeRate } from '../exchangeRate';
 import { ShoppingCart } from '../router/components';
 import {
@@ -7,10 +7,11 @@ import {
     shoppingCart,
     shoppingCartItems,
     payBlock,
-    test,
     countOfShoppingCart,
     summShoppingList,
     summPayPage,
+    ShoppingCartBlock,
+
 } from './constants';
 import data from './database/data';
 
@@ -85,6 +86,14 @@ const updateLikes = (items) => {
             item.check = true;
         }
     });
+};
+
+// get item from all list and return. Change trigger of wishlist
+
+const getTarget = (uuid, state) => {
+    const target = data.all.find((tank) => tank.uuid === uuid);
+    target.check = state;
+    return target;
 };
 
 // get item from all atmems by id
@@ -179,7 +188,7 @@ const openShoppingCart = () => {
     shoppingCart.classList.remove('hidden');
     summShoppingList.textContent = convertSummToCorrectCurrency();
     if (localStorage.getItem('userCart')) {
-        test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
+        ShoppingCartBlock.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
     }
 };
 
@@ -216,9 +225,12 @@ const closeShoppingCartAndPay = () => {
 // close cart and open pay
 
 const openPay = () => {
-    shoppingCartItems.classList.add('hidden');
-    payBlock.classList.remove('hidden');
-    summPayPage.textContent = convertSummToCorrectCurrency();
+    const shoppingList = getAllShoppingListItems();
+    if (shoppingList.length > 0) {
+        shoppingCartItems.classList.add('hidden');
+        payBlock.classList.remove('hidden');
+        summPayPage.textContent = convertSummToCorrectCurrency();
+    }
 };
 
 // check contains item on shopping list
@@ -246,31 +258,6 @@ const gridHandler = (event) => {
 
 // shipping cart Handler
 
-function shippingCartHandler(e) {
-    if (e.target.classList.contains('deleteItemCart')) {
-        const { item } = e.target.dataset;
-        const newShoppingList = deleteItemFromShoppingList(item);
-        test.innerHTML = ShoppingCart(newShoppingList);
-        checkShippingCartCount();
-    } else if (e.target.classList.contains('plus')) {
-        const oldValue = Number(e.target.previousElementSibling.innerText);
-        const { uuid } = e.target.dataset;
-        changeDataShoppingList(uuid, 'count', oldValue + 1);
-        document.getElementById(`count-${uuid}`).innerText = String(oldValue + 1);
-        summShoppingList.textContent = convertSummToCorrectCurrency();
-        document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
-    } else if (e.target.classList.contains('minus')) {
-        const oldValue = e.target.nextElementSibling.innerText;
-        const { uuid } = e.target.dataset;
-        if (oldValue > 1) {
-            changeDataShoppingList(uuid, 'count', oldValue - 1);
-            document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
-            summShoppingList.textContent = convertSummToCorrectCurrency();
-            document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
-        }
-    }
-}
-
 export {
     parseLocation,
     getId,
@@ -287,10 +274,15 @@ export {
     closeShoppingCart,
     openPay,
     closeShoppingCartAndPay,
-    shippingCartHandler,
     getItemById,
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
     gridHandler,
+    getTarget,
+    deleteItemFromShoppingList,
+    changeDataShoppingList,
+    convertSummToCorrectCurrency,
+    convertCostToCorrectCurrency,
+    getAllShoppingListItems,
 };
