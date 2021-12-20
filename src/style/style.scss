@@ -17,6 +17,14 @@ body {
     font-family: "Tahoma";
 }
 
+.logoWG {
+    align-self:flex-start;
+    justify-self: flex-start;
+    height: 21px;
+    width: 21px;
+    opacity: 0.6;
+}
+
 main {
     display: flex;
     flex-direction: column;
@@ -83,14 +91,18 @@ main {
 
 .premium {
     cursor: pointer;
+    opacity: 0.7;
 }
 .premium:hover {
-    opacity: 0.6;
+    opacity: 1;
 }
 
 article:hover {
     cursor: pointer;
-    opacity: 0.7;
+    opacity: 1;
+    .bg {
+        opacity: 0.5;
+    }
 }
 
 a {
@@ -99,7 +111,7 @@ a {
     color: rgba(255, 255, 255, 0.411);
     &:hover {
         text-decoration: underline;
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
     }
 }
 
