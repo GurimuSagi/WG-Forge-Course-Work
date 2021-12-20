@@ -1,6 +1,7 @@
 /* eslint-disable import/no-cycle */
 import stateOfChecked from './filter';
 import { calcExchangeRate } from '../exchangeRate';
+// eslint-disable-next-line import/named
 import { ShoppingCart } from '../router/components';
 import {
     coverPlace,
@@ -184,7 +185,6 @@ const convertCostToCorrectCurrency = (uuid) => {
 // Open/close Shopping cart
 
 const openShoppingCart = () => {
-<<<<<<< HEAD
     if (!parseLSItem('user')) {
         addNotifyBlock();
     } else {
@@ -193,16 +193,8 @@ const openShoppingCart = () => {
         shoppingCart.classList.remove('hidden');
         summShoppingList.textContent = convertSummToCorrectCurrency();
         if (localStorage.getItem(`${getUserName()}-cart`)) {
-            test.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem(`${getUserName()}-cart`)));
+            ShoppingCartBlock.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem(`${getUserName()}-cart`)));
         }
-=======
-    coverPlace.classList.remove('hidden');
-    document.body.classList.add('notScroll');
-    shoppingCart.classList.remove('hidden');
-    summShoppingList.textContent = convertSummToCorrectCurrency();
-    if (localStorage.getItem('userCart')) {
-        ShoppingCartBlock.innerHTML = ShoppingCart(JSON.parse(localStorage.getItem('userCart')));
->>>>>>> Nikolay
     }
 };
 
@@ -258,42 +250,6 @@ const checkItemContainsShoppingList = (uuid) => {
     return false;
 };
 
-// change url to dateil/id
-
-<<<<<<< HEAD
-function shippingCartHandler(e) {
-    if (e.target.classList.contains('deleteItemCart')) {
-        const { item } = e.target.dataset;
-        const newShoppingList = deleteItemFromShoppingList(item);
-        test.innerHTML = ShoppingCart(newShoppingList);
-        checkShippingCartCount();
-    } else if (e.target.classList.contains('plus')) {
-        const oldValue = Number(e.target.previousElementSibling.innerText);
-        const { uuid } = e.target.dataset;
-        changeDataShoppingList(uuid, 'count', oldValue + 1);
-        document.getElementById(`count-${uuid}`).innerText = String(oldValue + 1);
-        summShoppingList.textContent = convertSummToCorrectCurrency();
-        document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
-    } else if (e.target.classList.contains('minus')) {
-        const oldValue = e.target.nextElementSibling.innerText;
-        const { uuid } = e.target.dataset;
-        if (oldValue > 1) {
-            changeDataShoppingList(uuid, 'count', oldValue - 1);
-            document.getElementById(`count-${uuid}`).innerText = String(oldValue - 1);
-            summShoppingList.textContent = convertSummToCorrectCurrency();
-            document.getElementById(`sum-${uuid}`).innerText = convertCostToCorrectCurrency(uuid);
-=======
-const gridHandler = (event) => {
-    if (window.location.hash === '#/') {
-        if (!event.target.classList.contains('checkbox')
-        && !event.target.closest('div').classList.contains('add-to-cart')) {
-            const { id } = (event.target.closest('article')).dataset;
-            window.location.hash = `/detail/${id}`;
->>>>>>> Nikolay
-        }
-    }
-};
-
 // shipping cart Handler
 
 export {
@@ -316,15 +272,10 @@ export {
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
-<<<<<<< HEAD
-    getUserName,
-=======
-    gridHandler,
     getTarget,
     deleteItemFromShoppingList,
     changeDataShoppingList,
     convertSummToCorrectCurrency,
     convertCostToCorrectCurrency,
     getAllShoppingListItems,
->>>>>>> Nikolay
 };

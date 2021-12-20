@@ -1,15 +1,12 @@
 import { userInterface } from '../modules/modal';
-<<<<<<< HEAD
-import { countOfWish } from './helper/constants';
-import { checkShippingCartCount, getItems, updateLikes } from './helper/core';
-=======
 import { countOfWish, ShoppingCartBlock } from './helper/constants';
 import {
     checkShippingCartCount, getAllShoppingListItems, getItems, updateLikes,
+// eslint-disable-next-line import/named
 } from './helper/core';
->>>>>>> Nikolay
 import router from './router/router';
 import data from './helper/database/data';
+// eslint-disable-next-line import/named
 import { ShoppingCart } from './router/components';
 
 const span = document.createElement('span');
@@ -46,12 +43,9 @@ const auth = async () => {
         userData = await response.json();
         if (userData.id) {
             localStorage.setItem('user', JSON.stringify(userData));
-<<<<<<< HEAD
             if (!localStorage.getItem(`${userData.username}-cart`)) {
                 localStorage.setItem(`${userData.username}-cart`, JSON.stringify([]));
             }
-=======
->>>>>>> Nikolay
             countOfWish.textContent = `(${getItems().length})`;
             await userInterface(authType, userData);
         } else if (userData.detail === 'Invalid token.') {
@@ -104,10 +98,7 @@ const logout = async () => {
     window.location.hash = '#/';
     userInterface(authType);
     updateLikes(data.all);
-<<<<<<< HEAD
-=======
     ShoppingCartBlock.innerHTML = ShoppingCart([]);
->>>>>>> Nikolay
     checkShippingCartCount();
     router();
 };
