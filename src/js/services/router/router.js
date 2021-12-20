@@ -37,7 +37,7 @@ const router = () => {
                 document.body.classList.remove('loaded_hiding');
             }, 1000);
         }
-    } else if (path === '/detail') {
+    } else if (path === 'detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
         createSlider(detailTank);
