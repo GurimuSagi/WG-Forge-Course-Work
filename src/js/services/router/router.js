@@ -8,6 +8,7 @@ import {
     getItems, getKeyByValue, parseLSItem, addNotifyBlock,
 } from '../helper/core';
 import createSlider from '../../modules/slider';
+import IntersectObserver from '../app/observers';
 
 const grid = document.querySelector('.grid');
 
@@ -15,16 +16,6 @@ window.location.hash = '#/';
 let id;
 
 const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
-
-const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('load-img');
-            entry.target.src = entry.target.dataset.src;
-            obs.unobserve(entry.target);
-        }
-    });
-});
 
 const router = () => {
     const detailTank = data.all.find((tank) => tank.uuid === id);
@@ -37,8 +28,15 @@ const router = () => {
         grid.innerHTML = component(renderData);
         const el = document.querySelectorAll('.bg');
         el.forEach((a) => {
-            observer.observe(a);
+            IntersectObserver.observe(a);
         });
+        if (grid.children.length > 0 && !document.body.classList.contains('loaded')) {
+            document.body.classList.add('loaded_hiding');
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+                document.body.classList.remove('loaded_hiding');
+            }, 1000);
+        }
     } else if (path === '/detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';

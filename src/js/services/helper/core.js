@@ -212,6 +212,7 @@ const closeShoppingCartAndPay = () => {
     shoppingCart.classList.add('hidden');
     shoppingCartItems.classList.remove('hidden');
     payBlock.classList.add('hidden');
+    document.body.style.marginRight = '0px';
 };
 
 // close cart and open pay
