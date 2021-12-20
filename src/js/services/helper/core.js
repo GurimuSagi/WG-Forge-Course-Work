@@ -91,6 +91,14 @@ const getItemById = (id) => {
     return target;
 };
 
+// get item from all list and return. Change trigger of wishlist
+
+const getTarget = (uuid, state) => {
+    const target = data.all.find((tank) => tank.uuid === uuid);
+    target.check = state;
+    return target;
+};
+
 // get all items from local storage
 
 const getAllShoppingListItems = () => JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
@@ -280,4 +288,9 @@ export {
     backToShoppingCart,
     loadTankIcons,
     getUserName,
+    changeDataShoppingList,
+    convertCostToCorrectCurrency,
+    convertSummToCorrectCurrency,
+    deleteItemFromShoppingList,
+    getTarget,
 };
