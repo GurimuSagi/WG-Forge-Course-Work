@@ -20,10 +20,8 @@ const config = {
 const callback = () => {
     if ((document.documentElement.clientHeight === document.documentElement.scrollHeight) || document.body.classList.contains('notScroll')) {
         document.body.style.marginRight = `${scroll}px`;
-        console.log('1');
     } else {
         document.body.style.marginRight = '0px';
-        console.log('2');
     }
 };
 
