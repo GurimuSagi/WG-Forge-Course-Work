@@ -7,6 +7,10 @@ const routes = [
         component: HomeComponent,
     },
     {
+        path: 'all',
+        component: HomeComponent,
+    },
+    {
         path: 'wishlist',
         component: WishComponent,
     },
@@ -16,4 +20,10 @@ const routes = [
     },
 ];
 
-export default routes;
+const addRoutes = (category) => {
+    routes.push({
+        path: category,
+        component: HomeComponent,
+    });
+};
+export { routes, addRoutes };

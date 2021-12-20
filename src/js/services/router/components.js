@@ -3,6 +3,10 @@ import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
 
 const HomeComponent = (arr) => {
+    // console.log(arr.length);
+    if (!arr.length) {
+        return;
+    }
     const homeComponent = arr.map((i) => {
         let state;
         if (i.check) {
@@ -29,6 +33,7 @@ const HomeComponent = (arr) => {
             </article>
         `;
     });
+    // eslint-disable-next-line consistent-return
     return homeComponent.join('');
 };
 
