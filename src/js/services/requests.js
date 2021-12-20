@@ -15,11 +15,14 @@ let authType = 'loggedIn';
 
 const handlingResponse = (form, response) => {
     const loginBtn = form.querySelector('.sign-in-btn');
-
     if (response.non_field_errors && response.non_field_errors[0] === 'Unable to log in with provided credentials.') {
         span.innerText = 'Не верные имя пользователя или пароль';
     } else if (response.username && response.username[0] === 'A user with that username already exists.') {
         span.innerText = 'Данное имя пользователя уже занято';
+    } else if (response.username && response.username[0] === 'Enter a valid username. This value may contain only letters, numbers, and @/./+/-/_ characters.') {
+        span.innerText = 'Имя пользователя может содержать только буквы, цифры, и символы @/./+/-/_ ';
+    } else if (response.email && response.email[0] === 'Enter a valid email address.') {
+        span.innerText = 'Email не валидный';
     } else {
         span.innerText = 'Вы успешно зарегистрировались, войдите пожалуйста в свою учетную запись';
     }

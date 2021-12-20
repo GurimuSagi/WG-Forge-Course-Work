@@ -161,15 +161,9 @@
             width: auto;
         }
     }
-    // article:nth-child(10) {
-    //     grid-column: span 2;
-    //     aspect-ratio: 0;
-    //     img {
-    //         top: 0;
-    //     }
-    // }
     .emptyWL {
-        font-size: 100px;
+        grid-column: span 4;
+        font-size: 5vw;
         color: white;
     }
 }
