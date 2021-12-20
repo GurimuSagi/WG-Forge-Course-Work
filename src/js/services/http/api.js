@@ -27,7 +27,6 @@ const getData = async () => {
                     data[item.name].push(prod);
                 });
             });
-            console.log(data);
         });
 
     updateLikes(data.all);
