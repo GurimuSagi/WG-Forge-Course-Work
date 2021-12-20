@@ -1,0 +1,374 @@
+$titleTextSize: 2em;
+$baseTextSize: 1.5em;
+$baseFontWeight: bold;
+$textColor: rgb(155, 155, 155);
+
+
+
+.shopinngCart::-webkit-scrollbar {
+    width: 0;
+  }
+
+  .card-number.valid {
+      border: 2px solid green;
+  }
+
+  .card-number.no_valid {
+    border: 2px solid red;
+  }
+
+//   .card-number:valid {
+//     border: 2px solid green;
+//   }
+//   .card-number:invalid {
+//     border: 2px solid red;
+//   }
+
+.shopinngCart {
+    position: fixed;
+    z-index: 1000;
+    width: 1100px;
+    height: 600px;
+    background-color: rgba(255, 255, 255, 0.13);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    top: calc(50vh - 300px);
+    left: calc(50vw - 550px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    button {
+        cursor: pointer;
+    }
+}
+
+.shopping-cart_wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hidden {
+    display: none;
+}
+
+body.notScroll {
+    overflow: hidden;
+}
+
+.cover.hidden {
+    display: none;
+}
+
+.cover {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 200;
+}
+
+.shopinngCart_item {
+    display: flex;
+    height: calc(100vh/5);
+    align-items:center;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+}
+
+.shopinngCart_item-image {
+    width: 30%;
+    img {
+        width: 20em;
+    }
+}
+
+.shopinngCart_item-title {
+    width: 30%;
+    h3 {
+        font-size: $titleTextSize;
+    }
+}
+
+.shopinngCart_item-cost {
+    text-align: center;
+    width: 10%;
+    span {
+        font-size: $baseTextSize;
+        font-weight: $baseFontWeight;
+    }
+}
+
+.shopinngCart_item-count {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 10%;
+    span {
+        font-size: $baseTextSize;
+        font-weight: $baseFontWeight;
+    }
+}
+
+.minus {
+
+}
+
+.plus {
+
+}
+.btn_plus_minus {
+    background: #282727;
+    outline: none;
+    border-radius: 50%;
+    border: none;
+    color: rgb(155, 155, 155);
+    /* width: 3em; */
+    /* height: 3em; */
+    font-size: 2em;
+    text-align: center;
+}
+
+.shopinngCart_item-summ {
+    text-align: center;
+    font-size: $baseTextSize;
+    width: 10%;
+    font-weight: $baseFontWeight;
+}
+
+.shopinngCart_item-delete {
+    text-align: center;
+    width: 10%;
+    button {
+        font-size: $baseTextSize;
+        font-weight: $baseFontWeight;
+        color: $textColor;
+        background: none;
+        outline: none;
+        border: none;
+    }
+}
+
+.card_block {
+
+}
+
+.controleBlock {
+    bottom: -1px;
+    left: 0;
+    height: calc(100vh/20);
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    background-color: #282727;
+    justify-content: space-between;
+    .money_block {
+        margin-right: 99px;
+    }
+    span {
+        color: $textColor;
+    }
+    .close_btn {
+        margin-left: 10px;
+    }
+    .pay_btn {
+        margin-left: 10px;
+    }
+    .pay_btn:hover {
+        color: green;
+        border: 1px solid green;
+    }
+    .close_btn:hover {
+        color: red;
+        border: 1px solid red;
+    }
+    button {
+        cursor: pointer;
+        background: none;
+        border: 1px solid $textColor;
+        border-radius: 5px;
+        color: $textColor;
+    }
+
+    div {
+        height: calc(100vh/20);
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+// pay cards block
+
+// .cardblock {
+//     position: relative;
+// }
+
+.pay_wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    height: 100%;
+}
+.pay-top_wrapper {
+    height: 20%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    button {
+        width: 130px;
+        height: 40px;
+        background-color: chocolate;
+        border: none;
+        // border-radius: 50px;
+        margin: 15px;   
+    }
+}
+
+.cards_block {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.info-pay_block {
+    border-top: 1px solid rgba(0,0,0,0.3);
+    height: 10%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7em;
+    color: $textColor;
+    p {
+        margin-right: 5%;
+    }
+}
+
+.card_1 {
+    width: 377px;
+    height: 225px;
+    background-color: #DCDCDC;
+    // background-image: url('/background/26.jpg');
+    border-radius: 11px;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    z-index: 1;
+    form {
+        margin-left: 10px;
+    }
+    input {
+        color: $textColor;
+        background: white;
+        font-size: 25px;
+        border: none;
+        outline: none;
+        text-align: center;
+    }
+}
+
+.date_block {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}
+
+.card_2 {
+    width: 356px;
+    height: 217px;
+    background-color: gray;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 12px;
+    display: flex;
+   
+    align-items: center;
+    position: absolute;
+    right: 25%;
+    top: 30%;
+ }
+ .card-number {
+     margin-top: 25px;
+    //  margin-left: 26px;
+     margin-bottom: 8px;
+     width: 306px;
+     height: 39px;
+
+ }
+ .card-mounth {
+     width: 80px;
+     height: 39px;
+    margin-right: 10px;
+    &.valid {
+        border: 1px solid green;
+    }
+ }
+ .card-year {
+     width: 80px;
+     height: 39px;
+     &.valid {
+        border: 1px solid green;
+    }
+ }
+ .card-name {
+    width: 306px;
+    height: 39px;
+//  margin-left: 26px;
+    margin-top: 8px;
+ }
+
+ #cvc_field {
+    width: 75px;
+    height: 40px;
+    position: absolute;
+    top: 80px;
+    right: 40px;
+ }
+ ::placeholder {
+    font-size: large;
+    text-align: center;
+ }
+ input.cvc{
+    font-size: large;
+    outline: none;
+ }
+ input::-webkit-outer-spin-button,
+ input::-webkit-inner-spin-button {
+ -webkit-appearance: none;
+ margin: 0; 
+ }
+
+ input[type=number] {
+ -moz-appearance:textfield; 
+ }
+
+ .button-pay {
+    width: 150px;
+    height: 40px;
+    background-color: chocolate;
+    border: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+    color: #000000;
+    cursor: pointer;
+    left: 43%;
+    top: 85%;
+    position: absolute;
+    button {
+        background: none;
+        border: none;
+        width: 100%;
+        height: 100%;
+    }
+ }

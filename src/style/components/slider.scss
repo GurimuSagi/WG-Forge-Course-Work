@@ -1,0 +1,60 @@
+
+.main-slider-btn{
+    position:relative;
+    height: 90%;
+}
+.main-prev-btn {
+    justify-self: flex-start;
+}
+.main-next-btn {
+    justify-self: flex-end;
+}
+.slider {
+    position: relative;
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15%;
+    margin-bottom: 10%;
+    .detail-slider {
+        position: absolute;
+        overflow: hidden;
+        width:87%;
+        margin-left: 6%;
+    }
+    .main-slider-btn {
+        z-index: 1;
+    }
+    .slideInLeft{
+        animation-duration: 2s;
+        animation-name: toleft;
+    }
+    .slideInRight{
+        animation-duration: 2s;
+        animation-name: toright;
+    }
+    .hide-slide {
+        opacity: 0;
+    }
+    @keyframes toleft {
+        0%   { 
+            opacity: 0;
+            transform: translateX(50%);
+        }
+        100%  { 
+            opacity: 1;
+            transform: translateX(0%);
+        }
+    }
+    @keyframes toright {
+        0%   { 
+            opacity: 0;
+            transform: translateX(-50%);
+        }
+        100%  { 
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}

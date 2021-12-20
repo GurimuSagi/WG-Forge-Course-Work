@@ -1,0 +1,116 @@
+section {
+    padding-top: 3%;
+    display: flex;
+//         display: flex;
+//         width: 100%;
+    flex-direction: column;
+    .premium-face-wrap{
+        display: flex;
+        justify-content: space-between;
+    }
+    h2 {
+        color: rgb(184, 179, 179);
+        font-size: 250%;
+        text-transform: uppercase;
+    }
+    h3{
+        color: rgb(184, 179, 179);
+    }
+    p {
+        color: rgb(184, 179, 179);
+    }
+    .imgMain {
+        width: 40%;
+        height: 40%;
+        min-width: 250px;
+        max-width: 400px;
+        padding-left: 10px;
+    }
+    .premium-images {
+        width: 100%;
+        .imgWithSlider{
+            padding-top: 3%;
+            display: flex;
+            justify-content: center;
+        }
+        .leftButton {
+            width: 5%;
+            margin-left:5%;
+            margin-right:5%;
+        }
+        .rightButton {
+            width: 5%;
+            margin-left:5%;
+            margin-right:5%;
+        }
+        .imgBig {
+            width: 40%;
+            height: 40%;
+            min-width: 250px;
+            max-width: 400px;
+            padding-left: 10px;
+        }
+        .slider {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5%;
+            img {
+                width: 4rem;
+                height: 4rem;
+            }
+        }
+        //button:hover{
+           //наведение - анимация кнопки(выделение)
+        //}
+        //button:active{
+            //нажатие - смена слайда
+        //}
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    section{
+        h2{
+            font-size: 185%;
+        }
+        hr{
+            width: 100%;
+        }
+        .premium-face-wrap{
+            flex-direction: column;
+        }
+        .premium-details {
+            padding-top: 10px;
+            p{
+                font-size: 20px;
+            }
+        }
+        .premium-purchase-panel{
+            display: flex;
+            justify-content: end;
+            align-items: flex-end;
+            overflow: hidden;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: rgb(155, 155, 155);
+            background-color: #171717;
+            p{
+                width: 50%;
+                text-align: center;
+            }
+            a {
+                text-align: -webkit-center;
+                padding: 0;
+                width: 50%;
+                background-color: orangered;
+            }
+        }
+        img {
+            width: 100%;
+            padding-left: 0;
+            align-self: center;
+        }
+    }
+}

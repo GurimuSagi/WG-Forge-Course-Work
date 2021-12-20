@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wargaming</title>
+    <link rel="preload" as="image" href="./style/WGLogo.png">
+    <link rel="stylesheet" href="./style/preloader.css">
+    <link rel="stylesheet" href="./style/components/shopping-cart.scss">
+    <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="preloader">
+        <img src="./style/WGLogo.png" class="preloader__image"></object>
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            document.body.classList.add('loaded_hiding');
+            window.setTimeout(function () {
+                document.body.classList.add('loaded');
+                document.body.classList.remove('loaded_hiding');
+            }, 1000);
+        })
+    </script>
+    <header>
+        <h1 class="premium"><i class="fas fa-radiation-alt fa-2x"></i><span class="headImg">premium shop</span></a></h1>
+        <nav class="nav-menu">
+            <a href="#/wishlist">
+                <span class="fas fa-heart"></span>
+                <span>Wishlist</span>
+                <span id="countOfWish"></span>
+            </a>
+            <a id="shopping">
+                <span class="fas fa-cart-plus"></span>
+                <span>Shopping cart</span>
+                <span id="countOfShoppingCart"></span>
+            </a>
+            <div data-modal>
+                <span id="logInSignIn">Login or Create account</span>
+                <span></span>
+                <span class="fas fa-sign-in-alt"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <nav>
+            <img class="logo" src="assets/images/wot.png" alt="">
+            <div class="item-nav">
+                <input type="checkbox" class="checkBox" id="checkAll">
+                <label for="checkAll">all</label>
+                <input type="checkbox" class="checkBox" id="checkVehicles">
+                <label for="checkVehicles">vehicles</label>
+                <input type="checkbox" class="checkBox" id="checkGold">
+                <label for="checkGold">gold</label>
+                <input type="checkbox" class="checkBox" id="checkPremium">
+                <label for="checkPremium">premium account</label>
+            </div>
+        </nav>
+        <div class="popup_dialog hidden">
+            <form id="login-form">
+                <h3>Login</h3>
+                <input type="text" name="username" required placeholder="username">
+                <input type="password" name="password" required placeholder="password">
+                <button class="sign-in-btn" type="submit">Login</button>
+                <span>or</span>
+                <button class="sign-in-menu-btn">Sign Up Here</button>
+            </form>
+            <form id="sign-in-form" class="hidden">
+                <h3>Sign Up</h3>
+                <input type="text" name="username" required placeholder="username">
+                <input type="email" name="email" required placeholder="email">
+                <input type="password" name="password" required placeholder="password">
+                <button class="sign-in-btn" type="submit">Sign Up</button>
+                <span>or</span>
+                <button class="sign-in-menu-btn hidden">Log in here</button>
+            </form>
+            <form id="logout-form" class="hidden">
+                <h3 class="username"></h3>
+                <button class="sign-in-btn" type="submit">Logout</button>
+            </form>
+        </div>
+        <div class="grid"></div>
+        <div class="show-more-items"></div>
+    </main>
+    <div id="shoppingCart" class="shopinngCart hidden">
+        <div class="shopping-cart_wrapper" id="shopping_cart_items">
+            <div class="card_block" id="test">
+                
+            </div>
+            <div class="controleBlock">
+            <button class="close_btn" id="closeShoppingCartBnt">Закрыть</button>
+            <div class="money_block">
+                <span>Сумма: <span id="summCostShoppingList"></span></span>
+                <button class="pay_btn" id="PayShoppingCartBnt">Оплатить</button>
+            </div>
+        </div>
+    </div>
+    <div class="pay_wrapper hidden" id="pay_block">
+        <div class="pay-top_wrapper">
+            <button class="close_btn" id="BackToShoppingListBnt">Вернуться</button>
+            <button id="closePayBtn">Закрыть</button>
+        </div>
+        <div class="cards_block">
+
+
+            <div class="card_1">
+                <form action="#!" id="payForm">
+                 <input class="card-number" type="number" placeholder="Card Number" id="card_number"  required>
+                 <!-- <input id="card_number" type="tel" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"> -->
+                 <br>
+                 <div class="date_block">
+                    <input class="card-mounth" type="number" min="1" max="12" placeholder="MM" id="card_mounth" required>
+                    <input class="card-year" type="number"  min="21"  placeholder="YY" id="card_year" required>   
+                </div>
+                 <input class="card-name" type="text" placeholder="Сardholder Name" id="card_name" required> 
+             </div>
+
+
+
+             <div class="card_2">
+                 <input class="cvc" type="number" minlength="3" placeholder="CVC" id="cvc_field" required>
+             </div>
+             <div class="button-pay">
+                 <button class="button-donate" type="submit" id="btn_pay">Оплатить</button>
+             </div>
+                </form>
+        </div>
+        <div class="info-pay_block">
+            <p>Сумма заказа: <span id="summPayPage"></span></p>
+        </div>
+    </div>
+    </div>
+    <div id="shoppingCart" class="shopinngCart hidden"></div>
+    <div id="cover" class="cover hidden"></div>
+    <!-- <div id="pay" class="pay"></div> -->
+</body>
+
+</html>
+

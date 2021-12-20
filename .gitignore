@@ -1,0 +1,15 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+Premium_Shop_psd
+temp
+# local env files
+*.local
+
+# Log files
+npm-debug.log*
+
+# Editor directories and files
+.vscode
+.sass-cache
