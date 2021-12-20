@@ -15,6 +15,7 @@ import {
     deleteItemFromShoppingList,
     getItems,
     getTarget,
+    getUserName,
     parseLSItem,
 
 } from './core';
@@ -30,14 +31,14 @@ const gridHandler = (event) => {
     if (event.target.classList.contains('checkbox')) {
         if (!parseLSItem('user')) {
             addNotifyBlock(event.target);
-        } else if (event.target.checked && parseLSItem('user')) {
+        } else if (event.target.checked) {
             const target = getTarget(id, true);
             addToLocalStorage(id, target);
             countOfWish.textContent = `(${getItems().length})`;
-        } else if (!event.target.checked && parseLSItem('user')) {
+        } else if (!event.target.checked) {
             const target = getTarget(id, false);
             addToLocalStorage(id, target);
-            deleteFromLocalStorage(`${parseLSItem('user').username}-cart-${id}`);
+            deleteFromLocalStorage(`${getUserName()}-wl-${id}`);
             countOfWish.textContent = `(${getItems().length})`;
             if (event.target.classList.contains('checkbox') && window.location.hash === '#/wishlist') {
                 router();
@@ -45,22 +46,26 @@ const gridHandler = (event) => {
         }
     } else if (event.target.closest('div').classList.contains('add-to-cart')
         || event.target.classList.contains('detail_purchase_btn')) {
-        let target;
-        if (id) {
-            target = data.all.find((tank) => tank.uuid === id);
+        if (!parseLSItem('user')) {
+            addNotifyBlock();
         } else {
-            const { uuid } = event.target.dataset;
-            target = data.all.find((tank) => tank.uuid === uuid);
-        }
-        target.count = 1;
-        if (localStorage.getItem('userCart')) {
-            if (!checkItemContainsShoppingList(id)) {
-                const cart = JSON.parse(localStorage.getItem('userCart'));
-                cart.push(target);
-                localStorage.setItem('userCart', JSON.stringify(cart));
+            let target;
+            if (id) {
+                target = data.all.find((tank) => tank.uuid === id);
+            } else {
+                const { uuid } = event.target.dataset;
+                target = data.all.find((tank) => tank.uuid === uuid);
             }
+            target.count = 1;
+            if (localStorage.getItem(`${getUserName()}-cart`)) {
+                if (!checkItemContainsShoppingList(id)) {
+                    const cart = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
+                    cart.push(target);
+                    localStorage.setItem(`${getUserName()}-cart`, JSON.stringify(cart));
+                }
+            }
+            checkShippingCartCount();
         }
-        checkShippingCartCount();
     } else if (window.location.hash === '#/') {
         if (!event.target.classList.contains('checkbox')
         && !event.target.closest('div').classList.contains('add-to-cart')) {
