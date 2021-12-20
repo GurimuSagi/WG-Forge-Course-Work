@@ -1,7 +1,7 @@
 import { ShoppingCart } from '../router/components';
 import router from '../router/router';
 import {
-    countOfWish, summShoppingList, ShoppingCartBlock,
+    countOfWish, ShoppingCartBlock, summShoppingList,
 } from './constants';
 import {
     addNotifyBlock,

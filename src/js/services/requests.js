@@ -1,8 +1,11 @@
 import { userInterface } from '../modules/modal';
-import { countOfWish } from './helper/constants';
-import { checkShippingCartCount, getItems, updateLikes } from './helper/core';
+import { countOfWish, ShoppingCartBlock } from './helper/constants';
+import {
+    checkShippingCartCount, getAllShoppingListItems, getItems, updateLikes,
+} from './helper/core';
 import router from './router/router';
 import data from './helper/database/data';
+import { ShoppingCart } from './router/components';
 
 const span = document.createElement('span');
 const signInBtns = document.querySelectorAll('.sign-in-btn');
@@ -54,6 +57,7 @@ const auth = async () => {
 };
 
 const login = async (input, path, form) => {
+    const userList = getAllShoppingListItems();
     const response = await fetch(` http://165.22.21.103/api/${path}/`, {
         method: 'POST',
         body: input,
@@ -66,6 +70,11 @@ const login = async (input, path, form) => {
         auth();
     } else {
         handlingResponse(form, res);
+    }
+    if (userList === null) {
+        localStorage.setItem('userCart', JSON.stringify([]));
+    } else {
+        localStorage.setItem('userCart', JSON.stringify(userList));
     }
 };
 
@@ -87,6 +96,7 @@ const logout = async () => {
     window.location.hash = '#/';
     userInterface(authType);
     updateLikes(data.all);
+    ShoppingCartBlock.innerHTML = ShoppingCart([]);
     checkShippingCartCount();
     router();
 };

@@ -162,7 +162,7 @@ body.notScroll {
     display: flex;
     align-items: center;
     width: 100%;
-    position: absolute;
+    position: sticky;
     background-color: #282727;
     justify-content: space-between;
     .money_block {
@@ -172,25 +172,34 @@ body.notScroll {
         color: $textColor;
     }
     .close_btn {
+        width: 130px;
+        height: 40px;
+        background-color: chocolate;
+        border: none;
+        font-family: "Tahoma";
+        font-size: 20px;
         margin-left: 10px;
+        color: black;
     }
     .pay_btn {
+        width: 130px;
+        height: 40px;
+        background-color: chocolate;
+        border: none;
+        font-family: "Tahoma";
+        font-size: 20px;
         margin-left: 10px;
+        color: black;
+
     }
-    .pay_btn:hover {
-        color: green;
-        border: 1px solid green;
-    }
-    .close_btn:hover {
-        color: red;
-        border: 1px solid red;
-    }
-    button {
+
+    button: {
         cursor: pointer;
-        background: none;
-        border: 1px solid $textColor;
-        border-radius: 5px;
-        color: $textColor;
+    }
+
+    button:hover {
+        cursor: pointer;
+        background-color: #ff9a04;
     }
 
     div {
@@ -199,13 +208,6 @@ body.notScroll {
         align-items: center;
     }
 }
-
-
-// pay cards block
-
-// .cardblock {
-//     position: relative;
-// }
 
 .pay_wrapper {
     display: flex;
@@ -221,14 +223,27 @@ body.notScroll {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
     button {
         width: 130px;
         height: 40px;
         background-color: chocolate;
         border: none;
-        // border-radius: 50px;
-        margin: 15px;   
+        margin: 15px;
+        font-family: "Tahoma";
+        font-size: 20px;
     }
+    button:hover {
+        background-color: #ff9a04;
+    }
+}
+
+#btn_pay {
+    font-size: 20px;
+    font-family: "Tahoma";
+}
+#btn_pay:hover {
+    background-color: #ff9a04;
 }
 
 .cards_block {
@@ -256,7 +271,9 @@ body.notScroll {
     width: 377px;
     height: 225px;
     background-color: #DCDCDC;
-    // background-image: url('/background/26.jpg');
+    background-image: url("/src/assets/background/26.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 11px;
     position: absolute;
     top: 10%;
@@ -272,6 +289,8 @@ body.notScroll {
         border: none;
         outline: none;
         text-align: center;
+        box-sizing: border-box;
+
     }
 }
 
@@ -295,14 +314,17 @@ body.notScroll {
     right: 25%;
     top: 30%;
  }
+
  .card-number {
      margin-top: 25px;
-    //  margin-left: 26px;
      margin-bottom: 8px;
      width: 306px;
      height: 39px;
-
  }
+ .card-number.novalid {
+    border: 2px solid red;
+ }
+
  .card-mounth {
      width: 80px;
      height: 39px;
@@ -311,6 +333,7 @@ body.notScroll {
         border: 1px solid green;
     }
  }
+
  .card-year {
      width: 80px;
      height: 39px;
@@ -318,10 +341,10 @@ body.notScroll {
         border: 1px solid green;
     }
  }
+
  .card-name {
     width: 306px;
     height: 39px;
-//  margin-left: 26px;
     margin-top: 8px;
  }
 
@@ -332,14 +355,18 @@ body.notScroll {
     top: 80px;
     right: 40px;
  }
+
  ::placeholder {
     font-size: large;
     text-align: center;
  }
+
  input.cvc{
     font-size: large;
     outline: none;
+    text-align: center;
  }
+
  input::-webkit-outer-spin-button,
  input::-webkit-inner-spin-button {
  -webkit-appearance: none;
