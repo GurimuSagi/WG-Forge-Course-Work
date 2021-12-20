@@ -1,20 +1,17 @@
 /* eslint-disable import/no-cycle */
 import stateOfChecked from './filter';
 import { calcExchangeRate } from '../exchangeRate';
-// eslint-disable-next-line import/named
-import { ShoppingCart } from '../router/components';
-import {
-    coverPlace,
-    shoppingCart,
-    shoppingCartItems,
-    payBlock,
-    countOfShoppingCart,
-    summShoppingList,
-    summPayPage,
-    ShoppingCartBlock,
-
-} from './constants';
+// import { ShoppingCart } from '../router/components';
 import data from './database/data';
+import {
+    countOfShoppingCart,
+    coverPlace, payBlock,
+    shoppingCart, ShoppingCartBlock,
+    shoppingCartItems,
+    summPayPage,
+    summShoppingList,
+} from './constants';
+import { ShoppingCart } from '../router/components';
 
 const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
@@ -250,6 +247,18 @@ const checkItemContainsShoppingList = (uuid) => {
     return false;
 };
 
+// change url to dateil/id
+
+const gridHandler = (event) => {
+    if (window.location.hash === '#/') {
+        if (!event.target.classList.contains('checkbox')
+        && !event.target.closest('div').classList.contains('add-to-cart')) {
+            const { id } = (event.target.closest('article')).dataset;
+            window.location.hash = `/detail/${id}`;
+        }
+    }
+};
+
 // shipping cart Handler
 
 export {
@@ -272,6 +281,8 @@ export {
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
+    getUserName,
+    gridHandler,
     getTarget,
     deleteItemFromShoppingList,
     changeDataShoppingList,

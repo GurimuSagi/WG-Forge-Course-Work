@@ -59,7 +59,6 @@ const auth = async () => {
 };
 
 const login = async (input, path, form) => {
-    const userList = getAllShoppingListItems();
     const response = await fetch(` http://165.22.21.103/api/${path}/`, {
         method: 'POST',
         body: input,
@@ -73,6 +72,7 @@ const login = async (input, path, form) => {
     } else {
         handlingResponse(form, res);
     }
+    const userList = getAllShoppingListItems();
     if (userList === null) {
         localStorage.setItem('userCart', JSON.stringify([]));
     } else {
