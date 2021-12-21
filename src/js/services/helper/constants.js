@@ -10,7 +10,7 @@ const shoppingCartItems = document.getElementById('shopping_cart_items');
 const payBlock = document.getElementById('pay_block');
 const summShoppingList = document.getElementById('summCostShoppingList');
 const summPayPage = document.getElementById('summPayPage');
-const test = document.getElementById('test');
+const ShoppingCartBlock = document.getElementById('shopList');
 const BackToShoppingListBnt = document.getElementById('BackToShoppingListBnt');
 const shoppingCattAll = document.querySelector('.shopinngCart_item');
 const cardNumber = document.getElementById('card_number');
@@ -21,6 +21,12 @@ const cvcField = document.getElementById('cvc_field');
 const btnPay = document.getElementById('btn_pay');
 const payForm = document.getElementById('payForm');
 const payFormAll = document.querySelectorAll('#payForm');
+const grid = document.querySelector('.grid');
+const buttonAll = document.getElementById('checkAll');
+const buttonVehicles = document.getElementById('checkVehicles');
+const buttonGold = document.getElementById('checkGold');
+const buttonPremium = document.getElementById('checkPremium');
+const logo = document.querySelector('.logo');
 
 export {
     countOfWish,
@@ -33,7 +39,7 @@ export {
     closePayBtn,
     shoppingCartItems,
     payBlock,
-    test,
+    ShoppingCartBlock,
     shoppingCattAll,
     summShoppingList,
     summPayPage,
@@ -46,4 +52,10 @@ export {
     btnPay,
     payForm,
     payFormAll,
+    grid,
+    buttonAll,
+    buttonVehicles,
+    buttonGold,
+    buttonPremium,
+    logo,
 };

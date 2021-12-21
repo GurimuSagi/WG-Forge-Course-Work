@@ -4,12 +4,14 @@ import {
     yearField,
     nameField,
     cvcField,
-    payForm,
+    btnPay,
 } from './constants';
-import { getUserName, closeShoppingCartAndPay, deleteFromLocalStorage } from './core';
+import { addShoppingListItems, checkShippingCartCount, closeShoppingCartAndPay } from './core';
 
 cardNumber.addEventListener('keydown', (event) => {
-    if (cardNumber.value.length > 15 && event.key !== 'Backspace') {
+    if (!Number(event.key) && event.key !== 'Backspace') {
+        event.preventDefault();
+    } else if (cardNumber.value.length > 15 && event.key !== 'Backspace') {
         event.preventDefault();
     }
 });
@@ -32,20 +34,21 @@ cvcField.addEventListener('keydown', (event) => {
     }
 });
 
-payForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+btnPay.addEventListener('click', () => {
     if (cardNumber.validity.valid
-    && monthField.validity.valid
-    && yearField.validity.valid
-    && nameField.validity.valid
-    && cvcField.validity.valid
+        && monthField.validity.valid
+        && yearField.validity.valid
+        && nameField.validity.valid
+        && cvcField.validity.valid
     ) {
+        alert('Удачи в бою!');
+        closeShoppingCartAndPay();
         cardNumber.value = '';
         monthField.value = '';
         yearField.value = '';
         nameField.value = '';
         cvcField.value = '';
-        closeShoppingCartAndPay();
-        deleteFromLocalStorage(`${getUserName()}-cart`);
+        addShoppingListItems([]);
+        checkShippingCartCount();
     }
 });

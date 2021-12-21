@@ -12,7 +12,7 @@ const exchangeRate = async () => {
             exchangeRates = i.data;
         });
 
-    await fetch('http://165.22.21.103/catalog/currency/')
+    await fetch('https://tanks-api.demo-project.space/catalog/currency/')
         .then((j) => j.json())
         .then((j) => {
             currentRate = j[0].name;

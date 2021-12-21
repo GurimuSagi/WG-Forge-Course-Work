@@ -1,64 +1,46 @@
+/* eslint-disable import/no-cycle */
 import data from '../helper/database/data';
-// eslint-disable-next-line import/no-cycle
-import routes from './routes';
-// eslint-disable-next-line import/no-cycle
-import stateOfChecked from '../app/filter';
-// eslint-disable-next-line import/no-cycle
+import { routes } from './routes';
 import {
-    getItems, getKeyByValue, parseLSItem, addNotifyBlock,
+    getItems,
+    parseLSItem,
+    addNotifyBlock,
+    parseLocation,
+    getId,
+
 } from '../helper/core';
 import createSlider from '../../modules/slider';
+import { grid } from '../helper/constants';
+import IntersectObserver from '../app/observers';
 
-const grid = document.querySelector('.grid');
-
-window.location.hash = '#/';
-let id;
-
-const parseLocation = () => location.hash.slice(1).toLowerCase() || '/';
-
-const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('load-img');
-            entry.target.src = entry.target.dataset.src;
-            obs.unobserve(entry.target);
-        }
-    });
-});
+// window.location.hash = '#/';
 
 const router = () => {
-    const detailTank = data.all.find((tank) => tank.uuid === id);
+    const id = getId();
     const path = parseLocation();
-    const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
+    // console.log(path);
+    const detailTank = data.all.find((tank) => tank.uuid === id);
+    const componentByPath = (p, r) => r.find((item) => item.path === p) || '';
     const { component } = componentByPath(path, routes);
-    if (path === '/') {
+    if (data[path] || path === '/') {
         grid.style.display = 'grid';
-        const renderData = data[getKeyByValue(stateOfChecked, true)];
+        const renderData = path === '/' ? data.all : data[path];
         grid.innerHTML = component(renderData);
         const el = document.querySelectorAll('.bg');
         el.forEach((a) => {
-            observer.observe(a);
+            IntersectObserver.observe(a);
         });
-    } else if (path === '/detail') {
+    } else if (detailTank && path === 'detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
         createSlider(detailTank);
-    } else if (path === '/wishlist' && parseLSItem('user')) {
+    } else if (path === 'wishlist' && parseLSItem('user')) {
         grid.innerHTML = component(getItems());
         grid.style.display = 'grid';
-    } else if (path === '/wishlist' && !parseLSItem('user')) {
+    } else if (path === 'wishlist' && !parseLSItem('user')) {
         addNotifyBlock();
         window.location.hash = '#/';
     }
 };
 
-grid.addEventListener('click', (event) => {
-    if (window.location.hash === '#/') {
-        if (!event.target.classList.contains('checkbox')
-        && !event.target.closest('div').classList.contains('add-to-cart')) {
-            window.location.hash = '/detail';
-            id = (event.target.closest('article')).dataset.id;
-        }
-    }
-});
 export default router;

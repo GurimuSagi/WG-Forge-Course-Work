@@ -17,12 +17,6 @@ $textColor: rgb(155, 155, 155);
     border: 2px solid red;
   }
 
-//   .card-number:valid {
-//     border: 2px solid green;
-//   }
-//   .card-number:invalid {
-//     border: 2px solid red;
-//   }
 
 .shopinngCart {
     position: fixed;
@@ -76,12 +70,19 @@ body.notScroll {
     align-items:center;
     border-bottom: 1px solid rgba(0,0,0,0.2);
     width: 100%;
+    color: rgb(202, 202, 202);
+    font-size:12px;
 }
 
 .shopinngCart_item-image {
     width: 30%;
+    height: inherit;
+    display: flex;
+    position: relative;
+    align-content: center;
+    justify-content: center;
     img {
-        width: 20em;
+        height: inherit;
     }
 }
 
@@ -89,15 +90,16 @@ body.notScroll {
     width: 30%;
     h3 {
         font-size: $titleTextSize;
+        padding-left: 5px;
     }
 }
 
 .shopinngCart_item-cost {
     text-align: center;
     width: 10%;
+    color: #c9ad7d;
     span {
         font-size: $baseTextSize;
-        font-weight: $baseFontWeight;
     }
 }
 
@@ -123,19 +125,21 @@ body.notScroll {
     background: #282727;
     outline: none;
     border-radius: 50%;
-    border: none;
-    color: rgb(155, 155, 155);
-    /* width: 3em; */
-    /* height: 3em; */
+    border: double;
+    color: #9b9b9b;
+    width: 1.5em;
     font-size: 2em;
     text-align: center;
+    &:hover {
+        color: rgb(190, 190, 190);
+    }
 }
 
 .shopinngCart_item-summ {
     text-align: center;
     font-size: $baseTextSize;
     width: 10%;
-    font-weight: $baseFontWeight;
+    color: #c9ad7d;
 }
 
 .shopinngCart_item-delete {
@@ -143,16 +147,14 @@ body.notScroll {
     width: 10%;
     button {
         font-size: $baseTextSize;
-        font-weight: $baseFontWeight;
         color: $textColor;
         background: none;
         outline: none;
         border: none;
+        &:hover {
+            color: rgb(190, 190, 190);
+        }
     }
-}
-
-.card_block {
-
 }
 
 .controleBlock {
@@ -161,36 +163,36 @@ body.notScroll {
     height: calc(100vh/20);
     display: flex;
     align-items: center;
-    width: 100%;
-    position: absolute;
-    background-color: #282727;
+    position: sticky;
+    background-color: #1e1e1e;
     justify-content: space-between;
+    border-top: solid;
+    border-top-color: white;
     .money_block {
-        margin-right: 99px;
+        margin-right: 25px;
     }
     span {
         color: $textColor;
     }
+    button {
+        width: 130px;
+        height: calc(100vh/20);
+        background-color: rgb(242, 100, 2);
+        border: none;
+        font-family: "Tahoma";
+        font-size: 20px;
+        color: white;
+        cursor: pointer;
+        &:hover {
+            cursor: pointer;
+            background-color: rgb(247, 140, 3);
+        }
+    }
     .close_btn {
-        margin-left: 10px;
+        margin-left: 25px;
     }
     .pay_btn {
         margin-left: 10px;
-    }
-    .pay_btn:hover {
-        color: green;
-        border: 1px solid green;
-    }
-    .close_btn:hover {
-        color: red;
-        border: 1px solid red;
-    }
-    button {
-        cursor: pointer;
-        background: none;
-        border: 1px solid $textColor;
-        border-radius: 5px;
-        color: $textColor;
     }
 
     div {
@@ -199,13 +201,6 @@ body.notScroll {
         align-items: center;
     }
 }
-
-
-// pay cards block
-
-// .cardblock {
-//     position: relative;
-// }
 
 .pay_wrapper {
     display: flex;
@@ -221,14 +216,27 @@ body.notScroll {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.3);
     button {
         width: 130px;
         height: 40px;
         background-color: chocolate;
         border: none;
-        // border-radius: 50px;
-        margin: 15px;   
+        margin: 15px;
+        font-family: "Tahoma";
+        font-size: 20px;
     }
+    button:hover {
+        background-color: #ff9a04;
+    }
+}
+
+#btn_pay {
+    font-size: 20px;
+    font-family: "Tahoma";
+}
+#btn_pay:hover {
+    background-color: #ff9a04;
 }
 
 .cards_block {
@@ -256,7 +264,9 @@ body.notScroll {
     width: 377px;
     height: 225px;
     background-color: #DCDCDC;
-    // background-image: url('/background/26.jpg');
+    background-image: url("/assets/26.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     border-radius: 11px;
     position: absolute;
     top: 10%;
@@ -272,6 +282,8 @@ body.notScroll {
         border: none;
         outline: none;
         text-align: center;
+        box-sizing: border-box;
+
     }
 }
 
@@ -295,14 +307,17 @@ body.notScroll {
     right: 25%;
     top: 30%;
  }
+
  .card-number {
      margin-top: 25px;
-    //  margin-left: 26px;
      margin-bottom: 8px;
      width: 306px;
      height: 39px;
-
  }
+ .card-number.novalid {
+    border: 2px solid red;
+ }
+
  .card-mounth {
      width: 80px;
      height: 39px;
@@ -311,6 +326,7 @@ body.notScroll {
         border: 1px solid green;
     }
  }
+
  .card-year {
      width: 80px;
      height: 39px;
@@ -318,10 +334,10 @@ body.notScroll {
         border: 1px solid green;
     }
  }
+
  .card-name {
     width: 306px;
     height: 39px;
-//  margin-left: 26px;
     margin-top: 8px;
  }
 
@@ -332,14 +348,18 @@ body.notScroll {
     top: 80px;
     right: 40px;
  }
+
  ::placeholder {
     font-size: large;
     text-align: center;
  }
+
  input.cvc{
     font-size: large;
     outline: none;
+    text-align: center;
  }
+
  input::-webkit-outer-spin-button,
  input::-webkit-inner-spin-button {
  -webkit-appearance: none;

@@ -64,11 +64,13 @@ const createSlider = (details) => {
             prevBtn.insertAdjacentElement('afterend', slide);
         });
     }
-    const div = `
-        <img class="main-slider-btn main-prev-btn" src="../../../assets/images/sliderL.png" alt="left">
-        <img class="main-slider-btn main-next-btn" src="../../../assets/images/sliderR.png" alt="right">
-    `;
-    slider.innerHTML = div;
+    if (details.images.length > 0) {
+        const div = `
+            <img class="main-slider-btn main-prev-btn" src="../../../assets/images/sliderL.png" alt="left">
+            <img class="main-slider-btn main-next-btn" src="../../../assets/images/sliderR.png" alt="right">
+        `;
+        slider.innerHTML = div;
+    }
     slides();
     sliders('.detail-slider', '.main-prev-btn', '.main-next-btn');
 };
