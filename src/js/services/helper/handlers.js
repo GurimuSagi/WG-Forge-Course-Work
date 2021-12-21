@@ -16,12 +16,14 @@ import {
     getItems,
     getTarget,
     getUserName,
+    parseLocation,
     parseLSItem,
 
 } from './core';
 import data from './database/data';
 
 const gridHandler = (event) => {
+    const location = parseLocation();
     let id;
     if (event.target.closest('article')) {
         id = (event.target.closest('article')).dataset.id;
@@ -66,10 +68,10 @@ const gridHandler = (event) => {
             }
             checkShippingCartCount();
         }
-    } else if (window.location.hash === '#/') {
+    } else if (window.location.hash === '#/' || location === 'wishlist' || data[location]) {
         if (!event.target.classList.contains('checkbox')
         && !event.target.closest('div').classList.contains('add-to-cart')) {
-            window.location.hash = `/detail/${id}`;
+            window.location.hash = window.location.hash === '#/' ? `/detail/${id}` : `${location}/detail/${id}`;
         }
     }
 };

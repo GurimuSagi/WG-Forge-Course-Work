@@ -13,13 +13,13 @@ import createSlider from '../../modules/slider';
 import { grid } from '../helper/constants';
 import IntersectObserver from '../app/observers';
 
-window.location.hash = '#/';
+// window.location.hash = '#/';
 
 const router = () => {
     const id = getId();
     const path = parseLocation();
     const detailTank = data.all.find((tank) => tank.uuid === id);
-    const componentByPath = (p, r) => r.find((item) => item.path === p) || undefined;
+    const componentByPath = (p, r) => r.find((item) => item.path === p) || '';
     const { component } = componentByPath(path, routes);
     if (data[path] || path === '/') {
         grid.style.display = 'grid';
@@ -29,13 +29,6 @@ const router = () => {
         el.forEach((a) => {
             IntersectObserver.observe(a);
         });
-        if (grid.children.length > 0 && !document.body.classList.contains('loaded')) {
-            document.body.classList.add('loaded_hiding');
-            setTimeout(() => {
-                document.body.classList.add('loaded');
-                document.body.classList.remove('loaded_hiding');
-            }, 1000);
-        }
     } else if (path === 'detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
