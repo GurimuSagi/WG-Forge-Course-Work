@@ -13,6 +13,7 @@
         justify-content: flex-end;
         background-color: rgba(22,21,16,0.5);
         position: relative;
+        overflow: hidden;
         &:hover {
             background-color: black;
             background-color: rgba(0, 0, 0, 0.7);
@@ -156,7 +157,7 @@
     }
     article:nth-child(5n) {
         grid-column: span 2;
-        aspect-ratio: 0; 
+        aspect-ratio: 2; 
         img {
             height: 95%;
             width: auto;

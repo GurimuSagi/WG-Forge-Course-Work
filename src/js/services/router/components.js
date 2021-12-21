@@ -42,30 +42,30 @@ const ShoppingCart = (cartItems) => {
         return '<h1 style="text-align: center;">В корзине нет товаров</h1>';
     }
     const shoppingCart = cartItems.map((i) => `
-    <div class="shopinngCart_item">
-    <div class="shopinngCart_item-image">
-        <img src="${i.main_image}" alt="">
-    </div>
-    <div class="shopinngCart_item-title">
-        <h3>${i.title}</h3>
-    </div>
-    <div class="shopinngCart_item-cost">
-        <span>${calcExchangeRate(i.price)}</span>
-    </div>
-    <div class="shopinngCart_item-count">
-        <button class="minus btn_plus_minus" data-uuid="${i.uuid}">-</button>
-        <span id="count-${i.uuid}">${i.count}</span>
-        <button class="plus btn_plus_minus" data-uuid="${i.uuid}">+</button>
-    </div>
-    <div class="shopinngCart_item-summ">
-        <span id="sum-${i.uuid}">${calcExchangeRate((i.price) * i.count)}</span>
-    </div>
-    <div class="shopinngCart_item-delete">
-        <button data-item="${i.uuid}" class="deleteItemCart">X</button>
-    </div>
-</div>
-    `);
-    return shoppingCart;
+        <div class="shopinngCart_item">
+            <div class="shopinngCart_item-image">
+                <img src="${i.main_image}" alt="">
+            </div>
+            <div class="shopinngCart_item-title">
+                <h3>${i.title}</h3>
+            </div>
+            <div class="shopinngCart_item-cost">
+                <span>${calcExchangeRate(i.price)}</span>
+            </div>
+            <div class="shopinngCart_item-count">
+                <button class="minus btn_plus_minus" data-uuid="${i.uuid}">-</button>
+                <span id="count-${i.uuid}">${i.count}</span>
+                <button class="plus btn_plus_minus" data-uuid="${i.uuid}">+</button>
+            </div>
+            <div class="shopinngCart_item-summ">
+                <span id="sum-${i.uuid}">${calcExchangeRate((i.price) * i.count)}</span>
+            </div>
+            <div class="shopinngCart_item-delete">
+                <button data-item="${i.uuid}" class="deleteItemCart">X</button>
+            </div>
+        </div>
+        `);
+    return shoppingCart.join('');
 };
 
 const WishComponent = (wishlist) => {
