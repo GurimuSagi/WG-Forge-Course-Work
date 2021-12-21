@@ -121,6 +121,42 @@ a {
     cursor: pointer;
 }
 
+.filter_vehicles{
+    grid-template-columns: none;
+    justify-content: flex-start;
+    margin-bottom: 0px;
+    margin-top:-2%;
+    //font-size: 12px;
+    span{
+        text-decoration: none;
+        padding-right: 15px;
+        color: rgba(255, 255, 255, 0.411);
+        article{
+            display:none;
+            flex-direction: column;
+            justify-content: flex-end;
+            background-color: rgba(22,21,16,1);
+            position: absolute;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            span{
+                padding:5px;
+                font-size: 14px;
+            }
+            span:hover{
+                background-color: rgb(36, 36, 36);
+            }
+        }
+    }
+    span:hover{
+        text-decoration: underline;
+        color: rgba(255, 255, 255, 0.8);
+        article{
+            display: flex;
+        }
+    }
+}
+
 @media only screen and (max-width: 1024px) {
     header {
         width: 100%;
