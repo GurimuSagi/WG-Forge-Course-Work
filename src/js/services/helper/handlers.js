@@ -72,10 +72,10 @@ const gridHandler = (event) => {
             }
             checkShippingCartCount();
         }
-    } else if (window.location.hash === '#/' || location === 'wishlist') {
+    } else if (window.location.hash === '#/' || location === 'wishlist' || data[location]) {
         if (!event.target.classList.contains('checkbox')
         && !event.target.closest('div').classList.contains('add-to-cart')) {
-            window.location.hash = `/detail/${id}`;
+            window.location.hash = window.location.hash === '#/' ? `/detail/${id}` : `${location}/detail/${id}`;
         }
     }
 };

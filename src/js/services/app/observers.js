@@ -12,7 +12,7 @@ const calcScroll = () => {
 };
 
 const scroll = calcScroll();
-
+const grid = document.querySelector('.grid');
 const config = {
     childList: true,
     subtree: true,
@@ -22,6 +22,14 @@ const callback = () => {
         document.body.style.marginRight = `${scroll}px`;
     } else {
         document.body.style.marginRight = '0px';
+    }
+    if (grid.children.length > 0 && !document.body.classList.contains('loaded')) {
+        // console.log('1111');
+        document.body.classList.add('loaded_hiding');
+        setTimeout(() => {
+            document.body.classList.add('loaded');
+            document.body.classList.remove('loaded_hiding');
+        }, 1000);
     }
 };
 
