@@ -1,5 +1,5 @@
-const prodTypes = 'http://165.22.21.103/catalog/prod-type/';
-const allProductsUrl = 'http://165.22.21.103/catalog/products/';
+const prodTypes = '/165.22.21.103/catalog/prod-type/';
+const allProductsUrl = '/165.22.21.103/catalog/products/';
 
 export {
     allProductsUrl,
