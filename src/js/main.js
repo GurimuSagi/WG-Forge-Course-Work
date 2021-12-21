@@ -1,4 +1,5 @@
 import '../style/style.scss';
+import '../style/animate.scss';
 import '../style/style.detail.scss';
 import { exchangeRate } from './services/exchangeRate';
 import { modalWindow } from './modules/modal';

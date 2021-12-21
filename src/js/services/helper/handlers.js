@@ -1,5 +1,6 @@
 import { ShoppingCart } from '../router/components';
 import router from '../router/router';
+import animateItem from './animate';
 import {
     countOfWish, ShoppingCartBlock, summShoppingList,
 } from './constants';
@@ -16,12 +17,14 @@ import {
     getItems,
     getTarget,
     getUserName,
+    parseLocation,
     parseLSItem,
 
 } from './core';
 import data from './database/data';
 
 const gridHandler = (event) => {
+    const location = parseLocation();
     let id;
     if (event.target.closest('article')) {
         id = (event.target.closest('article')).dataset.id;
@@ -59,6 +62,9 @@ const gridHandler = (event) => {
             target.count = 1;
             if (localStorage.getItem(`${getUserName()}-cart`)) {
                 if (!checkItemContainsShoppingList(id)) {
+                    if (location === '/') {
+                        animateItem(event.target.parentNode.parentNode);
+                    }
                     const cart = JSON.parse(localStorage.getItem(`${getUserName()}-cart`));
                     cart.push(target);
                     localStorage.setItem(`${getUserName()}-cart`, JSON.stringify(cart));
@@ -66,7 +72,7 @@ const gridHandler = (event) => {
             }
             checkShippingCartCount();
         }
-    } else if (window.location.hash === '#/') {
+    } else if (window.location.hash === '#/' || location === 'wishlist') {
         if (!event.target.classList.contains('checkbox')
         && !event.target.closest('div').classList.contains('add-to-cart')) {
             window.location.hash = `/detail/${id}`;

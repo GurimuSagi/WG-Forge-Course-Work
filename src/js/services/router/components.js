@@ -65,7 +65,7 @@ const ShoppingCart = (cartItems) => {
     </div>
 </div>
     `);
-    return shoppingCart;
+    return shoppingCart.join('');
 };
 
 const WishComponent = (wishlist) => {
