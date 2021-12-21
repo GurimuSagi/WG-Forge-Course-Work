@@ -1,5 +1,5 @@
 /* eslint-disable import/no-cycle */
-import stateOfChecked from './filter';
+// import stateOfChecked from './filter';
 import { calcExchangeRate } from '../exchangeRate';
 // import { ShoppingCart } from '../router/components';
 import data from './database/data';
@@ -15,8 +15,8 @@ import { ShoppingCart } from '../router/components';
 
 const romanDigits = [0, 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
 
-const getKeyByValue = (value) => Object.keys(stateOfChecked)
-    .find((key) => stateOfChecked[key] === value);
+// const getKeyByValue = (value) => Object.keys(stateOfChecked)
+//     .find((key) => stateOfChecked[key] === value);
 
 const changeCountOfWishItems = (arrayOfWishItems, countValueOnPage) => {
     countValueOnPage.textContent = `(${arrayOfWishItems.length})`;
@@ -266,7 +266,7 @@ export {
     parseLocation,
     getId,
     checkShippingCartCount,
-    getKeyByValue,
+    // getKeyByValue,
     changeCountOfWishItems,
     addToLocalStorage,
     deleteFromLocalStorage,

@@ -75,12 +75,12 @@ const login = async (input, path, form) => {
     } else {
         handlingResponse(form, res);
     }
-    const userList = getAllShoppingListItems();
-    if (userList === null) {
-        localStorage.setItem('userCart', JSON.stringify([]));
-    } else {
-        localStorage.setItem('userCart', JSON.stringify(userList));
-    }
+    // const userList = getAllShoppingListItems();
+    // if (userList === null) {
+    //     localStorage.setItem('userCart', JSON.stringify([]));
+    // } else {
+    //     localStorage.setItem('userCart', JSON.stringify(userList));
+    // }
 };
 
 const logout = async () => {
