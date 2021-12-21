@@ -1,6 +1,6 @@
 # WG Premium shop
 
-### WG Project Deploy
+### WG Project Deploy:
 
 https://wgshop.netlify.app
 
