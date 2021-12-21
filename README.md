@@ -1,5 +1,9 @@
 # WG Premium shop
 
+# WG Project Deploy
+`
+https://wgshop.netlify.app/#/
+`
 ### Установка зависимостей:
 ``
 npm install
@@ -12,6 +16,3 @@ npm run start
 ``
 npm run build
 ``
-### Деплой:
-
-https://wgshop.netlify.app/#/
