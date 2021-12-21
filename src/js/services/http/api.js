@@ -1,4 +1,4 @@
-import createCategoryBtns from '../../modules/categoryNavBtns';
+import { createCategoryBtns } from '../../modules/categoryNavBtns';
 import {
     allProductsUrl,
     prodTypes,
@@ -28,13 +28,15 @@ const getData = async () => {
     await getAllProducts
         .then((response) => response.json())
         .then((products) => {
-            data.all = products;
             let name = '';
             products.forEach((prod) => {
-                prod.prod_type.forEach((item) => {
-                    name = item.name.replace(/\s+/g, '');
-                    data[name].push(prod);
-                });
+                if (prod.display === true) {
+                    data.all.push(prod);
+                    prod.prod_type.forEach((item) => {
+                        name = item.name.replace(/\s+/g, '');
+                        data[name].push(prod);
+                    });
+                }
             });
         });
 

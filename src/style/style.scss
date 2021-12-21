@@ -10,10 +10,9 @@ body {
     position: relative;
 	background-color: #1c1b15; 
     background-image: url("/src/assets/images/bgimage.png"); 
-    background-position-y: 0;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    background-clip: padding-box;
-    background-size: 100%;
+    background-size: auto;
     font-family: "Tahoma";
 }
 
@@ -47,24 +46,23 @@ main {
             font-weight: bold;
             align-items: flex-end;
             padding-bottom: 10px;
-            input {
-                margin-left:10px;
-                opacity: 0;
-            }
-            input+label {
-                border-bottom: 3px solid rgba(255,255,255,0);
-                display:block;
-            }
-            label {
-                cursor: pointer;
-            }
-            input:checked + label {
-                color: white;
-                border-bottom: 3px solid rgba(255,255,255,1);
-                //text-decoration: underline;
-            }
+
             .category-btn {
                 margin-left: 15px;
+                padding-left: 5px;
+                padding-right: 5px;
+                padding-bottom: 3px;
+                margin-bottom: 0px;
+                border-bottom: 3px solid rgba(220, 220, 220, 0);
+                &:hover{
+                    color: white;
+                    cursor: pointer;
+                    border-color: white;
+                }
+            }
+            .active {
+                color: white;
+                border-color: white;
             }
         }
 	}

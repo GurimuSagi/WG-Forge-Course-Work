@@ -9,7 +9,7 @@ import {
     grid,
     logo,
 } from '../helper/constants';
-
+import { removeActiveClass } from '../../modules/categoryNavBtns';
 import {
     closeShoppingCart,
     openPay,
@@ -28,6 +28,7 @@ window.addEventListener('load', router);
 
 premium.addEventListener('click', () => {
     window.location.hash = '/';
+    removeActiveClass();
 });
 
 shoppingButton.addEventListener('click', openShoppingCart);
@@ -40,4 +41,5 @@ BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
 grid.addEventListener('click', gridHandler);
 logo.addEventListener('click', () => {
     window.location.hash = '#/';
+    removeActiveClass();
 });

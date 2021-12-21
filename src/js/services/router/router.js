@@ -18,6 +18,7 @@ import IntersectObserver from '../app/observers';
 const router = () => {
     const id = getId();
     const path = parseLocation();
+    // console.log(path);
     const detailTank = data.all.find((tank) => tank.uuid === id);
     const componentByPath = (p, r) => r.find((item) => item.path === p) || '';
     const { component } = componentByPath(path, routes);
@@ -29,7 +30,7 @@ const router = () => {
         el.forEach((a) => {
             IntersectObserver.observe(a);
         });
-    } else if (path === 'detail') {
+    } else if (detailTank && path === 'detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
         createSlider(detailTank);
