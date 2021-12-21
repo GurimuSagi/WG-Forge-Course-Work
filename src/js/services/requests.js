@@ -37,7 +37,7 @@ const handlingResponse = (form, response) => {
 
 const auth = async () => {
     if (res) {
-        const response = await fetch(' http://165.22.21.103/api/user/', {
+        const response = await fetch('https://tanks-api.demo-project.space/api/user/', {
             method: 'GET',
             headers: {
                 authorization: `Token ${res}`,
@@ -62,7 +62,7 @@ const auth = async () => {
 };
 
 const login = async (input, path, form) => {
-    const response = await fetch(` http://165.22.21.103/api/${path}/`, {
+    const response = await fetch(`https://tanks-api.demo-project.space/api/${path}/`, {
         method: 'POST',
         body: input,
     });
@@ -84,7 +84,7 @@ const login = async (input, path, form) => {
 };
 
 const logout = async () => {
-    await fetch(' http://165.22.21.103/api/logout/', {
+    await fetch('https://tanks-api.demo-project.space/api/logout/', {
         method: 'POST',
         headers: {
             authorization: `Token ${res}`,
