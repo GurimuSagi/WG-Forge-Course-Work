@@ -12,6 +12,7 @@ import {
 import createSlider from '../../modules/slider';
 import { grid } from '../helper/constants';
 import IntersectObserver from '../app/observers';
+import createFilter from '../../modules/filter-vehicles';
 
 // window.location.hash = '#/';
 
@@ -23,6 +24,11 @@ const router = () => {
     const componentByPath = (p, r) => r.find((item) => item.path === p) || '';
     const { component } = componentByPath(path, routes);
     if (data[path] || path === '/') {
+        if (path === 'vehicles') {
+            createFilter(data);
+        } else {
+            createFilter(false);
+        }
         grid.style.display = 'grid';
         const renderData = path === '/' ? data.all : data[path];
         grid.innerHTML = component(renderData);
