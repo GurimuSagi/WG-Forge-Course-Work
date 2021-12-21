@@ -7,6 +7,7 @@ import {
     shoppingCart,
     BackToShoppingListBnt,
     grid,
+    logo,
 } from '../helper/constants';
 
 import {
@@ -37,3 +38,6 @@ PayShoppingCartBtn.addEventListener('click', openPay);
 shoppingCart.addEventListener('click', shoppingCartHandler);
 BackToShoppingListBnt.addEventListener('click', backToShoppingCart);
 grid.addEventListener('click', gridHandler);
+logo.addEventListener('click', () => {
+    window.location.hash = '#/';
+});
