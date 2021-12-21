@@ -25,17 +25,15 @@ const sliders = (slides, prev, next) => {
     const prevBtn = document.querySelector(prev);
     const nextBtn = document.querySelector(next);
 
-    prevBtn.addEventListener('click', () => {
-        plusSlides(-1);
-        items[slideIndex - 1].classList.remove('slideInLeft');
-        items[slideIndex - 1].classList.add('slideInRight');
-    });
+    if (prevBtn || nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            plusSlides(-1);
+        });
 
-    nextBtn.addEventListener('click', () => {
-        plusSlides(1);
-        items[slideIndex - 1].classList.remove('slideInRight');
-        items[slideIndex - 1].classList.add('slideInLeft');
-    });
+        nextBtn.addEventListener('click', () => {
+            plusSlides(1);
+        });
+    }
 
     function activateAnimation() {
         paused = setInterval(() => {
@@ -56,20 +54,27 @@ const sliders = (slides, prev, next) => {
 const createSlider = (details) => {
     const slider = document.querySelector('.slider');
     function slides() {
-        details.images.forEach((img) => {
+        if (details.images.length < 2) {
             const slide = document.createElement('img');
-            const prevBtn = document.querySelector('.main-prev-btn');
+            const sliderBlock = document.querySelector('.slider');
             slide.className = 'detail-slider';
-            slide.src = `${img.image}`;
-            prevBtn.insertAdjacentElement('afterend', slide);
-        });
-    }
-    if (details.images.length > 0) {
-        const div = `
-            <img class="main-slider-btn main-prev-btn" src="../../../assets/images/sliderL.png" alt="left">
-            <img class="main-slider-btn main-next-btn" src="../../../assets/images/sliderR.png" alt="right">
-        `;
-        slider.innerHTML = div;
+            slide.src = `${details.main_image}`;
+            sliderBlock.appendChild(slide);
+        } else {
+            const div = `
+                <img class="main-slider-btn main-prev-btn" src="../../../assets/sliderL.png" alt="left">
+                <img class="main-slider-btn main-next-btn" src="../../../assets/sliderR.png" alt="right">
+            `;
+            slider.innerHTML = div;
+
+            details.images.forEach((img) => {
+                const slide = document.createElement('img');
+                const sliderBlock = document.querySelector('.slider');
+                slide.className = 'detail-slider';
+                slide.src = `${img.image}`;
+                sliderBlock.appendChild(slide);
+            });
+        }
     }
     slides();
     sliders('.detail-slider', '.main-prev-btn', '.main-next-btn');
