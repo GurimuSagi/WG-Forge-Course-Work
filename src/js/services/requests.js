@@ -1,10 +1,12 @@
 import { userInterface } from '../modules/modal';
 import { countOfWish, ShoppingCartBlock } from './helper/constants';
 import {
-    checkShippingCartCount, getItems, updateLikes,
+    checkShippingCartCount, getAllShoppingListItems, getItems, updateLikes,
+// eslint-disable-next-line import/named
 } from './helper/core';
 import router from './router/router';
 import data from './helper/database/data';
+// eslint-disable-next-line import/named
 import { ShoppingCart } from './router/components';
 
 const span = document.createElement('span');

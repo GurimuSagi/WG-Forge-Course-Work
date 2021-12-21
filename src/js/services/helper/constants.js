@@ -26,6 +26,7 @@ const buttonAll = document.getElementById('checkAll');
 const buttonVehicles = document.getElementById('checkVehicles');
 const buttonGold = document.getElementById('checkGold');
 const buttonPremium = document.getElementById('checkPremium');
+const logo = document.querySelector('.logo');
 
 export {
     countOfWish,
@@ -56,4 +57,5 @@ export {
     buttonVehicles,
     buttonGold,
     buttonPremium,
+    logo,
 };
