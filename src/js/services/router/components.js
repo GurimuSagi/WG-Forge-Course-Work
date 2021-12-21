@@ -3,7 +3,6 @@ import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons } from '../helper/core';
 
 const HomeComponent = (arr) => {
-    // console.log(arr.length);
     if (!arr.length) {
         return;
     }
@@ -30,6 +29,7 @@ const HomeComponent = (arr) => {
                     </div>
                 </div>
                 <div class="add-to-cart"><span>Купить</span></div>
+                <div style="width: 100%; height: 100%; position: absolute; color: red; z-index: 50; display: none; pointer-events: none;"><span>Good</span><div>
             </article>
         `;
     });
