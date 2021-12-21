@@ -12,3 +12,8 @@ npm run start
 ``
 npm run build
 ``
+### Деплой:
+``
+https://wgshop.netlify.app/#/
+``
++ Поставить разрешение на "Небезопасное содержимое"
