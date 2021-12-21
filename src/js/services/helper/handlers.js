@@ -74,7 +74,7 @@ const gridHandler = (event) => {
         }
     } else if (window.location.hash === '#/' || location === 'wishlist' || data[location]) {
         if (!event.target.classList.contains('checkbox')
-        && !event.target.closest('div').classList.contains('add-to-cart')) {
+        && !event.target.closest('div').classList.contains('add-to-cart') && id) {
             window.location.hash = window.location.hash === '#/' ? `/detail/${id}` : `${location}/detail/${id}`;
         }
     }

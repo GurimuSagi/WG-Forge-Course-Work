@@ -31,6 +31,10 @@ premium.addEventListener('click', () => {
     removeActiveClass();
 });
 
+if (window.location.hash === '') {
+    window.location.hash = '#/';
+}
+
 shoppingButton.addEventListener('click', openShoppingCart);
 coverPlace.addEventListener('click', closeShoppingCartAndPay);
 closeShoppingCartBtn.addEventListener('click', closeShoppingCart);

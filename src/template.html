@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wargaming</title>
     <link rel="preload" as="image" href="/assets/WGLogo.png">
-    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon"/>
+     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
     <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
 </head>
 
@@ -88,7 +88,7 @@
 
                 <div class="card_1">
                     <form action="#!" id="payForm">
-                        <input class="card-number" type="number" placeholder="Card Number" id="card_number" required>
+                        <input class="card-number" type="tel" placeholder="xxxx xxxx xxxx xxxx" id="card_number" pattern="[0-9]{16,}" required>
                         <!-- <input id="card_number" type="tel" inputmode="numeric" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx"> -->
                         <br>
                         <div class="date_block">
@@ -102,7 +102,7 @@
                     <input class="cvc" type="number" minlength="3" placeholder="CVC" id="cvc_field" required>
                 </div>
                 <div class="button-pay">
-                    <button class="button-donate" type="button" id="btn_pay">Оплатить</button>
+                    <button class="button-donate" type="submit" id="btn_pay">Оплатить</button>
                 </div>
                 </form>
             </div>
