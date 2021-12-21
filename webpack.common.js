@@ -1,25 +1,12 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'development',
     entry: path.resolve(__dirname, './src/js/main.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js',
-        assetModuleFilename: 'src/assets/images/[name].[ext]',
-    },
-    devServer: {
-        static: {
-            directory: path.resolve(__dirname, 'src'),
-        },
-        compress: true,
-        port: 8080,
-        headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
-            'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
-        },
+        assetModuleFilename: 'assets/[name].[ext]',
     },
     experiments: {
         topLevelAwait: true,

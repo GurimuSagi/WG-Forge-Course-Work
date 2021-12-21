@@ -17,12 +17,6 @@ $textColor: rgb(155, 155, 155);
     border: 2px solid red;
   }
 
-//   .card-number:valid {
-//     border: 2px solid green;
-//   }
-//   .card-number:invalid {
-//     border: 2px solid red;
-//   }
 
 .shopinngCart {
     position: fixed;
@@ -95,7 +89,6 @@ body.notScroll {
 .shopinngCart_item-title {
     width: 30%;
     h3 {
-        //font-size: $titleTextSize;
         font-size: 2em;
         padding-left: 5px;
     }
@@ -163,10 +156,6 @@ body.notScroll {
             color: rgb(190, 190, 190);
         }
     }
-}
-
-.card_block {
-
 }
 
 .controleBlock {
@@ -276,7 +265,7 @@ body.notScroll {
     width: 377px;
     height: 225px;
     background-color: #DCDCDC;
-    background-image: url("/src/assets/background/26.jpg");
+    background-image: url("/assets/26.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 11px;

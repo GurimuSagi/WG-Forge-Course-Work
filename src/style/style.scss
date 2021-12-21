@@ -2,14 +2,15 @@
 @import './components/popup.scss';
 @import './components/grid.scss';
 @import './components/section.scss';
-@import './components/shopping-cart.scss';
+@import './components/cart.scss';
 @import './components/slider.scss';
+@import './components/preloader.scss';
 
 body {
 	margin: 0;
     position: relative;
 	background-color: #1c1b15; 
-    background-image: url("/src/assets/images/bgimage.png"); 
+    background-image: url("/assets/bgimage.png"); 
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: auto;
