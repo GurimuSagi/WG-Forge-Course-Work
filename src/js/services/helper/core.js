@@ -290,4 +290,5 @@ export {
     convertSummToCorrectCurrency,
     convertCostToCorrectCurrency,
     getAllShoppingListItems,
+    addShoppingListItems,
 };
