@@ -2,7 +2,7 @@
 
 # WG Project Deploy
 `
-[https://wgshop.netlify.app]
+https://wgshop.netlify.app
 `
 ### Установка зависимостей:
 ``
