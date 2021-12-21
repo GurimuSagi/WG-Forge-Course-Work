@@ -89,7 +89,7 @@ body.notScroll {
 .shopinngCart_item-title {
     width: 30%;
     h3 {
-        font-size: 2em;
+        font-size: $titleTextSize;
         padding-left: 5px;
     }
 }
@@ -97,9 +97,9 @@ body.notScroll {
 .shopinngCart_item-cost {
     text-align: center;
     width: 10%;
+    color: #c9ad7d;
     span {
         font-size: $baseTextSize;
-        font-weight: $baseFontWeight;
     }
 }
 
@@ -139,7 +139,7 @@ body.notScroll {
     text-align: center;
     font-size: $baseTextSize;
     width: 10%;
-    font-weight: $baseFontWeight;
+    color: #c9ad7d;
 }
 
 .shopinngCart_item-delete {
@@ -147,7 +147,6 @@ body.notScroll {
     width: 10%;
     button {
         font-size: $baseTextSize;
-        font-weight: $baseFontWeight;
         color: $textColor;
         background: none;
         outline: none;
