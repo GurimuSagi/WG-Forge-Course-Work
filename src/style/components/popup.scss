@@ -1,18 +1,18 @@
 .popup_dialog{
     position: fixed;
-    margin-right: 12%;
+    text-align: center;
     top: 0;
-    z-index: 120;
-    margin-top: 50px;
-    right: 0;
+    right: 19.5vw;
     background-color: rgba(255, 255, 255, 0.13);
-    border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
+    //border-radius: 10px;
     // box-shadow: 0 0 40px rgb(8 7 16 / 60%);
     padding: 0px 35px;
     padding-bottom: 40px;
+    margin-top: 50px;
+    //margin-right: 12%;
+    z-index: 120;
 }
 form {
     display: flex;
@@ -38,7 +38,7 @@ form {
         display: block;
         height: 40px;
         background-color: rgba(255,255,255,0.07);
-        border-radius: 3px;
+        //border-radius: 3px;
         padding: 0 10px;
         margin-top: 8px;
         font-size: 14px;
@@ -55,7 +55,7 @@ form {
         padding: 15px 0;
         font-size: 18px;
         font-weight: 600;
-        border-radius: 5px;
+        //border-radius: 5px;
         cursor: pointer;
     }
     div {
