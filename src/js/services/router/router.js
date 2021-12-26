@@ -11,19 +11,19 @@ import {
 } from '../helper/core';
 import createSlider from '../../modules/slider';
 import { grid } from '../helper/constants';
-import IntersectObserver from '../app/observers';
 import createFilter from '../../modules/filter-vehicles';
-
-// window.location.hash = '#/';
+import { lazyLoadObserver, removeObserver } from '../app/observers';
 
 const router = () => {
     const id = getId();
     const path = parseLocation();
-    // console.log(path);
     const detailTank = data.all.find((tank) => tank.uuid === id);
     const componentByPath = (p, r) => r.find((item) => item.path === p) || '';
     const { component } = componentByPath(path, routes);
-    if (data[path] || path === '/') {
+
+    if ((data[path] || path === '/') && data.all.length > 0) {
+        grid.innerHTML = '';
+
         if (path === 'vehicles') {
             createFilter(data);
         } else {
@@ -31,18 +31,16 @@ const router = () => {
         }
         grid.style.display = 'grid';
         const renderData = path === '/' ? data.all : data[path];
-        grid.innerHTML = component(renderData);
-        const el = document.querySelectorAll('.bg');
-        el.forEach((a) => {
-            IntersectObserver.observe(a);
-        });
+        lazyLoadObserver(renderData, component);
     } else if (detailTank && path === 'detail') {
         grid.innerHTML = component(detailTank);
         grid.style.display = 'block';
         createSlider(detailTank);
+        removeObserver();
     } else if (path === 'wishlist' && parseLSItem('user')) {
         grid.innerHTML = component(getItems());
         grid.style.display = 'grid';
+        removeObserver();
     } else if (path === 'wishlist' && !parseLSItem('user')) {
         addNotifyBlock();
         window.location.hash = '#/';

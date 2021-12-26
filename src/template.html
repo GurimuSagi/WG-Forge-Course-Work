@@ -7,7 +7,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WG Shop</title>
     <link rel="preload" as="image" href="/assets/WGLogo.png">
-     <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="../public/favicon.ico" type="image/x-icon"/>
+    <style>
+        .preloader {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: #2e2e2e;
+            z-index: 1001;
+        }
+        .preloader__image {
+            width: 250px;
+            height: 250px;
+            text-align: center;
+            animation: preloader-rotate 3s infinite linear;
+        }
+        @keyframes preloader-rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        .loaded_hiding .preloader {
+            transition: 0.9s opacity;
+            opacity: 0;
+        }
+        .loaded .preloader {
+            display: none;
+        }
+    </style>
     <script src="https://kit.fontawesome.com/f607208dcb.js" crossorigin="anonymous"></script>
 </head>
 
@@ -114,6 +149,7 @@
     </div>
     <div id="shoppingCart" class="shopinngCart hidden"></div>
     <div id="cover" class="cover hidden"></div>
+    <div class="show-items"></div>
 </body>
 
 </html>

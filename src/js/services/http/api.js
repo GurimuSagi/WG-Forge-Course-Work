@@ -31,9 +31,7 @@ const getData = async () => {
             let name = '';
             products.forEach((prod) => {
                 if (prod.display === true) {
-                    if (prod.prod_type.length > 0) {
-                        data.all.push(prod);
-                    }
+                    data.all.push(prod);
                     prod.prod_type.forEach((item) => {
                         name = item.name.replace(/\s+/g, '');
                         data[name].push(prod);
