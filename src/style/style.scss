@@ -48,12 +48,12 @@ main {
             //font-size: small;
             font-size: 1vw;
             .category-btn {
-                margin-left: 15px;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-bottom: 3px;
-                margin-bottom: 0px;
-                border-bottom: 3px solid rgba(220, 220, 220, 0);
+                margin-left: 1vw;
+                padding-left: 0.3vw;
+                padding-right: 0.3vw;
+                padding-bottom: 0.3vw;
+                margin-bottom: 0vw;
+                border-bottom: 0.3vw solid rgba(220,220,220,0);
                 &:hover{
                     color: white;
                     cursor: pointer;
