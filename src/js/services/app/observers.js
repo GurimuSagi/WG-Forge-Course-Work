@@ -24,7 +24,6 @@ const callback = () => {
         document.body.style.marginRight = '0px';
     }
     if (grid.children.length > 0 && !document.body.classList.contains('loaded')) {
-        // console.log('1111');
         document.body.classList.add('loaded_hiding');
         setTimeout(() => {
             document.body.classList.add('loaded');
@@ -36,14 +35,27 @@ const callback = () => {
 const scrollObserver = new MutationObserver(callback);
 scrollObserver.observe(document, config);
 
-const IntersectObserver = new IntersectionObserver((entries, obs) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('load-img');
-            entry.target.src = entry.target.dataset.src;
-            obs.unobserve(entry.target);
-        }
-    });
+let rdata;
+let comp;
+const showItems = document.querySelector('.show-items');
+const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting === true) {
+        const arr = rdata.slice(grid.children.length, grid.children.length + 20);
+        comp(arr);
+    }
 });
 
-export default IntersectObserver;
+const lazyLoadObserver = (renderData, component) => {
+    if (rdata) {
+        observer.unobserve(showItems);
+    }
+    rdata = renderData;
+    comp = component;
+    observer.observe(showItems);
+};
+
+const removeObserver = () => {
+    observer.unobserve(showItems);
+};
+
+export { lazyLoadObserver, removeObserver };

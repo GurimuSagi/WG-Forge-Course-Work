@@ -8,6 +8,7 @@ import {
     BackToShoppingListBnt,
     grid,
     logo,
+    wishListBtn,
 } from '../helper/constants';
 import { removeActiveClass } from '../../modules/categoryNavBtns';
 import {
@@ -16,6 +17,7 @@ import {
     openShoppingCart,
     closeShoppingCartAndPay,
     backToShoppingCart,
+    openWishlist,
 } from '../helper/core';
 import { gridHandler, shoppingCartHandler } from '../helper/handlers';
 
@@ -35,6 +37,7 @@ if (window.location.hash === '') {
     window.location.hash = '#/';
 }
 
+wishListBtn.addEventListener('click', openWishlist);
 shoppingButton.addEventListener('click', openShoppingCart);
 coverPlace.addEventListener('click', closeShoppingCartAndPay);
 closeShoppingCartBtn.addEventListener('click', closeShoppingCart);

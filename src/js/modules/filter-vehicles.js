@@ -1,5 +1,4 @@
 const createFilter = (details) => {
-    // console.log(details);
     const filter = document.querySelector('.filter_vehicles');
     let div = `
         <div class="vehicles_types">
