@@ -56,10 +56,22 @@ const addNotifyBlock = (target) => {
 const loadTankIcons = (item) => {
     if (item.nation) {
         return `
-            <img src="${item.nation.icon}"></img>
-            <img src="${item.type[0].icon}"></img>
+            <img class="img-nation" src="${item.nation.icon}"></img>
+            <img class="img-type" src="${item.type[0].icon}"></img>
             <span>${romanDigits[item.tier]}</span>
         `;
+    }
+    return '';
+};
+
+const itemIsTank = (item) => {
+    if (item.nation != null) {
+        return `
+            <img class="img-nation" src="${item.nation.icon}"></img>
+            <img class="img-type" src="${item.type[0].icon}"></img>
+            <span>${romanDigits[item.tier]}</span>
+            <span>${item.title}</span>
+        `
     }
     return '';
 };
@@ -282,6 +294,7 @@ export {
     checkItemContainsShoppingList,
     backToShoppingCart,
     loadTankIcons,
+    itemIsTank,
     getUserName,
     gridHandler,
     getTarget,

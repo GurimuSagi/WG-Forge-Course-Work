@@ -1,6 +1,6 @@
 .grid{  
     display: grid;
-    grid-gap: 1px;
+    grid-gap: 0.1%;
     // grid-template-rows: 1fr 1fr 1fr 1fr;
     grid-template-columns: 25% 25% 25% 25%;
     // grid-template-columns: repeat(auto-fit, minmax(1fr, 1fr));
@@ -14,6 +14,8 @@
         background-color: rgba(22,21,16,0.5);
         position: relative;
         overflow: hidden;
+        //font-size: 1.5vw;
+        font-size: 1vw;
         &:hover {
             background-color: black;
             background-color: rgba(0, 0, 0, 0.7);
@@ -44,15 +46,16 @@
         }
         .discount-percent {
             position: absolute;
-            top: 10px;
+            top: 6%;
             color: rgba(255, 255, 255, 0.801);
             background-color: rgba(210, 42, 30, 0.692);
         }
-        label {
+        .checkbox-cont {
             position: absolute;
-            right: 15px;
-            top: 15px;
-            font-size: 22px;
+            right: 6%;
+            top: 5%;
+            //font-size: 2.5vw;
+            font-size: 2vw;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
@@ -61,11 +64,11 @@
                 position: absolute;
                 opacity: 0;
                 cursor: pointer;
-                width: 15px;
-                height: 15px;
+                width: 95%;
+                height: 85%;
             }
             .checkmark {
-                top: -4px;
+                //top: -4px;
                 position: relative;
                 color: rgb(116, 116, 116);
                 .checkmark-checked{
@@ -95,29 +98,29 @@
             position: relative;
             margin-left: 5%;
             h2 {
-                margin-bottom:0px;
-                font-size: 90%;
+                margin-bottom:0%;
+                //font-size: 1.5vw;
+                font-size: 1vw;
                 color: rgba(255, 255, 255, 0.87);
+                overflow-wrap: break-word;
             }
             img {
                 align-self: center;
-                margin-top: 6px;
+                margin-top: 1%;
                 &:first-child{
                     //width: 20px;
                     //height: 13px;
                 }
                 &:nth-child(2n) {
-                    margin-left: 5px;
-                    margin-right: 5px;
+                    margin-left: 3%;
+                    margin-right: 3%;
                     height: 100%;
                 }
             }
             span {
                 //display: none; 
-                margin-top: 10px;
-                margin-right: 5px;
+                margin-top: 2%;
                 font-size: 100%;
-                //margin-left: 5px;
                 color: rgb(202, 202, 202);
             }
         }
@@ -129,12 +132,12 @@
             display: none;
             align-items: center;
             justify-content: center;
-            width: 80px;
-            height: 30px;
+            width: 45%;
+            height: 15%;
             background-color: rgb(242, 100, 2);
             color: white;
-            margin-bottom: 10px;
-            margin-left: 10px;
+            margin-bottom: 5%;
+            margin-left: 5%;
             &:hover{
                 background-color: rgb(247, 140, 3);
             }
@@ -142,28 +145,49 @@
         .tank-details {
             display: flex;
             flex-direction: row;
+            .img-nation {
+                height: 1vw;
+            }
+            .img-type{
+                width: 0.7vw;
+                align-self:center;
+            }
         }
         .price-discount{
             margin-left: 0;
-            display: flex;
+            display: table;
         }
         .old-price {
             text-decoration: line-through;
-            font-size: 15px;
             color: rgb(116, 116, 116);
-            margin-left:2%;
+            margin-top:0%;
+            margin-bottom: 0%;
+            margin-left:0%;
+            padding-bottom: 8%;
         }
         .new-price {
             color:#c9ad7d;
-            margin-top: 14px;
+            margin-top:0%;
+            margin-bottom: 0%;
+            padding-top: 5%;
         }
     }
     article:nth-child(5n) {
+        //transition: none;
         grid-column: span 2;
         aspect-ratio: 2; 
         img {
             height: 95%;
             width: auto;
+        }
+        .item-info{
+            margin-left: 2.5%;
+        }
+        .checkbox-cont {
+            right: 3%;
+        }
+        .add-to-cart{
+            margin-left: 2.5%;
         }
     }
     // article:nth-child(10) {
@@ -174,7 +198,8 @@
     //     }
     // }
     .emptyWL {
-        font-size: 100px;
+        position: absolute;
+        font-size: 4vw;
         color: white;
     }
 }

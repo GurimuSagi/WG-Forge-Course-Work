@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
-import { loadTankIcons } from '../helper/core';
+import { loadTankIcons, itemIsTank } from '../helper/core';
 
 const HomeComponent = (arr) => {
     if (!arr.length) {
@@ -22,13 +22,13 @@ const HomeComponent = (arr) => {
                     <span class="checkmark far fa-heart"><span class="checkmark-checked fas fa-heart"></span></span>
                 </label>
                 <div class="item-info">
-                    <div class="tank-details">${loadTankIcons(i)}</div>
+                <div class="tank-details">${loadTankIcons(i)}</div>
                     <h2>${i.title}</h2>
                     <div class="price-discount">
                         ${calcExchangeRate(i.price, i.discount)}
                     </div>
                 </div>
-                <div class="add-to-cart"><span>Купить</span></div>
+                <div class="add-to-cart"><span>Purchase</span></div>
                 <div style="width: 100%; height: 100%; position: absolute; color: red; z-index: 50; display: none; pointer-events: none;"><span>Good</span><div>
             </article>
         `;
@@ -93,22 +93,23 @@ const WishComponent = (wishlist) => {
     return wishComponent.join('');
 };
 
-const DetailComponent = (tank) => `
+const DetailComponent = (i) => `
         <div class="top_block" data-id="tank.tank_id">
-        <div class="detail_top">
-        <h2 class="detail_name">${tank.title}</h2>
-        <div class="line_top"></div>
-            <div class="price-discount">
-            ${calcExchangeRate(tank.price, tank.discount)}
+            <div class="detail_top">
+                <h2 class="detail_name">${i.title}</h2>
+                <div class="line_top"></div>
+                <div class="tank-details">${itemIsTank(i)}</div>
+                <div class="price-discount">
+                    ${calcExchangeRate(i.price, i.discount)}
+                </div>
+                <button class="detail_purchase_btn" data-id="${i.uuid}">purchase</button>
             </div>
-            <button class="detail_purchase_btn" data-id="${tank.uuid}">purchase</button>
-        </div>
-        <div class="slider"></div>
+            <div class="slider"></div>
         </div>
         <div class="premium-details">
             <h3 class="detail_title">DETAILS</h3>
             <div class="line_bottom"></div>
-            <p class="description">${tank.description}</p>
+            <p class="description">${i.description}</p>
         </div>
 `;
 
