@@ -48,12 +48,12 @@ main {
             //font-size: small;
             font-size: 1vw;
             .category-btn {
-                margin-left: 15px;
-                padding-left: 5px;
-                padding-right: 5px;
-                padding-bottom: 3px;
-                margin-bottom: 0px;
-                border-bottom: 3px solid rgba(220, 220, 220, 0);
+                margin-left: 1vw;
+                padding-left: 0.3vw;
+                padding-right: 0.3vw;
+                padding-bottom: 0.3vw;
+                margin-bottom: 0vw;
+                border-bottom: 0.3vw solid rgba(220,220,220,0);
                 &:hover{
                     color: white;
                     cursor: pointer;
@@ -72,14 +72,14 @@ main {
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        height: 50px;
+        height: 3vw;
         top: 0;
         left: 0;
         width: 100%;
         color: rgb(155, 155, 155);
         background-color: black;
         z-index: 200;
-        font-size: 30px;
+        font-size: 2vw;
     }
 }
 .hidden {
@@ -108,7 +108,7 @@ article:hover {
 
 a {
     text-decoration: none;
-    padding-left: 10px;
+    padding-left: 0.1vw;
     color: rgba(255, 255, 255, 0.411);
     &:hover {
         text-decoration: underline;
