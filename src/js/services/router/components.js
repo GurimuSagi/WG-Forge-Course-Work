@@ -1,40 +1,42 @@
 /* eslint-disable import/no-cycle */
 import { calcExchangeRate, calcDiscount } from '../exchangeRate';
 import { loadTankIcons, itemIsTank } from '../helper/core';
+import { grid } from '../helper/constants';
 
 const HomeComponent = (arr) => {
     if (!arr.length) {
         return;
     }
-    const homeComponent = arr.map((i) => {
+    arr.forEach((i) => {
         let state;
         if (i.check) {
             state = 'checked';
         } else {
             state = '';
         }
-        return `
-            <article data-id=${i.uuid} class="art">
-                <img class="bg lazy" data-src='${i.main_image}' alt="img">
-                ${calcDiscount(i)}
-                <label class="checkbox-cont">
-                    <input type="checkbox" class="checkbox" ${state}>
-                    <span class="checkmark far fa-heart"><span class="checkmark-checked fas fa-heart"></span></span>
-                </label>
-                <div class="item-info">
+        const article = document.createElement('article');
+        article.setAttribute('data-id', i.uuid);
+        article.className = 'art';
+        const artInner = `
+            <img class="bg lazy load-img" loading="lazy" src='${i.main_image}' alt="img">
+            ${calcDiscount(i)}
+            <label class="checkbox-cont">
+                <input type="checkbox" class="checkbox" ${state}>
+                <span class="checkmark far fa-heart"><span class="checkmark-checked fas fa-heart"></span></span>
+            </label>
+            <div class="item-info">
                 <div class="tank-details">${loadTankIcons(i)}</div>
-                    <h2>${i.title}</h2>
-                    <div class="price-discount">
-                        ${calcExchangeRate(i.price, i.discount)}
-                    </div>
+                <h2>${i.title}</h2>
+                <div class="price-discount">
+                    ${calcExchangeRate(i.price, i.discount)}
                 </div>
-                <div class="add-to-cart"><span>Purchase</span></div>
-                <div style="width: 100%; height: 100%; position: absolute; color: red; z-index: 50; display: none; pointer-events: none;"><span>Good</span><div>
-            </article>
+            </div>
+            <div class="add-to-cart"><span>Purchase</span></div>
+            <div style="width: 100%; height: 100%; position: absolute; color: red; z-index: 50; display: none; pointer-events: none;"><span>Good</span><div>
         `;
+        article.innerHTML = artInner;
+        grid.appendChild(article);
     });
-    // eslint-disable-next-line consistent-return
-    return homeComponent.join('');
 };
 
 const ShoppingCart = (cartItems) => {
