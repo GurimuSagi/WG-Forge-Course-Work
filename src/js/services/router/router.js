@@ -42,7 +42,6 @@ const router = () => {
         grid.style.display = 'grid';
         removeObserver();
     } else if (path === 'wishlist' && !parseLSItem('user')) {
-        addNotifyBlock();
         window.location.hash = '#/';
     }
 };

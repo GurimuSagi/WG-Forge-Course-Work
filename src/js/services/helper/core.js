@@ -211,6 +211,14 @@ const deleteItemFromShoppingList = (id) => {
     return updatelistOfShoppingListItems;
 };
 
+const openWishlist = () => {
+    if (!parseLSItem('user')) {
+        addNotifyBlock();
+    } else {
+        window.location.hash = '#/wishlist';
+    }
+};
+
 const closeShoppingCart = () => {
     coverPlace.classList.add('hidden');
     document.body.classList.remove('notScroll');
@@ -291,4 +299,5 @@ export {
     convertCostToCorrectCurrency,
     getAllShoppingListItems,
     addShoppingListItems,
+    openWishlist,
 };

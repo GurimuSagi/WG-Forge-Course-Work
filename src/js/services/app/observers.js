@@ -40,7 +40,7 @@ let comp;
 const showItems = document.querySelector('.show-items');
 const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting === true) {
-        const arr = rdata.slice(grid.children.length, grid.children.length + 14);
+        const arr = rdata.slice(grid.children.length, grid.children.length + 20);
         comp(arr);
     }
 });
